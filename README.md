@@ -4,15 +4,19 @@
 
 ### Description
 
-Characterization of structural variants and de novo assembly of Chinese population by long-read sequencing.
+Characterization of structural variants and *de novo* assembly of Chinese population by long-read sequencing.
 
 
-In order to make sure the results are reproduceable, the pipeline is performed using framework **Snakemake** coupled with the environment conducted by **Anoconda**. And the pipeline can be used in other population of the long-read sequencing
+In order to make sure the results are reproduceable, the pipeline is performed using framework [**Snakemake**](https://snakemake.readthedocs.io/en/stable/) coupled with the environment conducted by [**Anoconda**](https://www.anaconda.com/). And the pipeline can be used in other population with long-read sequencing.
+
+The pipeline mainly contains two parts:
+
+* Characterization of structural variants and population genetic analysis
+* *De novo* genome assembly and non-reference sequence analysis
 
 
 
 ### Requirements
-
 
 ##### Softwares:
   * assembly-stats=1.0.1
@@ -60,7 +64,7 @@ In order to make sure the results are reproduceable, the pipeline is performed u
   * r-scrime=1.3.5
   * r-venndiagram=1.6.20
 
-##### Other packages should be installed with manual:
+##### Other packages should be manually installed:
   * [CD-HIT=v4.8.1](http://weizhongli-lab.org/cd-hit/)
   * [MAKER2=v2.31.1](http://www.yandell-lab.org/software/maker.html)
   * [RepeatMasker=4.0.9](http://www.repeatmasker.org/)
@@ -70,25 +74,36 @@ In order to make sure the results are reproduceable, the pipeline is performed u
   * [IGV=v2.8.6](http://software.broadinstitute.org/software/igv/)
 
 
-The softweres and packages with corresponding versions were used in our pipeline and manualscript.
-You can install the packages with different versions if these packages can 
+The softweres and packages with corresponding versions were tested and used in our pipeline and manuascript.
+You can install the packages with different versions if you make sure these packages can run.
 
 
-## Installation
+## Configure the environment
 
 ### manually install packages
 
-Create the anoconda environment. 
+* First [install **Annoconda**](https://docs.anaconda.com/anaconda/install/linux/). 
 
-You can install all softwares and packages in one anaconda environment, or in multiple environments.
+For instance:
+```
+wget https://repo.anaconda.com/archive/Anaconda3-2020.07-Linux-x86_64.sh
+bash Anaconda3-2020.07-Linux-x86_64.sh
+```
 
 
-Creat the environment and install the packages
+* You can install all softwares and packages in one anaconda environment, or in multiple environments.
+If you change to one new environment, you can type this common:
+```
+source activate new-environment
+```
+
+
+* Creat the environment and install the packages
 ```
 conda create -n NanoSV
 ```
 
-Most packages can be found in [anaconda](https://anaconda.org/).
+* Most packages can be found in [anaconda](https://anaconda.org/).
 For instance, **bedtools**, you can install like this:
 ```
 conda install -c bioconda bedtools
@@ -96,14 +111,21 @@ conda install -c bioconda bedtools
 
 ### create environment based on config file
 
-Create the environment using the config file:
+Create the environment and install the packages using the config file:
 ```
 conda env create -f environment.yml
 ```
 
 
 
+
+
+
+
 ## Quick start for the pipeline
+
+
+**Just need clone and copy this package to your destination path.**
 
 In the directory **pipeline** of the package, there are pipeline file **Population.pipeline.py** and the config file **Population.pipeline.yaml**.
 
@@ -118,8 +140,61 @@ snakemake -p  -s ~/github/NanoHub/pipeline/Population.pipeline.py --configfile ~
 
 
    
-   
-Functions of the pipeline:
+## Introduction of pipeline
+
+#### Config file
+The config file of parameters [**Population.pipeline.yaml**](https://github.com/ZhikunWu/PGC/blob/master/pipeline/Population.pipeline.yaml)
+
+For instance:
+```
+### Parameters
+CondaENV: /home/wuzhikun/anaconda3/envs/NanoSV
+PIPENV: /home/wuzhikun/github/PGC
+ProjectPath: /home/wuzhikun/Project/Population
+
+### target samples
+SAMPLES:
+  - CN196
+  - CN068
+
+```
+
+First three parameters are most import. 
+
+* **CondaENV** indicates the anoconda environment which contain installed softwares and packages.
+* **PIPENV** indicates the path of this pipeline.
+* **ProjectPath** indicates the path of project which contain the data for analysis.
+
+
+#### Pipeline file
+The pipeline file [**Population.pipeline.py**](https://github.com/ZhikunWu/PGC/blob/master/pipeline/Population.pipeline.py)
+
+For example:
+```
+### config parameter
+CondaENV = config["CondaENV"]
+
+### rule of pipeline
+include: RULE_DIR + '/BaseFunction.rule.py'
+
+### outcomes of pipeline
+rule all:
+    input:
+        IN_PATH + "/QualityControl/Samples_quality_summary.xls",
+```
+
+
+The pipeline file mainly contain three parts:
+
+* Parameter from **.yaml** config file
+* Rule used in pipeline
+* Control the pipeline and get the results
+
+
+
+#### Rule files
+
+The rule file is based on the function module:
 
 * databaseFormat.rule.py: Change format of compared datasets
 * BaseFunction.rule.py: Base function of python
@@ -133,13 +208,13 @@ Functions of the pipeline:
 * PopAnnotation.rule.py: Annotation for SVs relative to genomic location
 * PopOverlap.rule.py: Comparison to other published SV dataasets
 * PopMergeSeq.rule.py: Analysis of SVs associated sequences
-* NanoAssembly.rule.py: De novo assembly of genome for each individual
+* NanoAssembly.rule.py: *De novo* assembly of genome for each individual
 
 
 
 
 ## Contributions:
 
-* [ZhikunWu](https://github.com/ZhikunWu): 598466208@qq.com
-* TongLi: 
-* ZehangJiang:
+* ZhikunWu: wuzhikun88@gmail.com
+* TongLi: tli.aioniya@gmail.com
+* ZehangJiang: zehang.kong@gmail.com
