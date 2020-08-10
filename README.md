@@ -212,10 +212,24 @@ The rule file is based on the function module:
 * NanoAssembly.rule.py: *De novo* assembly of genome for each individual
 
 
+## Tests
+
+The pipeline was tested based on different rules, and the **log** files were in **tests** directory of the package.
+
+* Read_Assembly.log
+* SV_Annotation-1.log
+* SV_Annotation-2.log
+* SV_Diversity.log
+* SV_Filt.log
+* SV_Genotype.log
+* SV_Heter.log
+* SV_Overlap.log
+* SV_QualityControl.log
+* SV_Statistics.log
 
 
 ## Contributions:
 
-* ZhikunWu: wuzhikun88@gmail.com
+* ZhikunWu: wuzhikun86@163.com
 * TongLi: tli.aioniya@gmail.com
 * ZehangJiang: zehang.kong@gmail.com
