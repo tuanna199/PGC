@@ -1,0 +1,220 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 24
+Rules claiming more threads will be scaled down.
+Job counts:
+	count	jobs
+	1	all
+	2	assemblyMapping
+	2	assemblyPolish
+	2	genomeAssembly
+	2	genomeAssembly2
+	2	quastEvaluate
+	11
+
+[Mon Aug 10 10:20:18 2020]
+rule genomeAssembly:
+    input: /home/wuzhikun/Project/PopTest/clean/CN001.fastq.gz
+    output: /home/wuzhikun/Project/PopTest/Assembly/CN001/CN001_assembly.ctg.lay.gz
+    log: /home/wuzhikun/Project/PopTest/log/genomeAssembly_CN001.log
+    jobid: 1
+    wildcards: sample=CN001
+    threads: 12
+
+[Mon Aug 10 10:20:18 2020]
+rule genomeAssembly:
+    input: /home/wuzhikun/Project/PopTest/clean/CN002.fastq.gz
+    output: /home/wuzhikun/Project/PopTest/Assembly/CN002/CN002_assembly.ctg.lay.gz
+    log: /home/wuzhikun/Project/PopTest/log/genomeAssembly_CN002.log
+    jobid: 2
+    wildcards: sample=CN002
+    threads: 12
+
+[33mJob counts:
+	count	jobs
+	1	genomeAssembly
+	1[0m
+[33mJob counts:
+	count	jobs
+	1	genomeAssembly
+	1[0m
+source activate Assembly && wtdbg2  -i /home/wuzhikun/Project/PopTest/clean/CN002.fastq.gz  -fo /home/wuzhikun/Project/PopTest/Assembly/CN002/CN002_assembly  -t 12 -p 19 -AS 2 -s 0.05 -L 1000 -S 4 > /home/wuzhikun/Project/PopTest/log/genomeAssembly_CN002.log 2>&1
+[Mon Aug 10 10:21:41 2020]
+Finished job 2.
+1 of 11 steps (9%) done
+
+[Mon Aug 10 10:21:41 2020]
+rule genomeAssembly2:
+    input: /home/wuzhikun/Project/PopTest/Assembly/CN002/CN002_assembly.ctg.lay.gz
+    output: /home/wuzhikun/Project/PopTest/Assembly/CN002/CN002_assembly.fasta
+    log: /home/wuzhikun/Project/PopTest/log/genomeAssembly2_CN002.log
+    jobid: 4
+    wildcards: sample=CN002
+    threads: 12
+
+[33mJob counts:
+	count	jobs
+	1	genomeAssembly2
+	1[0m
+source activate Assembly && wtdbg2  -i /home/wuzhikun/Project/PopTest/clean/CN001.fastq.gz  -fo /home/wuzhikun/Project/PopTest/Assembly/CN001/CN001_assembly  -t 12 -p 19 -AS 2 -s 0.05 -L 1000 -S 4 > /home/wuzhikun/Project/PopTest/log/genomeAssembly_CN001.log 2>&1
+[Mon Aug 10 10:21:44 2020]
+Finished job 1.
+2 of 11 steps (18%) done
+
+[Mon Aug 10 10:21:44 2020]
+rule genomeAssembly2:
+    input: /home/wuzhikun/Project/PopTest/Assembly/CN001/CN001_assembly.ctg.lay.gz
+    output: /home/wuzhikun/Project/PopTest/Assembly/CN001/CN001_assembly.fasta
+    log: /home/wuzhikun/Project/PopTest/log/genomeAssembly2_CN001.log
+    jobid: 3
+    wildcards: sample=CN001
+    threads: 12
+
+[33mJob counts:
+	count	jobs
+	1	genomeAssembly2
+	1[0m
+source activate Assembly && wtpoa-cns -t 12  -i  /home/wuzhikun/Project/PopTest/Assembly/CN002/CN002_assembly.ctg.lay.gz -fo /home/wuzhikun/Project/PopTest/Assembly/CN002/CN002_assembly.fasta > /home/wuzhikun/Project/PopTest/log/genomeAssembly2_CN002.log 2>&1
+[Mon Aug 10 10:22:32 2020]
+Finished job 4.
+3 of 11 steps (27%) done
+
+[Mon Aug 10 10:22:32 2020]
+rule assemblyMapping:
+    input: /home/wuzhikun/Project/PopTest/Assembly/CN002/CN002_assembly.fasta, /home/wuzhikun/Project/PopTest/clean/CN002.fastq.gz
+    output: /home/wuzhikun/Project/PopTest/Assembly/mapping/CN002_assembly.bam
+    log: /home/wuzhikun/Project/PopTest/log/assemblyMapping_CN002.log
+    jobid: 6
+    wildcards: sample=CN002
+    threads: 12
+
+source activate Assembly && wtpoa-cns -t 12  -i  /home/wuzhikun/Project/PopTest/Assembly/CN001/CN001_assembly.ctg.lay.gz -fo /home/wuzhikun/Project/PopTest/Assembly/CN001/CN001_assembly.fasta > /home/wuzhikun/Project/PopTest/log/genomeAssembly2_CN001.log 2>&1
+[Mon Aug 10 10:22:34 2020]
+Finished job 3.
+4 of 11 steps (36%) done
+
+[Mon Aug 10 10:22:34 2020]
+rule assemblyMapping:
+    input: /home/wuzhikun/Project/PopTest/Assembly/CN001/CN001_assembly.fasta, /home/wuzhikun/Project/PopTest/clean/CN001.fastq.gz
+    output: /home/wuzhikun/Project/PopTest/Assembly/mapping/CN001_assembly.bam
+    log: /home/wuzhikun/Project/PopTest/log/assemblyMapping_CN001.log
+    jobid: 5
+    wildcards: sample=CN001
+    threads: 12
+
+[33mJob counts:
+	count	jobs
+	1	assemblyMapping
+	1[0m
+[33mminimap2 -t 12 -ax map-ont -r2k /home/wuzhikun/Project/PopTest/Assembly/CN002/CN002_assembly.fasta /home/wuzhikun/Project/PopTest/clean/CN002.fastq.gz | samtools sort -@ 12 > /home/wuzhikun/Project/PopTest/Assembly/mapping/CN002_assembly.bam 2>/home/wuzhikun/Project/PopTest/log/assemblyMapping_CN002.log[0m
+[M::mm_idx_gen::0.057*1.01] collected minimizers
+[M::mm_idx_gen::0.077*3.55] sorted minimizers
+[M::main::0.077*3.54] loaded/built the index for 65 target sequence(s)
+[M::mm_mapopt_update::0.080*3.43] mid_occ = 51
+[M::mm_idx_stat] kmer size: 15; skip: 10; is_hpc: 0; #seq: 65
+[M::mm_idx_stat::0.083*3.36] distinct minimizers: 126001 (93.10% are singletons); average occurrences: 1.164; average spacing: 5.264
+[33mJob counts:
+	count	jobs
+	1	assemblyMapping
+	1[0m
+[33mminimap2 -t 12 -ax map-ont -r2k /home/wuzhikun/Project/PopTest/Assembly/CN001/CN001_assembly.fasta /home/wuzhikun/Project/PopTest/clean/CN001.fastq.gz | samtools sort -@ 12 > /home/wuzhikun/Project/PopTest/Assembly/mapping/CN001_assembly.bam 2>/home/wuzhikun/Project/PopTest/log/assemblyMapping_CN001.log[0m
+[M::mm_idx_gen::0.058*1.04] collected minimizers
+[M::mm_idx_gen::0.079*3.62] sorted minimizers
+[M::main::0.080*3.61] loaded/built the index for 65 target sequence(s)
+[M::mm_mapopt_update::0.083*3.49] mid_occ = 51
+[M::mm_idx_stat] kmer size: 15; skip: 10; is_hpc: 0; #seq: 65
+[M::mm_idx_stat::0.086*3.41] distinct minimizers: 125986 (93.11% are singletons); average occurrences: 1.164; average spacing: 5.265
+[M::worker_pipeline::82.064*9.36] mapped 253054 sequences
+[M::worker_pipeline::84.102*9.00] mapped 253054 sequences
+[M::worker_pipeline::119.584*9.33] mapped 222208 sequences
+[M::main] Version: 2.15-r905
+[M::main] CMD: minimap2 -t 12 -ax map-ont -r2k /home/wuzhikun/Project/PopTest/Assembly/CN001/CN001_assembly.fasta /home/wuzhikun/Project/PopTest/clean/CN001.fastq.gz
+[M::main] Real time: 119.599 sec; CPU: 1115.576 sec; Peak RSS: 4.211 GB
+[M::worker_pipeline::123.297*9.10] mapped 222208 sequences
+[M::main] Version: 2.15-r905
+[M::main] CMD: minimap2 -t 12 -ax map-ont -r2k /home/wuzhikun/Project/PopTest/Assembly/CN002/CN002_assembly.fasta /home/wuzhikun/Project/PopTest/clean/CN002.fastq.gz
+[M::main] Real time: 123.318 sec; CPU: 1121.425 sec; Peak RSS: 4.213 GB
+[Mon Aug 10 10:25:20 2020]
+Finished job 5.
+5 of 11 steps (45%) done
+
+[Mon Aug 10 10:25:20 2020]
+rule assemblyPolish:
+    input: /home/wuzhikun/Project/PopTest/Assembly/mapping/CN001_assembly.bam, /home/wuzhikun/Project/PopTest/Assembly/CN001/CN001_assembly.fasta
+    output: /home/wuzhikun/Project/PopTest/Assembly/CN001/CN001_assembly_polish.fasta
+    log: /home/wuzhikun/Project/PopTest/log/assemblyPolish_CN001.log
+    jobid: 7
+    wildcards: sample=CN001
+    threads: 12
+
+[33mJob counts:
+	count	jobs
+	1	assemblyPolish
+	1[0m
+[Mon Aug 10 10:25:23 2020]
+Finished job 6.
+6 of 11 steps (55%) done
+
+[Mon Aug 10 10:25:23 2020]
+rule assemblyPolish:
+    input: /home/wuzhikun/Project/PopTest/Assembly/mapping/CN002_assembly.bam, /home/wuzhikun/Project/PopTest/Assembly/CN002/CN002_assembly.fasta
+    output: /home/wuzhikun/Project/PopTest/Assembly/CN002/CN002_assembly_polish.fasta
+    log: /home/wuzhikun/Project/PopTest/log/assemblyPolish_CN002.log
+    jobid: 8
+    wildcards: sample=CN002
+    threads: 12
+
+[33mJob counts:
+	count	jobs
+	1	assemblyPolish
+	1[0m
+[Mon Aug 10 10:26:25 2020]
+Finished job 8.
+7 of 11 steps (64%) done
+
+[Mon Aug 10 10:26:25 2020]
+rule quastEvaluate:
+    input: /home/wuzhikun/Project/PopTest/Assembly/CN002/CN002_assembly_polish.fasta
+    output: /home/wuzhikun/Project/PopTest/Assembly/Quast/CN002/polish/report.txt
+    log: /home/wuzhikun/Project/PopTest/log/CN002_quastpolish.log
+    jobid: 10
+    wildcards: sample=CN002
+    threads: 12
+
+[Mon Aug 10 10:26:25 2020]
+Finished job 7.
+8 of 11 steps (73%) done
+
+[Mon Aug 10 10:26:25 2020]
+rule quastEvaluate:
+    input: /home/wuzhikun/Project/PopTest/Assembly/CN001/CN001_assembly_polish.fasta
+    output: /home/wuzhikun/Project/PopTest/Assembly/Quast/CN001/polish/report.txt
+    log: /home/wuzhikun/Project/PopTest/log/CN001_quastpolish.log
+    jobid: 9
+    wildcards: sample=CN001
+    threads: 12
+
+[33mJob counts:
+	count	jobs
+	1	quastEvaluate
+	1[0m
+[33mJob counts:
+	count	jobs
+	1	quastEvaluate
+	1[0m
+[Mon Aug 10 11:07:06 2020]
+Finished job 10.
+9 of 11 steps (82%) done
+[Mon Aug 10 11:07:37 2020]
+Finished job 9.
+10 of 11 steps (91%) done
+
+[Mon Aug 10 11:07:37 2020]
+localrule all:
+    input: /home/wuzhikun/Project/PopTest/Assembly/CN001/CN001_assembly.ctg.lay.gz, /home/wuzhikun/Project/PopTest/Assembly/CN002/CN002_assembly.ctg.lay.gz, /home/wuzhikun/Project/PopTest/Assembly/CN001/CN001_assembly.fasta, /home/wuzhikun/Project/PopTest/Assembly/CN002/CN002_assembly.fasta, /home/wuzhikun/Project/PopTest/Assembly/mapping/CN001_assembly.bam, /home/wuzhikun/Project/PopTest/Assembly/mapping/CN002_assembly.bam, /home/wuzhikun/Project/PopTest/Assembly/CN001/CN001_assembly_polish.fasta, /home/wuzhikun/Project/PopTest/Assembly/CN002/CN002_assembly_polish.fasta, /home/wuzhikun/Project/PopTest/Assembly/Quast/CN001/polish/report.txt, /home/wuzhikun/Project/PopTest/Assembly/Quast/CN002/polish/report.txt
+    jobid: 0
+
+[Mon Aug 10 11:07:37 2020]
+Finished job 0.
+11 of 11 steps (100%) done
+Complete log: /home/wuzhikun/Project/PopTest/.snakemake/log/2020-08-10T102016.906074.snakemake.log

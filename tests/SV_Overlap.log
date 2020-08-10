@@ -1,0 +1,1571 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 24
+Rules claiming more threads will be scaled down.
+Job counts:
+	count	jobs
+	1	AllCat
+	1	AllCatPlot
+	1	CatStats
+	1	CatStatsPlot
+	1	CellOverlapSum
+	1	CellOverlapSumPlot
+	1	DGVCat
+	1	DGVCatPlot
+	4	DGVFilt
+	1	DGVOverlapSum
+	1	DGVOverlapSumPlot
+	1	FreqStat
+	1	FreqSummary
+	1	FreqSummaryPlot
+	1	GenePredOverlap
+	1	INSPoint
+	1	NovelFrequencyPlot
+	4	OverlapCDS
+	1	Pop2bed0
+	1	SVSatats
+	1	SVtypeKnown
+	1	SVtypeKnownPlot
+	1	SampleFreqPlot
+	1	SampleTypePlot
+	1	TagCalss
+	4	WGS17795Filt
+	1	WGS17795OverlapSum
+	1	WGS17795OverlapSumPlot
+	1	WGS911Cat
+	1	WGS911CatPlot
+	4	WGS911Filt
+	1	WGS911OverlapSum
+	1	WGS911OverlapSumPlot
+	1	all
+	1	allOverlapSum
+	1	dataFreq
+	1	dataFreqStat
+	4	dbOverlap
+	4	dbOverlapFilt
+	1	gnomADCat
+	1	gnomADCatPlot
+	4	gnomADFilt
+	1	gnomADOverlapSum
+	1	gnomADOverlapSumPlot
+	1	knownAndNovelTags
+	1	knownAndNovelTagsPlot
+	1	lofCDS
+	1	multipleTags
+	1	overlapCell
+	1	overlapCellFilt
+	4	overlapDGV
+	1	overlapFilt
+	1	overlapFreq
+	1	overlapSummary
+	1	overlapSummaryPlot
+	4	overlapdWGS17795
+	4	overlapdWGS911
+	4	overlapgnomAD
+	1	typeFreqPlot
+	92
+
+[Mon Aug 10 12:09:51 2020]
+rule Pop2bed0:
+    input: /home/wuzhikun/Project/PopTest/population/Merge/Sample_SV_common_filt.vcf
+    output: /home/wuzhikun/Project/PopTest/population/bed/Sample_common_SV_DEL.bed, /home/wuzhikun/Project/PopTest/population/bed/Sample_common_SV_INS.bed, /home/wuzhikun/Project/PopTest/population/bed/Sample_common_SV_DUP.bed, /home/wuzhikun/Project/PopTest/population/bed/Sample_common_SV_INV.bed, /home/wuzhikun/Project/PopTest/population/bed/Sample_common_SV_OTHER.bed, /home/wuzhikun/Project/PopTest/population/bed/Sample_common_SV_TRA.bed, /home/wuzhikun/Project/PopTest/population/bed/Sample_common_SV_DEL_INS_INV_DUP.bed, /home/wuzhikun/Project/PopTest/population/bed/Sample_common_SV_length.xls
+    log: /home/wuzhikun/Project/PopTest/log/Pop2bed0.log
+    jobid: 0
+
+[33mJob counts:
+	count	jobs
+	1	Pop2bed0
+	1[0m
+[33mpython /home/wuzhikun/github/PGC/src/pgc/SVvcf2bedType.py --vcf /home/wuzhikun/Project/PopTest/population/Merge/Sample_SV_common_filt.vcf --out /home/wuzhikun/Project/PopTest/population/bed/Sample_common_SV --insDistance 0  --distance 0 --lengthOut /home/wuzhikun/Project/PopTest/population/bed/Sample_common_SV_length.xls >/home/wuzhikun/Project/PopTest/log/Pop2bed0.log 2>&1[0m
+[33mcat /home/wuzhikun/Project/PopTest/population/bed/Sample_common_SV_DEL.bed /home/wuzhikun/Project/PopTest/population/bed/Sample_common_SV_INS.bed /home/wuzhikun/Project/PopTest/population/bed/Sample_common_SV_DUP.bed /home/wuzhikun/Project/PopTest/population/bed/Sample_common_SV_INV.bed /home/wuzhikun/Project/PopTest/population/bed/Sample_common_SV_OTHER.bed | sort -k 1,1  -k 2,2n > /home/wuzhikun/Project/PopTest/population/bed/Sample_common_SV_DEL_INS_INV_DUP.bed[0m
+[Mon Aug 10 12:10:11 2020]
+Finished job 0.
+1 of 92 steps (1%) done
+
+[Mon Aug 10 12:10:11 2020]
+rule dbOverlap:
+    input: /home/wuzhikun/Project/PopTest/population/bed/Sample_common_SV_INV.bed, /home/wuzhikun/Project/PopTest/population/bed/database/database_SV_INV.bed
+    output: /home/wuzhikun/Project/PopTest/population/bed/database/Sample_INV_overlap.bed
+    log: /home/wuzhikun/Project/PopTest/log/dbOverlap_INV.log
+    jobid: 95
+    wildcards: SVtype=INV
+
+[Mon Aug 10 12:10:11 2020]
+rule overlapdWGS17795:
+    input: /home/wuzhikun/Project/PopTest/population/bed/Sample_common_SV_INS.bed, /home/wuzhikun/database/WGS17795/nonredundant_200628/Build38_INS.bed
+    output: /home/wuzhikun/Project/PopTest/population/bed/WGS17795/Sample_INS_overlap.bed
+    log: /home/wuzhikun/Project/PopTest/log/overlapWGS17795_INS.log
+    jobid: 23
+    wildcards: SVtype=INS
+
+[Mon Aug 10 12:10:11 2020]
+rule dbOverlap:
+    input: /home/wuzhikun/Project/PopTest/population/bed/Sample_common_SV_DEL.bed, /home/wuzhikun/Project/PopTest/population/bed/database/database_SV_DEL.bed
+    output: /home/wuzhikun/Project/PopTest/population/bed/database/Sample_DEL_overlap.bed
+    log: /home/wuzhikun/Project/PopTest/log/dbOverlap_DEL.log
+    jobid: 93
+    wildcards: SVtype=DEL
+
+[Mon Aug 10 12:10:11 2020]
+rule INSPoint:
+    input: /home/wuzhikun/Project/PopTest/population/bed/Sample_common_SV_INS.bed, /home/wuzhikun/Project/PopTest/population/bed/Sample_common_SV_DEL.bed, /home/wuzhikun/Project/PopTest/population/bed/Sample_common_SV_DUP.bed, /home/wuzhikun/Project/PopTest/population/bed/Sample_common_SV_INV.bed, /home/wuzhikun/Project/PopTest/population/bed/Sample_common_SV_OTHER.bed
+    output: /home/wuzhikun/Project/PopTest/population/bed/Sample_common_SV_INS_point.bed, /home/wuzhikun/Project/PopTest/population/bed/Sample_common_SV_DEL_INS_INV_DUP_point.bed
+    jobid: 107
+
+[Mon Aug 10 12:10:11 2020]
+rule overlapgnomAD:
+    input: /home/wuzhikun/Project/PopTest/population/bed/Sample_common_SV_DUP.bed, /home/wuzhikun/database/gnomAD/nonredundant_200629/gnomad_v2.1_sv.sites.DUP.from_vcf-4.bed
+    output: /home/wuzhikun/Project/PopTest/population/bed/gnomAD/Sample_DUP_overlap.bed
+    jobid: 9
+    wildcards: SVtype=DUP
+
+[Mon Aug 10 12:10:11 2020]
+rule overlapDGV:
+    input: /home/wuzhikun/Project/PopTest/population/bed/Sample_common_SV_DUP.bed, /home/wuzhikun/database/DGV/type_200626/GRCh38_hg38_variants_DUP.bed
+    output: /home/wuzhikun/Project/PopTest/population/bed/DGV/Sample_DUP_overlap.bed
+    log: /home/wuzhikun/Project/PopTest/log/overlapDGV_DUP.log
+    jobid: 19
+    wildcards: SVtype=DUP
+
+[Mon Aug 10 12:10:11 2020]
+rule overlapCell:
+    input: /home/wuzhikun/Project/PopTest/population/bed/Sample_common_SV_DEL.bed, /home/wuzhikun/Project/PopTest/population/bed/Sample_common_SV_INS.bed, /home/wuzhikun/Project/PopTest/population/bed/Sample_common_SV_INV.bed
+    output: /home/wuzhikun/Project/PopTest/population/bed/LRS15/Sample_DEL_overlap.bed, /home/wuzhikun/Project/PopTest/population/bed/LRS15/Sample_INS_overlap.bed, /home/wuzhikun/Project/PopTest/population/bed/LRS15/Sample_INV_overlap.bed
+    jobid: 71
+
+[Mon Aug 10 12:10:11 2020]
+rule overlapgnomAD:
+    input: /home/wuzhikun/Project/PopTest/population/bed/Sample_common_SV_DEL.bed, /home/wuzhikun/database/gnomAD/nonredundant_200629/gnomad_v2.1_sv.sites.DEL.from_vcf-4.bed
+    output: /home/wuzhikun/Project/PopTest/population/bed/gnomAD/Sample_DEL_overlap.bed
+    jobid: 6
+    wildcards: SVtype=DEL
+
+[Mon Aug 10 12:10:11 2020]
+rule overlapDGV:
+    input: /home/wuzhikun/Project/PopTest/population/bed/Sample_common_SV_DEL.bed, /home/wuzhikun/database/DGV/type_200626/GRCh38_hg38_variants_DEL.bed
+    output: /home/wuzhikun/Project/PopTest/population/bed/DGV/Sample_DEL_overlap.bed
+    log: /home/wuzhikun/Project/PopTest/log/overlapDGV_DEL.log
+    jobid: 16
+    wildcards: SVtype=DEL
+
+[Mon Aug 10 12:10:11 2020]
+rule overlapDGV:
+    input: /home/wuzhikun/Project/PopTest/population/bed/Sample_common_SV_INV.bed, /home/wuzhikun/database/DGV/type_200626/GRCh38_hg38_variants_INV.bed
+    output: /home/wuzhikun/Project/PopTest/population/bed/DGV/Sample_INV_overlap.bed
+    log: /home/wuzhikun/Project/PopTest/log/overlapDGV_INV.log
+    jobid: 18
+    wildcards: SVtype=INV
+
+[Mon Aug 10 12:10:12 2020]
+rule overlapgnomAD:
+    input: /home/wuzhikun/Project/PopTest/population/bed/Sample_common_SV_INV.bed, /home/wuzhikun/database/gnomAD/nonredundant_200629/gnomad_v2.1_sv.sites.INV.from_vcf-4.bed
+    output: /home/wuzhikun/Project/PopTest/population/bed/gnomAD/Sample_INV_overlap.bed
+    jobid: 8
+    wildcards: SVtype=INV
+
+[Mon Aug 10 12:10:12 2020]
+rule dbOverlap:
+    input: /home/wuzhikun/Project/PopTest/population/bed/Sample_common_SV_DUP.bed, /home/wuzhikun/Project/PopTest/population/bed/database/database_SV_DUP.bed
+    output: /home/wuzhikun/Project/PopTest/population/bed/database/Sample_DUP_overlap.bed
+    log: /home/wuzhikun/Project/PopTest/log/dbOverlap_DUP.log
+    jobid: 96
+    wildcards: SVtype=DUP
+
+[Mon Aug 10 12:10:12 2020]
+rule overlapdWGS911:
+    input: /home/wuzhikun/Project/PopTest/population/bed/Sample_common_SV_INS.bed, /home/wuzhikun/database/WGS911/nonredundant/combine/INS_frequency.bed
+    output: /home/wuzhikun/Project/PopTest/population/bed/WGS911/Sample_INS_overlap.bed
+    log: /home/wuzhikun/Project/PopTest/log/overlapWGS911_INS.log
+    jobid: 33
+    wildcards: SVtype=INS
+
+[Mon Aug 10 12:10:12 2020]
+rule overlapdWGS911:
+    input: /home/wuzhikun/Project/PopTest/population/bed/Sample_common_SV_INV.bed, /home/wuzhikun/database/WGS911/nonredundant/combine/INV_frequency.bed
+    output: /home/wuzhikun/Project/PopTest/population/bed/WGS911/Sample_INV_overlap.bed
+    log: /home/wuzhikun/Project/PopTest/log/overlapWGS911_INV.log
+    jobid: 34
+    wildcards: SVtype=INV
+
+[Mon Aug 10 12:10:12 2020]
+rule TagCalss:
+    input: /home/wuzhikun/Project/PopTest/population/genotype/Sample_SV_genotype_frequency.txt, /home/wuzhikun/Project/PopTest/population/bed/Sample_common_SV_DEL_INS_INV_DUP.bed
+    output: /home/wuzhikun/Project/PopTest/population/Category/Sample_SV_category_tag.xls, /home/wuzhikun/Project/PopTest/population/bed/frequency/Sample_common_SV_Singleton.bed, /home/wuzhikun/Project/PopTest/population/bed/frequency/Sample_common_SV_Rare.bed, /home/wuzhikun/Project/PopTest/population/bed/frequency/Sample_common_SV_Low.bed, /home/wuzhikun/Project/PopTest/population/bed/frequency/Sample_common_SV_Common.bed
+    log: /home/wuzhikun/Project/PopTest/log/TagCalss.log
+    jobid: 84
+
+[Mon Aug 10 12:10:13 2020]
+rule overlapdWGS17795:
+    input: /home/wuzhikun/Project/PopTest/population/bed/Sample_common_SV_DUP.bed, /home/wuzhikun/database/WGS17795/nonredundant_200628/Build38_DUP.bed
+    output: /home/wuzhikun/Project/PopTest/population/bed/WGS17795/Sample_DUP_overlap.bed
+    log: /home/wuzhikun/Project/PopTest/log/overlapWGS17795_DUP.log
+    jobid: 25
+    wildcards: SVtype=DUP
+
+[Mon Aug 10 12:10:13 2020]
+rule overlapdWGS911:
+    input: /home/wuzhikun/Project/PopTest/population/bed/Sample_common_SV_DEL.bed, /home/wuzhikun/database/WGS911/nonredundant/combine/DEL_frequency.bed
+    output: /home/wuzhikun/Project/PopTest/population/bed/WGS911/Sample_DEL_overlap.bed
+    log: /home/wuzhikun/Project/PopTest/log/overlapWGS911_DEL.log
+    jobid: 32
+    wildcards: SVtype=DEL
+
+[Mon Aug 10 12:10:13 2020]
+rule overlapDGV:
+    input: /home/wuzhikun/Project/PopTest/population/bed/Sample_common_SV_INS.bed, /home/wuzhikun/database/DGV/type_200626/GRCh38_hg38_variants_INS.bed
+    output: /home/wuzhikun/Project/PopTest/population/bed/DGV/Sample_INS_overlap.bed
+    log: /home/wuzhikun/Project/PopTest/log/overlapDGV_INS.log
+    jobid: 17
+    wildcards: SVtype=INS
+
+[Mon Aug 10 12:10:13 2020]
+rule overlapgnomAD:
+    input: /home/wuzhikun/Project/PopTest/population/bed/Sample_common_SV_INS.bed, /home/wuzhikun/database/gnomAD/nonredundant_200629/gnomad_v2.1_sv.sites.INS.from_vcf-4.bed
+    output: /home/wuzhikun/Project/PopTest/population/bed/gnomAD/Sample_INS_overlap.bed
+    jobid: 7
+    wildcards: SVtype=INS
+
+[Mon Aug 10 12:10:13 2020]
+rule overlapdWGS17795:
+    input: /home/wuzhikun/Project/PopTest/population/bed/Sample_common_SV_DEL.bed, /home/wuzhikun/database/WGS17795/nonredundant_200628/Build38_DEL.bed
+    output: /home/wuzhikun/Project/PopTest/population/bed/WGS17795/Sample_DEL_overlap.bed
+    log: /home/wuzhikun/Project/PopTest/log/overlapWGS17795_DEL.log
+    jobid: 22
+    wildcards: SVtype=DEL
+
+[Mon Aug 10 12:10:13 2020]
+rule overlapdWGS911:
+    input: /home/wuzhikun/Project/PopTest/population/bed/Sample_common_SV_DUP.bed, /home/wuzhikun/database/WGS911/nonredundant/combine/DUP_frequency.bed
+    output: /home/wuzhikun/Project/PopTest/population/bed/WGS911/Sample_DUP_overlap.bed
+    log: /home/wuzhikun/Project/PopTest/log/overlapWGS911_DUP.log
+    jobid: 35
+    wildcards: SVtype=DUP
+
+[Mon Aug 10 12:10:13 2020]
+rule dbOverlap:
+    input: /home/wuzhikun/Project/PopTest/population/bed/Sample_common_SV_INS.bed, /home/wuzhikun/Project/PopTest/population/bed/database/database_SV_INS.bed
+    output: /home/wuzhikun/Project/PopTest/population/bed/database/Sample_INS_overlap.bed
+    log: /home/wuzhikun/Project/PopTest/log/dbOverlap_INS.log
+    jobid: 94
+    wildcards: SVtype=INS
+
+[Mon Aug 10 12:10:13 2020]
+rule overlapdWGS17795:
+    input: /home/wuzhikun/Project/PopTest/population/bed/Sample_common_SV_INV.bed, /home/wuzhikun/database/WGS17795/nonredundant_200628/Build38_INV.bed
+    output: /home/wuzhikun/Project/PopTest/population/bed/WGS17795/Sample_INV_overlap.bed
+    log: /home/wuzhikun/Project/PopTest/log/overlapWGS17795_INV.log
+    jobid: 24
+    wildcards: SVtype=INV
+
+[33mJob counts:
+	count	jobs
+	1	dbOverlap
+	1[0m
+[33mJob counts:
+	count	jobs
+	1	dbOverlap
+	1[0m
+[33mJob counts:
+	count	jobs
+	1	overlapdWGS17795
+	1[0m
+[33mJob counts:
+	count	jobs
+	1	overlapDGV
+	1[0m
+[33mJob counts:
+	count	jobs
+	1	overlapgnomAD
+	1[0m
+[33mJob counts:
+	count	jobs
+	1	overlapgnomAD
+	1[0m
+[33mJob counts:
+	count	jobs
+	1	INSPoint
+	1[0m
+[33mbedtools intersect -a /home/wuzhikun/Project/PopTest/population/bed/Sample_common_SV_INS.bed -b /home/wuzhikun/database/WGS17795/nonredundant_200628/Build38_INS.bed -wa -wb > /home/wuzhikun/Project/PopTest/population/bed/WGS17795/Sample_INS_overlap.bed 2>/home/wuzhikun/Project/PopTest/log/overlapWGS17795_INS.log[0m
+[33mbedtools intersect -a /home/wuzhikun/Project/PopTest/population/bed/Sample_common_SV_DEL.bed -b /home/wuzhikun/Project/PopTest/population/bed/database/database_SV_DEL.bed -wa -wb > /home/wuzhikun/Project/PopTest/population/bed/database/Sample_DEL_overlap.bed 2>/home/wuzhikun/Project/PopTest/log/dbOverlap_DEL.log[0m
+[33mbedtools intersect -a /home/wuzhikun/Project/PopTest/population/bed/Sample_common_SV_INV.bed -b /home/wuzhikun/Project/PopTest/population/bed/database/database_SV_INV.bed -wa -wb > /home/wuzhikun/Project/PopTest/population/bed/database/Sample_INV_overlap.bed 2>/home/wuzhikun/Project/PopTest/log/dbOverlap_INV.log[0m
+[33mbedtools intersect -a /home/wuzhikun/Project/PopTest/population/bed/Sample_common_SV_DUP.bed -b /home/wuzhikun/database/gnomAD/nonredundant_200629/gnomad_v2.1_sv.sites.DUP.from_vcf-4.bed -wa -wb > /home/wuzhikun/Project/PopTest/population/bed/gnomAD/Sample_DUP_overlap.bed[0m
+[33mbedtools intersect -a /home/wuzhikun/Project/PopTest/population/bed/Sample_common_SV_DUP.bed -b /home/wuzhikun/database/DGV/type_200626/GRCh38_hg38_variants_DUP.bed -wa -wb > /home/wuzhikun/Project/PopTest/population/bed/DGV/Sample_DUP_overlap.bed 2>/home/wuzhikun/Project/PopTest/log/overlapDGV_DUP.log[0m
+[33mbedtools intersect -a /home/wuzhikun/Project/PopTest/population/bed/Sample_common_SV_DEL.bed -b /home/wuzhikun/database/gnomAD/nonredundant_200629/gnomad_v2.1_sv.sites.DEL.from_vcf-4.bed -wa -wb > /home/wuzhikun/Project/PopTest/population/bed/gnomAD/Sample_DEL_overlap.bed[0m
+[33mJob counts:
+	count	jobs
+	1	overlapDGV
+	1[0m
+[33mJob counts:
+	count	jobs
+	1	overlapDGV
+	1[0m
+[33mJob counts:
+	count	jobs
+	1	overlapCell
+	1[0m
+[33mbedtools intersect -a /home/wuzhikun/Project/PopTest/population/bed/Sample_common_SV_DEL.bed -b /home/wuzhikun/database/DGV/type_200626/GRCh38_hg38_variants_DEL.bed -wa -wb > /home/wuzhikun/Project/PopTest/population/bed/DGV/Sample_DEL_overlap.bed 2>/home/wuzhikun/Project/PopTest/log/overlapDGV_DEL.log[0m
+[33mbedtools intersect -a /home/wuzhikun/Project/PopTest/population/bed/Sample_common_SV_INV.bed -b /home/wuzhikun/database/DGV/type_200626/GRCh38_hg38_variants_INV.bed -wa -wb > /home/wuzhikun/Project/PopTest/population/bed/DGV/Sample_INV_overlap.bed 2>/home/wuzhikun/Project/PopTest/log/overlapDGV_INV.log[0m
+[33mbedtools intersect -a /home/wuzhikun/Project/PopTest/population/bed/Sample_common_SV_DEL.bed -b /home/wuzhikun/Project/PopTest/preStudies/Cell2019_SV_dechr_DEL.bed -wa -wb > /home/wuzhikun/Project/PopTest/population/bed/LRS15/Sample_DEL_overlap.bed[0m
+[33mcat /home/wuzhikun/Project/PopTest/population/bed/Sample_common_SV_DEL.bed /home/wuzhikun/Project/PopTest/population/bed/Sample_common_SV_INS_point.bed /home/wuzhikun/Project/PopTest/population/bed/Sample_common_SV_DUP.bed /home/wuzhikun/Project/PopTest/population/bed/Sample_common_SV_INV.bed /home/wuzhikun/Project/PopTest/population/bed/Sample_common_SV_OTHER.bed | sort -k 1,1  -k 2,2n > /home/wuzhikun/Project/PopTest/population/bed/Sample_common_SV_DEL_INS_INV_DUP_point.bed[0m
+[33mJob counts:
+	count	jobs
+	1	overlapgnomAD
+	1[0m
+[33mJob counts:
+	count	jobs
+	1	dbOverlap
+	1[0m
+[33mbedtools intersect -a /home/wuzhikun/Project/PopTest/population/bed/Sample_common_SV_INV.bed -b /home/wuzhikun/database/gnomAD/nonredundant_200629/gnomad_v2.1_sv.sites.INV.from_vcf-4.bed -wa -wb > /home/wuzhikun/Project/PopTest/population/bed/gnomAD/Sample_INV_overlap.bed[0m
+[33mJob counts:
+	count	jobs
+	1	overlapdWGS911
+	1[0m
+[Mon Aug 10 12:10:37 2020]
+Finished job 95.
+2 of 92 steps (2%) done
+[Mon Aug 10 12:10:37 2020]
+[33mbedtools intersect -a /home/wuzhikun/Project/PopTest/population/bed/Sample_common_SV_DUP.bed -b /home/wuzhikun/Project/PopTest/population/bed/database/database_SV_DUP.bed -wa -wb > /home/wuzhikun/Project/PopTest/population/bed/database/Sample_DUP_overlap.bed 2>/home/wuzhikun/Project/PopTest/log/dbOverlap_DUP.log[0m
+Finished job 18.
+3 of 92 steps (3%) done
+[33mbedtools intersect -a /home/wuzhikun/Project/PopTest/population/bed/Sample_common_SV_INS.bed -b /home/wuzhikun/database/WGS911/nonredundant/combine/INS_frequency.bed -wa -wb > /home/wuzhikun/Project/PopTest/population/bed/WGS911/Sample_INS_overlap.bed 2>/home/wuzhikun/Project/PopTest/log/overlapWGS911_INS.log[0m
+[33mJob counts:
+	count	jobs
+	1	overlapdWGS911
+	1[0m
+[Mon Aug 10 12:10:37 2020]
+Finished job 23.
+4 of 92 steps (4%) done
+[33mbedtools intersect -a /home/wuzhikun/Project/PopTest/population/bed/Sample_common_SV_INS.bed -b /home/wuzhikun/Project/PopTest/preStudies/Cell2019_SV_dechr_INS_newEnd.bed -wa -wb > /home/wuzhikun/Project/PopTest/population/bed/LRS15/Sample_INS_overlap.bed[0m
+[Mon Aug 10 12:10:37 2020]
+Finished job 9.
+5 of 92 steps (5%) done
+[33mbedtools intersect -a /home/wuzhikun/Project/PopTest/population/bed/Sample_common_SV_INV.bed -b /home/wuzhikun/database/WGS911/nonredundant/combine/INV_frequency.bed -wa -wb > /home/wuzhikun/Project/PopTest/population/bed/WGS911/Sample_INV_overlap.bed 2>/home/wuzhikun/Project/PopTest/log/overlapWGS911_INV.log[0m
+[Mon Aug 10 12:10:37 2020]
+Finished job 19.
+6 of 92 steps (7%) done
+[Mon Aug 10 12:10:37 2020]
+Finished job 6.
+7 of 92 steps (8%) done
+
+[Mon Aug 10 12:10:37 2020]
+rule dbOverlapFilt:
+    input: /home/wuzhikun/Project/PopTest/population/bed/database/Sample_INV_overlap.bed
+    output: /home/wuzhikun/Project/PopTest/population/bed/database/Sample_INV_overlap_filt.bed
+    log: /home/wuzhikun/Project/PopTest/log/dbOverlapFilt_INV.log
+    jobid: 80
+    wildcards: SVtype=INV
+
+[33mJob counts:
+	count	jobs
+	1	TagCalss
+	1[0m
+[Mon Aug 10 12:10:37 2020]
+rule gnomADFilt:
+    input: /home/wuzhikun/Project/PopTest/population/bed/gnomAD/Sample_DUP_overlap.bed
+    output: /home/wuzhikun/Project/PopTest/population/bed/gnomAD/Sample_DUP_overlap_filt.bed
+    log: /home/wuzhikun/Project/PopTest/log/gnomADFilt_DUP.log
+    jobid: 13
+    wildcards: SVtype=DUP
+
+[Mon Aug 10 12:10:38 2020]
+rule WGS17795Filt:
+    input: /home/wuzhikun/Project/PopTest/population/bed/WGS17795/Sample_INS_overlap.bed
+    output: /home/wuzhikun/Project/PopTest/population/bed/WGS17795/Sample_INS_overlap_filt.bed
+    log: /home/wuzhikun/Project/PopTest/log/WGS17795Filt_INS.log
+    jobid: 27
+    wildcards: SVtype=INS
+
+[33mJob counts:
+	count	jobs
+	1	overlapdWGS17795
+	1[0m
+[Mon Aug 10 12:10:38 2020]
+rule DGVFilt:
+    input: /home/wuzhikun/Project/PopTest/population/bed/DGV/Sample_INV_overlap.bed
+    output: /home/wuzhikun/Project/PopTest/population/bed/DGV/Sample_INV_overlap_filt.bed
+    log: /home/wuzhikun/Project/PopTest/log/DGVFilt_INV.log
+    jobid: 74
+    wildcards: SVtype=INV
+
+[33mJob counts:
+	count	jobs
+	1	overlapdWGS911
+	1[0m
+[Mon Aug 10 12:10:38 2020]
+Finished job 8.
+8 of 92 steps (9%) done
+[33mJob counts:
+	count	jobs
+	1	overlapDGV
+	1[0m
+
+[Mon Aug 10 12:10:38 2020]
+rule gnomADFilt:
+    input: /home/wuzhikun/Project/PopTest/population/bed/gnomAD/Sample_INV_overlap.bed
+    output: /home/wuzhikun/Project/PopTest/population/bed/gnomAD/Sample_INV_overlap_filt.bed
+    log: /home/wuzhikun/Project/PopTest/log/gnomADFilt_INV.log
+    jobid: 12
+    wildcards: SVtype=INV
+
+[33mbedtools intersect -a /home/wuzhikun/Project/PopTest/population/bed/Sample_common_SV_DUP.bed -b /home/wuzhikun/database/WGS17795/nonredundant_200628/Build38_DUP.bed -wa -wb > /home/wuzhikun/Project/PopTest/population/bed/WGS17795/Sample_DUP_overlap.bed 2>/home/wuzhikun/Project/PopTest/log/overlapWGS17795_DUP.log[0m
+[33mJob counts:
+	count	jobs
+	1	overlapgnomAD
+	1[0m
+[33mbedtools intersect -a /home/wuzhikun/Project/PopTest/population/bed/Sample_common_SV_DEL.bed -b /home/wuzhikun/database/WGS911/nonredundant/combine/DEL_frequency.bed -wa -wb > /home/wuzhikun/Project/PopTest/population/bed/WGS911/Sample_DEL_overlap.bed 2>/home/wuzhikun/Project/PopTest/log/overlapWGS911_DEL.log[0m
+[Mon Aug 10 12:10:38 2020]
+rule gnomADFilt:
+    input: /home/wuzhikun/Project/PopTest/population/bed/gnomAD/Sample_DEL_overlap.bed
+    output: /home/wuzhikun/Project/PopTest/population/bed/gnomAD/Sample_DEL_overlap_filt.bed
+    log: /home/wuzhikun/Project/PopTest/log/gnomADFilt_DEL.log
+    jobid: 10
+    wildcards: SVtype=DEL
+
+[33mbedtools intersect -a /home/wuzhikun/Project/PopTest/population/bed/Sample_common_SV_INS.bed -b /home/wuzhikun/database/DGV/type_200626/GRCh38_hg38_variants_INS.bed -wa -wb > /home/wuzhikun/Project/PopTest/population/bed/DGV/Sample_INS_overlap.bed 2>/home/wuzhikun/Project/PopTest/log/overlapDGV_INS.log[0m
+[33mJob counts:
+	count	jobs
+	1	overlapdWGS17795
+	1[0m
+[33mbedtools intersect -a /home/wuzhikun/Project/PopTest/population/bed/Sample_common_SV_INS.bed -b /home/wuzhikun/database/gnomAD/nonredundant_200629/gnomad_v2.1_sv.sites.INS.from_vcf-4.bed -wa -wb > /home/wuzhikun/Project/PopTest/population/bed/gnomAD/Sample_INS_overlap.bed[0m
+[Mon Aug 10 12:10:38 2020]
+rule DGVFilt:
+    input: /home/wuzhikun/Project/PopTest/population/bed/DGV/Sample_DUP_overlap.bed
+    output: /home/wuzhikun/Project/PopTest/population/bed/DGV/Sample_DUP_overlap_filt.bed
+    log: /home/wuzhikun/Project/PopTest/log/DGVFilt_DUP.log
+    jobid: 75
+    wildcards: SVtype=DUP
+
+[33mJob counts:
+	count	jobs
+	1	dbOverlap
+	1[0m
+[33mbedtools intersect -a /home/wuzhikun/Project/PopTest/population/bed/Sample_common_SV_DEL.bed -b /home/wuzhikun/database/WGS17795/nonredundant_200628/Build38_DEL.bed -wa -wb > /home/wuzhikun/Project/PopTest/population/bed/WGS17795/Sample_DEL_overlap.bed 2>/home/wuzhikun/Project/PopTest/log/overlapWGS17795_DEL.log[0m
+[33mpython /home/wuzhikun/github/PGC/src/pgc/TagFreqClass.py --frequency /home/wuzhikun/Project/PopTest/population/genotype/Sample_SV_genotype_frequency.txt --bed /home/wuzhikun/Project/PopTest/population/bed/Sample_common_SV_DEL_INS_INV_DUP.bed --tag /home/wuzhikun/Project/PopTest/population/Category/Sample_SV_category_tag.xls --outPrefix /home/wuzhikun/Project/PopTest/population/bed/frequency/Sample_common_SV > /home/wuzhikun/Project/PopTest/log/TagCalss.log 2>&1[0m
+[33mJob counts:
+	count	jobs
+	1	overlapdWGS911
+	1[0m
+[33mJob counts:
+	count	jobs
+	1	overlapdWGS17795
+	1[0m
+[33mbedtools intersect -a /home/wuzhikun/Project/PopTest/population/bed/Sample_common_SV_INS.bed -b /home/wuzhikun/Project/PopTest/population/bed/database/database_SV_INS.bed -wa -wb > /home/wuzhikun/Project/PopTest/population/bed/database/Sample_INS_overlap.bed 2>/home/wuzhikun/Project/PopTest/log/dbOverlap_INS.log[0m
+[Mon Aug 10 12:10:38 2020]
+Finished job 33.
+9 of 92 steps (10%) done
+[33mbedtools intersect -a /home/wuzhikun/Project/PopTest/population/bed/Sample_common_SV_DUP.bed -b /home/wuzhikun/database/WGS911/nonredundant/combine/DUP_frequency.bed -wa -wb > /home/wuzhikun/Project/PopTest/population/bed/WGS911/Sample_DUP_overlap.bed 2>/home/wuzhikun/Project/PopTest/log/overlapWGS911_DUP.log[0m
+[33mbedtools intersect -a /home/wuzhikun/Project/PopTest/population/bed/Sample_common_SV_INV.bed -b /home/wuzhikun/database/WGS17795/nonredundant_200628/Build38_INV.bed -wa -wb > /home/wuzhikun/Project/PopTest/population/bed/WGS17795/Sample_INV_overlap.bed 2>/home/wuzhikun/Project/PopTest/log/overlapWGS17795_INV.log[0m
+[Mon Aug 10 12:10:38 2020]
+Finished job 34.
+10 of 92 steps (11%) done
+[33mbedtools intersect -a /home/wuzhikun/Project/PopTest/population/bed/Sample_common_SV_INV.bed -b /home/wuzhikun/Project/PopTest/preStudies/Cell2019_SV_dechr_INV.bed -wa -wb > /home/wuzhikun/Project/PopTest/population/bed/LRS15/Sample_INV_overlap.bed[0m
+
+[Mon Aug 10 12:10:38 2020]
+rule WGS911Filt:
+    input: /home/wuzhikun/Project/PopTest/population/bed/WGS911/Sample_INV_overlap.bed
+    output: /home/wuzhikun/Project/PopTest/population/bed/WGS911/Sample_INV_overlap_filt.bed
+    log: /home/wuzhikun/Project/PopTest/log/WGS911Filt_INV.log
+    jobid: 38
+    wildcards: SVtype=INV
+
+[Mon Aug 10 12:10:38 2020]
+rule WGS911Filt:
+    input: /home/wuzhikun/Project/PopTest/population/bed/WGS911/Sample_INS_overlap.bed
+    output: /home/wuzhikun/Project/PopTest/population/bed/WGS911/Sample_INS_overlap_filt.bed
+    log: /home/wuzhikun/Project/PopTest/log/WGS911Filt_INS.log
+    jobid: 37
+    wildcards: SVtype=INS
+
+[Mon Aug 10 12:10:38 2020]
+Finished job 96.
+11 of 92 steps (12%) done
+[Mon Aug 10 12:10:39 2020]
+Finished job 16.
+12 of 92 steps (13%) done
+
+[Mon Aug 10 12:10:39 2020]
+rule dbOverlapFilt:
+    input: /home/wuzhikun/Project/PopTest/population/bed/database/Sample_DUP_overlap.bed
+    output: /home/wuzhikun/Project/PopTest/population/bed/database/Sample_DUP_overlap_filt.bed
+    log: /home/wuzhikun/Project/PopTest/log/dbOverlapFilt_DUP.log
+    jobid: 81
+    wildcards: SVtype=DUP
+
+
+[Mon Aug 10 12:10:39 2020]
+rule DGVFilt:
+    input: /home/wuzhikun/Project/PopTest/population/bed/DGV/Sample_DEL_overlap.bed
+    output: /home/wuzhikun/Project/PopTest/population/bed/DGV/Sample_DEL_overlap_filt.bed
+    log: /home/wuzhikun/Project/PopTest/log/DGVFilt_DEL.log
+    jobid: 72
+    wildcards: SVtype=DEL
+
+[Mon Aug 10 12:10:39 2020]
+Finished job 25.
+13 of 92 steps (14%) done
+
+[Mon Aug 10 12:10:39 2020]
+rule WGS17795Filt:
+    input: /home/wuzhikun/Project/PopTest/population/bed/WGS17795/Sample_DUP_overlap.bed
+    output: /home/wuzhikun/Project/PopTest/population/bed/WGS17795/Sample_DUP_overlap_filt.bed
+    log: /home/wuzhikun/Project/PopTest/log/WGS17795Filt_DUP.log
+    jobid: 29
+    wildcards: SVtype=DUP
+
+[Mon Aug 10 12:10:39 2020]
+Finished job 107.
+14 of 92 steps (15%) done
+[Mon Aug 10 12:10:39 2020]
+Finished job 17.
+15 of 92 steps (16%) done
+[Mon Aug 10 12:10:40 2020]
+Finished job 93.
+16 of 92 steps (17%) done
+[Mon Aug 10 12:10:40 2020]
+Finished job 7.
+17 of 92 steps (18%) done
+[Mon Aug 10 12:10:40 2020]
+Finished job 24.
+18 of 92 steps (20%) done
+[Mon Aug 10 12:10:40 2020]
+Finished job 35.
+19 of 92 steps (21%) done
+[Mon Aug 10 12:10:40 2020]
+Finished job 32.
+20 of 92 steps (22%) done
+[Mon Aug 10 12:10:41 2020]
+Finished job 71.
+21 of 92 steps (23%) done
+[Mon Aug 10 12:10:41 2020]
+Finished job 22.
+22 of 92 steps (24%) done
+[Mon Aug 10 12:10:41 2020]
+Finished job 94.
+23 of 92 steps (25%) done
+
+[Mon Aug 10 12:10:41 2020]
+rule DGVFilt:
+    input: /home/wuzhikun/Project/PopTest/population/bed/DGV/Sample_INS_overlap.bed
+    output: /home/wuzhikun/Project/PopTest/population/bed/DGV/Sample_INS_overlap_filt.bed
+    log: /home/wuzhikun/Project/PopTest/log/DGVFilt_INS.log
+    jobid: 73
+    wildcards: SVtype=INS
+
+[Mon Aug 10 12:10:41 2020]
+rule GenePredOverlap:
+    input: /home/wuzhikun/Project/PopTest/population/bed/Sample_common_SV_DEL_INS_INV_DUP_point.bed
+    output: /home/wuzhikun/Project/PopTest/population/Annotation/Sample_common_SV_genepred_overlap.bed
+    log: /home/wuzhikun/Project/PopTest/log/GenePredOverlap.log
+    jobid: 101
+
+
+[Mon Aug 10 12:10:41 2020]
+rule WGS911Filt:
+    input: /home/wuzhikun/Project/PopTest/population/bed/WGS911/Sample_DUP_overlap.bed
+    output: /home/wuzhikun/Project/PopTest/population/bed/WGS911/Sample_DUP_overlap_filt.bed
+    log: /home/wuzhikun/Project/PopTest/log/WGS911Filt_DUP.log
+    jobid: 39
+    wildcards: SVtype=DUP
+
+[Mon Aug 10 12:10:41 2020]
+rule WGS17795Filt:
+    input: /home/wuzhikun/Project/PopTest/population/bed/WGS17795/Sample_INV_overlap.bed
+    output: /home/wuzhikun/Project/PopTest/population/bed/WGS17795/Sample_INV_overlap_filt.bed
+    log: /home/wuzhikun/Project/PopTest/log/WGS17795Filt_INV.log
+    jobid: 28
+    wildcards: SVtype=INV
+
+[Mon Aug 10 12:10:41 2020]
+rule WGS17795Filt:
+    input: /home/wuzhikun/Project/PopTest/population/bed/WGS17795/Sample_DEL_overlap.bed
+    output: /home/wuzhikun/Project/PopTest/population/bed/WGS17795/Sample_DEL_overlap_filt.bed
+    log: /home/wuzhikun/Project/PopTest/log/WGS17795Filt_DEL.log
+    jobid: 26
+    wildcards: SVtype=DEL
+
+[Mon Aug 10 12:10:41 2020]
+rule dbOverlapFilt:
+    input: /home/wuzhikun/Project/PopTest/population/bed/database/Sample_DEL_overlap.bed
+    output: /home/wuzhikun/Project/PopTest/population/bed/database/Sample_DEL_overlap_filt.bed
+    log: /home/wuzhikun/Project/PopTest/log/dbOverlapFilt_DEL.log
+    jobid: 78
+    wildcards: SVtype=DEL
+
+[Mon Aug 10 12:10:41 2020]
+rule WGS911Filt:
+    input: /home/wuzhikun/Project/PopTest/population/bed/WGS911/Sample_DEL_overlap.bed
+    output: /home/wuzhikun/Project/PopTest/population/bed/WGS911/Sample_DEL_overlap_filt.bed
+    log: /home/wuzhikun/Project/PopTest/log/WGS911Filt_DEL.log
+    jobid: 36
+    wildcards: SVtype=DEL
+
+[Mon Aug 10 12:10:41 2020]
+rule gnomADFilt:
+    input: /home/wuzhikun/Project/PopTest/population/bed/gnomAD/Sample_INS_overlap.bed
+    output: /home/wuzhikun/Project/PopTest/population/bed/gnomAD/Sample_INS_overlap_filt.bed
+    log: /home/wuzhikun/Project/PopTest/log/gnomADFilt_INS.log
+    jobid: 11
+    wildcards: SVtype=INS
+
+[Mon Aug 10 12:10:41 2020]
+rule overlapCellFilt:
+    input: /home/wuzhikun/Project/PopTest/population/bed/LRS15/Sample_DEL_overlap.bed, /home/wuzhikun/Project/PopTest/population/bed/LRS15/Sample_INS_overlap.bed, /home/wuzhikun/Project/PopTest/population/bed/LRS15/Sample_INV_overlap.bed
+    output: /home/wuzhikun/Project/PopTest/population/bed/LRS15/Sample_DEL_overlap_filt.bed, /home/wuzhikun/Project/PopTest/population/bed/LRS15/Sample_INS_overlap_filt.bed, /home/wuzhikun/Project/PopTest/population/bed/LRS15/Sample_INV_overlap_filt.bed
+    log: /home/wuzhikun/Project/PopTest/log/overlapCellFilt.log
+    jobid: 3
+
+[Mon Aug 10 12:10:42 2020]
+rule dbOverlapFilt:
+    input: /home/wuzhikun/Project/PopTest/population/bed/database/Sample_INS_overlap.bed
+    output: /home/wuzhikun/Project/PopTest/population/bed/database/Sample_INS_overlap_filt.bed
+    log: /home/wuzhikun/Project/PopTest/log/dbOverlapFilt_INS.log
+    jobid: 79
+    wildcards: SVtype=INS
+
+[Mon Aug 10 12:10:50 2020]
+Finished job 84.
+24 of 92 steps (26%) done
+
+[Mon Aug 10 12:10:50 2020]
+rule SVSatats:
+    input: /home/wuzhikun/Project/PopTest/population/Merge/Sample_SV_common_filt.vcf, /home/wuzhikun/Project/PopTest/population/Category/Sample_SV_category_tag.xls
+    output: /home/wuzhikun/Project/PopTest/population/Category/Sample_type_freq.xls, /home/wuzhikun/Project/PopTest/population/Category/Sample_SV_poly.xls, /home/wuzhikun/Project/PopTest/population/Category/Sample_SV_types.xls, /home/wuzhikun/Project/PopTest/population/Category/Sample_SV_record_Common.vcf, /home/wuzhikun/Project/PopTest/population/Category/Sample_SV_record_Low.vcf, /home/wuzhikun/Project/PopTest/population/Category/Sample_SV_record_Rare.vcf, /home/wuzhikun/Project/PopTest/population/Category/Sample_SV_record_Singleton.vcf
+    log: /home/wuzhikun/Project/PopTest/log/SVSatatsAll.log
+    jobid: 83
+
+[33mJob counts:
+	count	jobs
+	1	gnomADFilt
+	1[0m
+[33mJob counts:
+	count	jobs
+	1	WGS17795Filt
+	1[0m
+[33mJob counts:
+	count	jobs
+	1	dbOverlapFilt
+	1[0m
+[33mJob counts:
+	count	jobs
+	1	DGVFilt
+	1[0m
+[33mJob counts:
+	count	jobs
+	1	gnomADFilt
+	1[0m
+[33mpython /home/wuzhikun/github/PGC/src/pgc/bedOverlapRecord.py --bed /home/wuzhikun/Project/PopTest/population/bed/gnomAD/Sample_DUP_overlap.bed --ratioThreshold 0.5 --out /home/wuzhikun/Project/PopTest/population/bed/gnomAD/Sample_DUP_overlap_filt.bed --method both > /home/wuzhikun/Project/PopTest/log/gnomADFilt_DUP.log 2>&1[0m
+[33mpython /home/wuzhikun/github/PGC/src/pgc/bedOverlapRecord.py --bed /home/wuzhikun/Project/PopTest/population/bed/WGS17795/Sample_INS_overlap.bed --ratioThreshold 0.5 --out /home/wuzhikun/Project/PopTest/population/bed/WGS17795/Sample_INS_overlap_filt.bed --method both > /home/wuzhikun/Project/PopTest/log/WGS17795Filt_INS.log 2>&1[0m
+[33mpython /home/wuzhikun/github/PGC/src/pgc/bedOverlapRecord.py --bed /home/wuzhikun/Project/PopTest/population/bed/DGV/Sample_INV_overlap.bed --ratioThreshold 0.5 --out /home/wuzhikun/Project/PopTest/population/bed/DGV/Sample_INV_overlap_filt.bed --method both > /home/wuzhikun/Project/PopTest/log/DGVFilt_INV.log 2>&1[0m
+[33mpython /home/wuzhikun/github/PGC/src/pgc/bedOverlapRecord.py --bed /home/wuzhikun/Project/PopTest/population/bed/database/Sample_INV_overlap.bed --ratioThreshold 0.5 --out /home/wuzhikun/Project/PopTest/population/bed/database/Sample_INV_overlap_filt.bed --method both > /home/wuzhikun/Project/PopTest/log/dbOverlapFilt_INV.log 2>&1[0m
+[33mpython /home/wuzhikun/github/PGC/src/pgc/bedOverlapRecord.py --bed /home/wuzhikun/Project/PopTest/population/bed/gnomAD/Sample_INV_overlap.bed --ratioThreshold 0.5 --out /home/wuzhikun/Project/PopTest/population/bed/gnomAD/Sample_INV_overlap_filt.bed --method both > /home/wuzhikun/Project/PopTest/log/gnomADFilt_INV.log 2>&1[0m
+[33mJob counts:
+	count	jobs
+	1	gnomADFilt
+	1[0m
+[33mpython /home/wuzhikun/github/PGC/src/pgc/bedOverlapRecord.py --bed /home/wuzhikun/Project/PopTest/population/bed/gnomAD/Sample_DEL_overlap.bed --ratioThreshold 0.5 --out /home/wuzhikun/Project/PopTest/population/bed/gnomAD/Sample_DEL_overlap_filt.bed --method both > /home/wuzhikun/Project/PopTest/log/gnomADFilt_DEL.log 2>&1[0m
+[33mJob counts:
+	count	jobs
+	1	DGVFilt
+	1[0m
+[33mJob counts:
+	count	jobs
+	1	WGS911Filt
+	1[0m
+[33mpython /home/wuzhikun/github/PGC/src/pgc/bedOverlapRecord.py --bed /home/wuzhikun/Project/PopTest/population/bed/DGV/Sample_DUP_overlap.bed --ratioThreshold 0.5 --out /home/wuzhikun/Project/PopTest/population/bed/DGV/Sample_DUP_overlap_filt.bed --method both > /home/wuzhikun/Project/PopTest/log/DGVFilt_DUP.log 2>&1[0m
+[33mpython /home/wuzhikun/github/PGC/src/pgc/bedOverlapRecord.py --bed /home/wuzhikun/Project/PopTest/population/bed/WGS911/Sample_INV_overlap.bed --ratioThreshold 0.5 --out /home/wuzhikun/Project/PopTest/population/bed/WGS911/Sample_INV_overlap_filt.bed --method both > /home/wuzhikun/Project/PopTest/log/WGS911Filt_INV.log 2>&1[0m
+[33mJob counts:
+	count	jobs
+	1	dbOverlapFilt
+	1[0m
+[33mJob counts:
+	count	jobs
+	1	WGS911Filt
+	1[0m
+[33mpython /home/wuzhikun/github/PGC/src/pgc/bedOverlapRecord.py --bed /home/wuzhikun/Project/PopTest/population/bed/database/Sample_DUP_overlap.bed --ratioThreshold 0.5 --out /home/wuzhikun/Project/PopTest/population/bed/database/Sample_DUP_overlap_filt.bed --method both > /home/wuzhikun/Project/PopTest/log/dbOverlapFilt_DUP.log 2>&1[0m
+[33mJob counts:
+	count	jobs
+	1	WGS17795Filt
+	1[0m
+[33mpython /home/wuzhikun/github/PGC/src/pgc/bedOverlapRecord.py --bed /home/wuzhikun/Project/PopTest/population/bed/WGS911/Sample_INS_overlap.bed --ratioThreshold 0.5 --out /home/wuzhikun/Project/PopTest/population/bed/WGS911/Sample_INS_overlap_filt.bed --method both > /home/wuzhikun/Project/PopTest/log/WGS911Filt_INS.log 2>&1[0m
+[33mJob counts:
+	count	jobs
+	1	DGVFilt
+	1[0m
+[33mpython /home/wuzhikun/github/PGC/src/pgc/bedOverlapRecord.py --bed /home/wuzhikun/Project/PopTest/population/bed/WGS17795/Sample_DUP_overlap.bed --ratioThreshold 0.5 --out /home/wuzhikun/Project/PopTest/population/bed/WGS17795/Sample_DUP_overlap_filt.bed --method both > /home/wuzhikun/Project/PopTest/log/WGS17795Filt_DUP.log 2>&1[0m
+[33mpython /home/wuzhikun/github/PGC/src/pgc/bedOverlapRecord.py --bed /home/wuzhikun/Project/PopTest/population/bed/DGV/Sample_DEL_overlap.bed --ratioThreshold 0.5 --out /home/wuzhikun/Project/PopTest/population/bed/DGV/Sample_DEL_overlap_filt.bed --method both > /home/wuzhikun/Project/PopTest/log/DGVFilt_DEL.log 2>&1[0m
+[33mJob counts:
+	count	jobs
+	1	GenePredOverlap
+	1[0m
+[33mbedtools intersect -a /home/wuzhikun/Project/PopTest/population/bed/Sample_common_SV_DEL_INS_INV_DUP_point.bed -b /home/wuzhikun/database/Annovar/hg38/EnsProteinGene/hg38_ensGene_coding_feature_promoter_sort_chr.txt -wa -wb > /home/wuzhikun/Project/PopTest/population/Annotation/Sample_common_SV_genepred_overlap.bed 2>/home/wuzhikun/Project/PopTest/log/GenePredOverlap.log[0m
+[33mJob counts:
+	count	jobs
+	1	DGVFilt
+	1[0m
+[33mJob counts:
+	count	jobs
+	1	WGS17795Filt
+	1[0m
+[33mJob counts:
+	count	jobs
+	1	WGS911Filt
+	1[0m
+[33mpython /home/wuzhikun/github/PGC/src/pgc/bedOverlapRecord.py --bed /home/wuzhikun/Project/PopTest/population/bed/DGV/Sample_INS_overlap.bed --ratioThreshold 0.5 --out /home/wuzhikun/Project/PopTest/population/bed/DGV/Sample_INS_overlap_filt.bed --method both > /home/wuzhikun/Project/PopTest/log/DGVFilt_INS.log 2>&1[0m
+[33mpython /home/wuzhikun/github/PGC/src/pgc/bedOverlapRecord.py --bed /home/wuzhikun/Project/PopTest/population/bed/WGS17795/Sample_INV_overlap.bed --ratioThreshold 0.5 --out /home/wuzhikun/Project/PopTest/population/bed/WGS17795/Sample_INV_overlap_filt.bed --method both > /home/wuzhikun/Project/PopTest/log/WGS17795Filt_INV.log 2>&1[0m
+[33mpython /home/wuzhikun/github/PGC/src/pgc/bedOverlapRecord.py --bed /home/wuzhikun/Project/PopTest/population/bed/WGS911/Sample_DUP_overlap.bed --ratioThreshold 0.5 --out /home/wuzhikun/Project/PopTest/population/bed/WGS911/Sample_DUP_overlap_filt.bed --method both > /home/wuzhikun/Project/PopTest/log/WGS911Filt_DUP.log 2>&1[0m
+[33mJob counts:
+	count	jobs
+	1	WGS17795Filt
+	1[0m
+[33mJob counts:
+	count	jobs
+	1	dbOverlapFilt
+	1[0m
+[33mJob counts:
+	count	jobs
+	1	WGS911Filt
+	1[0m
+[33mpython /home/wuzhikun/github/PGC/src/pgc/bedOverlapRecord.py --bed /home/wuzhikun/Project/PopTest/population/bed/WGS17795/Sample_DEL_overlap.bed --ratioThreshold 0.5 --out /home/wuzhikun/Project/PopTest/population/bed/WGS17795/Sample_DEL_overlap_filt.bed --method both > /home/wuzhikun/Project/PopTest/log/WGS17795Filt_DEL.log 2>&1[0m
+[33mJob counts:
+	count	jobs
+	1	gnomADFilt
+	1[0m
+[33mpython /home/wuzhikun/github/PGC/src/pgc/bedOverlapRecord.py --bed /home/wuzhikun/Project/PopTest/population/bed/database/Sample_DEL_overlap.bed --ratioThreshold 0.5 --out /home/wuzhikun/Project/PopTest/population/bed/database/Sample_DEL_overlap_filt.bed --method both > /home/wuzhikun/Project/PopTest/log/dbOverlapFilt_DEL.log 2>&1[0m
+[33mpython /home/wuzhikun/github/PGC/src/pgc/bedOverlapRecord.py --bed /home/wuzhikun/Project/PopTest/population/bed/WGS911/Sample_DEL_overlap.bed --ratioThreshold 0.5 --out /home/wuzhikun/Project/PopTest/population/bed/WGS911/Sample_DEL_overlap_filt.bed --method both > /home/wuzhikun/Project/PopTest/log/WGS911Filt_DEL.log 2>&1[0m
+[33mJob counts:
+	count	jobs
+	1	dbOverlapFilt
+	1[0m
+[33mpython /home/wuzhikun/github/PGC/src/pgc/bedOverlapRecord.py --bed /home/wuzhikun/Project/PopTest/population/bed/gnomAD/Sample_INS_overlap.bed --ratioThreshold 0.5 --out /home/wuzhikun/Project/PopTest/population/bed/gnomAD/Sample_INS_overlap_filt.bed --method both > /home/wuzhikun/Project/PopTest/log/gnomADFilt_INS.log 2>&1[0m
+[33mpython /home/wuzhikun/github/PGC/src/pgc/bedOverlapRecord.py --bed /home/wuzhikun/Project/PopTest/population/bed/database/Sample_INS_overlap.bed --ratioThreshold 0.5 --out /home/wuzhikun/Project/PopTest/population/bed/database/Sample_INS_overlap_filt.bed --method both > /home/wuzhikun/Project/PopTest/log/dbOverlapFilt_INS.log 2>&1[0m
+[33mJob counts:
+	count	jobs
+	1	overlapCellFilt
+	1[0m
+[33mpython /home/wuzhikun/github/PGC/src/pgc/bedOverlapRecord.py --bed /home/wuzhikun/Project/PopTest/population/bed/LRS15/Sample_DEL_overlap.bed --ratioThreshold 0.5 --out /home/wuzhikun/Project/PopTest/population/bed/LRS15/Sample_DEL_overlap_filt.bed --method both > /home/wuzhikun/Project/PopTest/log/overlapCellFilt.log 2>&1[0m
+[Mon Aug 10 12:11:11 2020]
+Finished job 101.
+25 of 92 steps (27%) done
+
+[Mon Aug 10 12:11:11 2020]
+rule overlapFilt:
+    input: /home/wuzhikun/Project/PopTest/population/Annotation/Sample_common_SV_genepred_overlap.bed
+    output: /home/wuzhikun/Project/PopTest/population/Annotation/Sample_common_SV_genepred_overlap_promoter_all_lof.bed, /home/wuzhikun/Project/PopTest/population/Annotation/Sample_common_SV_genepred_overlap_promoter_all_cover.bed
+    log: /home/wuzhikun/Project/PopTest/log/overlapFilt.log
+    jobid: 91
+
+[Mon Aug 10 12:11:13 2020]
+Finished job 12.
+26 of 92 steps (28%) done
+[Mon Aug 10 12:11:13 2020]
+Finished job 27.
+27 of 92 steps (29%) done
+[Mon Aug 10 12:11:13 2020]
+Finished job 74.
+28 of 92 steps (30%) done
+[Mon Aug 10 12:11:13 2020]
+Finished job 13.
+29 of 92 steps (32%) done
+[Mon Aug 10 12:11:13 2020]
+Finished job 80.
+30 of 92 steps (33%) done
+[Mon Aug 10 12:11:13 2020]
+Finished job 10.
+31 of 92 steps (34%) done
+[Mon Aug 10 12:11:13 2020]
+Finished job 38.
+32 of 92 steps (35%) done
+[Mon Aug 10 12:11:13 2020]
+Finished job 75.
+33 of 92 steps (36%) done
+[Mon Aug 10 12:11:13 2020]
+Finished job 29.
+34 of 92 steps (37%) done
+[Mon Aug 10 12:11:13 2020]
+Finished job 81.
+35 of 92 steps (38%) done
+[Mon Aug 10 12:11:14 2020]
+Finished job 37.
+36 of 92 steps (39%) done
+[33mJob counts:
+	count	jobs
+	1	SVSatats
+	1[0m
+[33mpython /home/wuzhikun/github/PGC/src/pgc/SVAlleleCalculateMod.py --category /home/wuzhikun/Project/PopTest/population/Category/Sample_SV_category_tag.xls --vcf /home/wuzhikun/Project/PopTest/population/Merge/Sample_SV_common_filt.vcf  --type /home/wuzhikun/Project/PopTest/population/Category/Sample_type_freq.xls --poly /home/wuzhikun/Project/PopTest/population/Category/Sample_SV_poly.xls --sample /home/wuzhikun/Project/PopTest/population/Category/Sample_SV_types.xls --outPrefix /home/wuzhikun/Project/PopTest/population/Category/Sample_SV_record >/home/wuzhikun/Project/PopTest/log/SVSatatsAll.log 2>&1[0m
+[Mon Aug 10 12:11:15 2020]
+Finished job 72.
+37 of 92 steps (40%) done
+[33mpython /home/wuzhikun/github/PGC/src/pgc/bedOverlapRecord.py --bed /home/wuzhikun/Project/PopTest/population/bed/LRS15/Sample_INV_overlap.bed --ratioThreshold 0.5 --out /home/wuzhikun/Project/PopTest/population/bed/LRS15/Sample_INV_overlap_filt.bed --method both 2>> /home/wuzhikun/Project/PopTest/log/overlapCellFilt.log[0m
+[Mon Aug 10 12:11:16 2020]
+Finished job 28.
+38 of 92 steps (41%) done
+[Mon Aug 10 12:11:16 2020]
+Finished job 73.
+39 of 92 steps (42%) done
+[Mon Aug 10 12:11:16 2020]
+Finished job 39.
+40 of 92 steps (43%) done
+[Mon Aug 10 12:11:16 2020]
+Finished job 11.
+41 of 92 steps (45%) done
+[Mon Aug 10 12:11:16 2020]
+Finished job 26.
+42 of 92 steps (46%) done
+[Mon Aug 10 12:11:16 2020]
+Finished job 36.
+43 of 92 steps (47%) done
+[Mon Aug 10 12:11:16 2020]
+Finished job 79.
+44 of 92 steps (48%) done
+
+[Mon Aug 10 12:11:16 2020]
+rule gnomADOverlapSum:
+    input: /home/wuzhikun/Project/PopTest/population/bed/gnomAD/Sample_DEL_overlap_filt.bed, /home/wuzhikun/Project/PopTest/population/bed/gnomAD/Sample_INS_overlap_filt.bed, /home/wuzhikun/Project/PopTest/population/bed/gnomAD/Sample_INV_overlap_filt.bed, /home/wuzhikun/Project/PopTest/population/bed/gnomAD/Sample_DUP_overlap_filt.bed
+    output: /home/wuzhikun/Project/PopTest/population/bed/gnomAD/SV_overlap_filt_tags.xls, /home/wuzhikun/Project/PopTest/population/bed/gnomAD/Sample_overlap_filt_chr_length_summary.xls
+    log: /home/wuzhikun/Project/PopTest/log/gnomADOverlapSum.log
+    jobid: 14
+
+[Mon Aug 10 12:11:16 2020]
+rule DGVOverlapSum:
+    input: /home/wuzhikun/Project/PopTest/population/bed/DGV/Sample_DEL_overlap_filt.bed, /home/wuzhikun/Project/PopTest/population/bed/DGV/Sample_INS_overlap_filt.bed, /home/wuzhikun/Project/PopTest/population/bed/DGV/Sample_INV_overlap_filt.bed, /home/wuzhikun/Project/PopTest/population/bed/DGV/Sample_DUP_overlap_filt.bed
+    output: /home/wuzhikun/Project/PopTest/population/bed/DGV/SV_overlap_filt_tags.xls, /home/wuzhikun/Project/PopTest/population/bed/DGV/Sample_overlap_filt_chr_length_summary.xls
+    log: /home/wuzhikun/Project/PopTest/log/DGVOverlapSum.log
+    jobid: 20
+
+[Mon Aug 10 12:11:16 2020]
+rule DGVCat:
+    input: /home/wuzhikun/Project/PopTest/population/Category/Sample_SV_category_tag.xls, /home/wuzhikun/Project/PopTest/population/bed/DGV/Sample_DEL_overlap_filt.bed, /home/wuzhikun/Project/PopTest/population/bed/DGV/Sample_INS_overlap_filt.bed, /home/wuzhikun/Project/PopTest/population/bed/DGV/Sample_INV_overlap_filt.bed, /home/wuzhikun/Project/PopTest/population/bed/DGV/Sample_DUP_overlap_filt.bed
+    output: /home/wuzhikun/Project/PopTest/population/bed/DGV/Sample_SV_overlap_category_stats.xls
+    log: /home/wuzhikun/Project/PopTest/log/DGVCat.log
+    jobid: 87
+
+[Mon Aug 10 12:11:16 2020]
+rule WGS911Cat:
+    input: /home/wuzhikun/Project/PopTest/population/Category/Sample_SV_category_tag.xls, /home/wuzhikun/Project/PopTest/population/bed/WGS911/Sample_DEL_overlap_filt.bed, /home/wuzhikun/Project/PopTest/population/bed/WGS911/Sample_INS_overlap_filt.bed, /home/wuzhikun/Project/PopTest/population/bed/WGS911/Sample_INV_overlap_filt.bed, /home/wuzhikun/Project/PopTest/population/bed/WGS911/Sample_DUP_overlap_filt.bed
+    output: /home/wuzhikun/Project/PopTest/population/bed/WGS911/Sample_SV_overlap_category_stats.xls
+    log: /home/wuzhikun/Project/PopTest/log/WGS911Cat.log
+    jobid: 88
+
+[Mon Aug 10 12:11:16 2020]
+rule WGS17795OverlapSum:
+    input: /home/wuzhikun/Project/PopTest/population/bed/WGS17795/Sample_DEL_overlap_filt.bed, /home/wuzhikun/Project/PopTest/population/bed/WGS17795/Sample_INS_overlap_filt.bed, /home/wuzhikun/Project/PopTest/population/bed/WGS17795/Sample_INV_overlap_filt.bed, /home/wuzhikun/Project/PopTest/population/bed/WGS17795/Sample_DUP_overlap_filt.bed
+    output: /home/wuzhikun/Project/PopTest/population/bed/WGS17795/SV_overlap_filt_tags.xls, /home/wuzhikun/Project/PopTest/population/bed/WGS17795/Sample_overlap_filt_chr_length_summary.xls
+    log: /home/wuzhikun/Project/PopTest/log/WGS17795OverlapSum.log
+    jobid: 30
+
+[Mon Aug 10 12:11:16 2020]
+rule gnomADCat:
+    input: /home/wuzhikun/Project/PopTest/population/Category/Sample_SV_category_tag.xls, /home/wuzhikun/Project/PopTest/population/bed/gnomAD/Sample_DEL_overlap_filt.bed, /home/wuzhikun/Project/PopTest/population/bed/gnomAD/Sample_INS_overlap_filt.bed, /home/wuzhikun/Project/PopTest/population/bed/gnomAD/Sample_INV_overlap_filt.bed, /home/wuzhikun/Project/PopTest/population/bed/gnomAD/Sample_DUP_overlap_filt.bed
+    output: /home/wuzhikun/Project/PopTest/population/bed/gnomAD/Sample_SV_overlap_category_stats.xls
+    log: /home/wuzhikun/Project/PopTest/log/gnomADCat.log
+    jobid: 86
+
+[Mon Aug 10 12:11:16 2020]
+rule WGS911OverlapSum:
+    input: /home/wuzhikun/Project/PopTest/population/bed/WGS911/Sample_DEL_overlap_filt.bed, /home/wuzhikun/Project/PopTest/population/bed/WGS911/Sample_INS_overlap_filt.bed, /home/wuzhikun/Project/PopTest/population/bed/WGS911/Sample_INV_overlap_filt.bed, /home/wuzhikun/Project/PopTest/population/bed/WGS911/Sample_DUP_overlap_filt.bed
+    output: /home/wuzhikun/Project/PopTest/population/bed/WGS911/SV_overlap_filt_tags.xls, /home/wuzhikun/Project/PopTest/population/bed/WGS911/Sample_overlap_filt_chr_length_summary.xls
+    log: /home/wuzhikun/Project/PopTest/log/WGS911OverlapSum.log
+    jobid: 40
+
+[Mon Aug 10 12:11:18 2020]
+Finished job 78.
+45 of 92 steps (49%) done
+
+[Mon Aug 10 12:11:18 2020]
+rule AllCat:
+    input: /home/wuzhikun/Project/PopTest/population/Category/Sample_SV_category_tag.xls, /home/wuzhikun/Project/PopTest/population/bed/database/Sample_DEL_overlap_filt.bed, /home/wuzhikun/Project/PopTest/population/bed/database/Sample_INS_overlap_filt.bed, /home/wuzhikun/Project/PopTest/population/bed/database/Sample_INV_overlap_filt.bed, /home/wuzhikun/Project/PopTest/population/bed/database/Sample_DUP_overlap_filt.bed
+    output: /home/wuzhikun/Project/PopTest/population/bed/database/Sample_SV_overlap_category_stats.xls
+    log: /home/wuzhikun/Project/PopTest/log/AllCat.log
+    jobid: 85
+
+[Mon Aug 10 12:11:18 2020]
+rule allOverlapSum:
+    input: /home/wuzhikun/Project/PopTest/population/bed/database/Sample_DEL_overlap_filt.bed, /home/wuzhikun/Project/PopTest/population/bed/database/Sample_INS_overlap_filt.bed, /home/wuzhikun/Project/PopTest/population/bed/database/Sample_INV_overlap_filt.bed, /home/wuzhikun/Project/PopTest/population/bed/database/Sample_DUP_overlap_filt.bed
+    output: /home/wuzhikun/Project/PopTest/population/bed/database/SV_overlap_filt_tags.xls, /home/wuzhikun/Project/PopTest/population/bed/database/SV_overlap_filt_chr_length_summary.xls
+    log: /home/wuzhikun/Project/PopTest/log/allOverlapSum.log
+    jobid: 53
+
+[33mpython /home/wuzhikun/github/PGC/src/pgc/bedOverlapRecord.py --bed /home/wuzhikun/Project/PopTest/population/bed/LRS15/Sample_INS_overlap.bed --ratioThreshold 0.5 --out /home/wuzhikun/Project/PopTest/population/bed/LRS15/Sample_INS_overlap_filt.bed --method both 2>> /home/wuzhikun/Project/PopTest/log/overlapCellFilt.log[0m
+[33mJob counts:
+	count	jobs
+	1	overlapFilt
+	1[0m
+[33mpython /home/wuzhikun/github/PGC/src/pgc/geneOverlapFilt.py --gene /home/wuzhikun/database/Annovar/hg38/hg38_ensGene_dechr.txt --overlap /home/wuzhikun/Project/PopTest/population/Annotation/Sample_common_SV_genepred_overlap.bed --out /home/wuzhikun/Project/PopTest/population/Annotation/Sample_common_SV_genepred_overlap_promoter_all_lof.bed --filt /home/wuzhikun/Project/PopTest/population/Annotation/Sample_common_SV_genepred_overlap_promoter_all_cover.bed > /home/wuzhikun/Project/PopTest/log/overlapFilt.log 2>&1[0m
+[Mon Aug 10 12:11:24 2020]
+Finished job 3.
+46 of 92 steps (50%) done
+
+[Mon Aug 10 12:11:24 2020]
+rule CatStats:
+    input: /home/wuzhikun/Project/PopTest/population/Category/Sample_SV_category_tag.xls, /home/wuzhikun/Project/PopTest/population/bed/LRS15/Sample_DEL_overlap_filt.bed, /home/wuzhikun/Project/PopTest/population/bed/LRS15/Sample_INS_overlap_filt.bed, /home/wuzhikun/Project/PopTest/population/bed/LRS15/Sample_INV_overlap_filt.bed
+    output: /home/wuzhikun/Project/PopTest/population/bed/LRS15/Sample_SV_overlap_category_stats.xls
+    log: /home/wuzhikun/Project/PopTest/log/categoryTag2.log
+    jobid: 65
+
+[Mon Aug 10 12:11:24 2020]
+rule overlapSummary:
+    input: /home/wuzhikun/Project/PopTest/population/bed/LRS15/Sample_DEL_overlap_filt.bed, /home/wuzhikun/Project/PopTest/population/bed/LRS15/Sample_INS_overlap_filt.bed, /home/wuzhikun/Project/PopTest/population/bed/LRS15/Sample_INV_overlap_filt.bed, /home/wuzhikun/Project/PopTest/population/bed/gnomAD/Sample_DEL_overlap_filt.bed, /home/wuzhikun/Project/PopTest/population/bed/gnomAD/Sample_INS_overlap_filt.bed, /home/wuzhikun/Project/PopTest/population/bed/gnomAD/Sample_INV_overlap_filt.bed, /home/wuzhikun/Project/PopTest/population/bed/gnomAD/Sample_DUP_overlap_filt.bed, /home/wuzhikun/Project/PopTest/population/bed/DGV/Sample_DEL_overlap_filt.bed, /home/wuzhikun/Project/PopTest/population/bed/DGV/Sample_INS_overlap_filt.bed, /home/wuzhikun/Project/PopTest/population/bed/DGV/Sample_INV_overlap_filt.bed, /home/wuzhikun/Project/PopTest/population/bed/DGV/Sample_DUP_overlap_filt.bed, /home/wuzhikun/Project/PopTest/population/bed/WGS911/Sample_DEL_overlap_filt.bed, /home/wuzhikun/Project/PopTest/population/bed/WGS911/Sample_INS_overlap_filt.bed, /home/wuzhikun/Project/PopTest/population/bed/WGS911/Sample_INV_overlap_filt.bed, /home/wuzhikun/Project/PopTest/population/bed/WGS911/Sample_DUP_overlap_filt.bed
+    output: /home/wuzhikun/Project/PopTest/population/bed/All/Sample_overlap_summary.txt
+    log: /home/wuzhikun/Project/PopTest/log/overlapSummary.log
+    jobid: 47
+
+[Mon Aug 10 12:11:24 2020]
+rule CellOverlapSum:
+    input: /home/wuzhikun/Project/PopTest/population/bed/LRS15/Sample_DEL_overlap_filt.bed, /home/wuzhikun/Project/PopTest/population/bed/LRS15/Sample_INS_overlap_filt.bed, /home/wuzhikun/Project/PopTest/population/bed/LRS15/Sample_INV_overlap_filt.bed
+    output: /home/wuzhikun/Project/PopTest/population/bed/LRS15/SV_overlap_filt_tags.xls, /home/wuzhikun/Project/PopTest/population/bed/LRS15/SV_overlap_filt_chr_length_summary.xls
+    log: /home/wuzhikun/Project/PopTest/log/CellOverlapSum.log
+    jobid: 4
+
+[33mJob counts:
+	count	jobs
+	1	gnomADOverlapSum
+	1[0m
+[33mJob counts:
+	count	jobs
+	1	WGS911Cat
+	1[0m
+[33mJob counts:
+	count	jobs
+	1	DGVCat
+	1[0m
+[33mpython /home/wuzhikun/github/PGC/src/pgc/OverlapSVTypeLength.py --bed /home/wuzhikun/Project/PopTest/population/bed/gnomAD/Sample_DEL_overlap_filt.bed,/home/wuzhikun/Project/PopTest/population/bed/gnomAD/Sample_INS_overlap_filt.bed,/home/wuzhikun/Project/PopTest/population/bed/gnomAD/Sample_INV_overlap_filt.bed,/home/wuzhikun/Project/PopTest/population/bed/gnomAD/Sample_DUP_overlap_filt.bed --out /home/wuzhikun/Project/PopTest/population/bed/gnomAD/Sample_overlap_filt_chr_length_summary.xls > /home/wuzhikun/Project/PopTest/log/gnomADOverlapSum.log 2>&1[0m
+[33mpython /home/wuzhikun/github/PGC/src/pgc/OverlapCategory.py --category /home/wuzhikun/Project/PopTest/population/Category/Sample_SV_category_tag.xls --bed /home/wuzhikun/Project/PopTest/population/bed/WGS911/Sample_DEL_overlap_filt.bed,/home/wuzhikun/Project/PopTest/population/bed/WGS911/Sample_INS_overlap_filt.bed,/home/wuzhikun/Project/PopTest/population/bed/WGS911/Sample_INV_overlap_filt.bed,/home/wuzhikun/Project/PopTest/population/bed/WGS911/Sample_DUP_overlap_filt.bed --out /home/wuzhikun/Project/PopTest/population/bed/WGS911/Sample_SV_overlap_category_stats.xls > /home/wuzhikun/Project/PopTest/log/WGS911Cat.log 2>&1[0m
+[33mpython /home/wuzhikun/github/PGC/src/pgc/OverlapCategory.py --category /home/wuzhikun/Project/PopTest/population/Category/Sample_SV_category_tag.xls --bed /home/wuzhikun/Project/PopTest/population/bed/DGV/Sample_DEL_overlap_filt.bed,/home/wuzhikun/Project/PopTest/population/bed/DGV/Sample_INS_overlap_filt.bed,/home/wuzhikun/Project/PopTest/population/bed/DGV/Sample_INV_overlap_filt.bed,/home/wuzhikun/Project/PopTest/population/bed/DGV/Sample_DUP_overlap_filt.bed --out /home/wuzhikun/Project/PopTest/population/bed/DGV/Sample_SV_overlap_category_stats.xls > /home/wuzhikun/Project/PopTest/log/DGVCat.log 2>&1[0m
+[33mJob counts:
+	count	jobs
+	1	gnomADCat
+	1[0m
+[33mJob counts:
+	count	jobs
+	1	WGS17795OverlapSum
+	1[0m
+[33mJob counts:
+	count	jobs
+	1	DGVOverlapSum
+	1[0m
+[33mpython /home/wuzhikun/github/PGC/src/pgc/OverlapCategory.py --category /home/wuzhikun/Project/PopTest/population/Category/Sample_SV_category_tag.xls --bed /home/wuzhikun/Project/PopTest/population/bed/gnomAD/Sample_DEL_overlap_filt.bed,/home/wuzhikun/Project/PopTest/population/bed/gnomAD/Sample_INS_overlap_filt.bed,/home/wuzhikun/Project/PopTest/population/bed/gnomAD/Sample_INV_overlap_filt.bed,/home/wuzhikun/Project/PopTest/population/bed/gnomAD/Sample_DUP_overlap_filt.bed --out /home/wuzhikun/Project/PopTest/population/bed/gnomAD/Sample_SV_overlap_category_stats.xls > /home/wuzhikun/Project/PopTest/log/gnomADCat.log 2>&1[0m
+[33mJob counts:
+	count	jobs
+	1	WGS911OverlapSum
+	1[0m
+[Mon Aug 10 12:11:28 2020]
+Finished job 91.
+47 of 92 steps (51%) done
+
+[Mon Aug 10 12:11:28 2020]
+rule lofCDS:
+    input: /home/wuzhikun/Project/PopTest/population/Annotation/Sample_common_SV_genepred_overlap_promoter_all_lof.bed
+    output: /home/wuzhikun/Project/PopTest/population/Annotation/Sample_common_SV_genepred_overlap_promoter_all_lof_CDS.bed
+    jobid: 76
+
+[33mpython /home/wuzhikun/github/PGC/src/pgc/OverlapSVTypeLength.py --bed /home/wuzhikun/Project/PopTest/population/bed/WGS17795/Sample_DEL_overlap_filt.bed,/home/wuzhikun/Project/PopTest/population/bed/WGS17795/Sample_INS_overlap_filt.bed,/home/wuzhikun/Project/PopTest/population/bed/WGS17795/Sample_INV_overlap_filt.bed,/home/wuzhikun/Project/PopTest/population/bed/WGS17795/Sample_DUP_overlap_filt.bed --out /home/wuzhikun/Project/PopTest/population/bed/WGS17795/Sample_overlap_filt_chr_length_summary.xls > /home/wuzhikun/Project/PopTest/log/WGS17795OverlapSum.log 2>&1[0m
+[33mpython /home/wuzhikun/github/PGC/src/pgc/OverlapSVTypeLength.py --bed /home/wuzhikun/Project/PopTest/population/bed/DGV/Sample_DEL_overlap_filt.bed,/home/wuzhikun/Project/PopTest/population/bed/DGV/Sample_INS_overlap_filt.bed,/home/wuzhikun/Project/PopTest/population/bed/DGV/Sample_INV_overlap_filt.bed,/home/wuzhikun/Project/PopTest/population/bed/DGV/Sample_DUP_overlap_filt.bed --out /home/wuzhikun/Project/PopTest/population/bed/DGV/Sample_overlap_filt_chr_length_summary.xls > /home/wuzhikun/Project/PopTest/log/DGVOverlapSum.log 2>&1[0m
+[33mpython /home/wuzhikun/github/PGC/src/pgc/OverlapSVTypeLength.py --bed /home/wuzhikun/Project/PopTest/population/bed/WGS911/Sample_DEL_overlap_filt.bed,/home/wuzhikun/Project/PopTest/population/bed/WGS911/Sample_INS_overlap_filt.bed,/home/wuzhikun/Project/PopTest/population/bed/WGS911/Sample_INV_overlap_filt.bed,/home/wuzhikun/Project/PopTest/population/bed/WGS911/Sample_DUP_overlap_filt.bed --out /home/wuzhikun/Project/PopTest/population/bed/WGS911/Sample_overlap_filt_chr_length_summary.xls > /home/wuzhikun/Project/PopTest/log/WGS911OverlapSum.log 2>&1[0m
+[33mJob counts:
+	count	jobs
+	1	AllCat
+	1[0m
+[33mJob counts:
+	count	jobs
+	1	allOverlapSum
+	1[0m
+[33mpython /home/wuzhikun/github/PGC/src/pgc/OverlapCategory.py --category /home/wuzhikun/Project/PopTest/population/Category/Sample_SV_category_tag.xls --bed /home/wuzhikun/Project/PopTest/population/bed/database/Sample_DEL_overlap_filt.bed,/home/wuzhikun/Project/PopTest/population/bed/database/Sample_INS_overlap_filt.bed,/home/wuzhikun/Project/PopTest/population/bed/database/Sample_INV_overlap_filt.bed,/home/wuzhikun/Project/PopTest/population/bed/database/Sample_DUP_overlap_filt.bed --out /home/wuzhikun/Project/PopTest/population/bed/database/Sample_SV_overlap_category_stats.xls > /home/wuzhikun/Project/PopTest/log/AllCat.log 2>&1[0m
+[33mpython /home/wuzhikun/github/PGC/src/pgc/OverlapSVTypeLength.py  --bed /home/wuzhikun/Project/PopTest/population/bed/database/Sample_DEL_overlap_filt.bed,/home/wuzhikun/Project/PopTest/population/bed/database/Sample_INS_overlap_filt.bed,/home/wuzhikun/Project/PopTest/population/bed/database/Sample_INV_overlap_filt.bed,/home/wuzhikun/Project/PopTest/population/bed/database/Sample_DUP_overlap_filt.bed --out /home/wuzhikun/Project/PopTest/population/bed/database/SV_overlap_filt_chr_length_summary.xls > /home/wuzhikun/Project/PopTest/log/allOverlapSum.log 2>&1[0m
+[33mJob counts:
+	count	jobs
+	1	CatStats
+	1[0m
+[33mJob counts:
+	count	jobs
+	1	CellOverlapSum
+	1[0m
+[33mpython /home/wuzhikun/github/PGC/src/pgc/OverlapCategory.py --category /home/wuzhikun/Project/PopTest/population/Category/Sample_SV_category_tag.xls --bed /home/wuzhikun/Project/PopTest/population/bed/LRS15/Sample_DEL_overlap_filt.bed,/home/wuzhikun/Project/PopTest/population/bed/LRS15/Sample_INS_overlap_filt.bed,/home/wuzhikun/Project/PopTest/population/bed/LRS15/Sample_INV_overlap_filt.bed --out /home/wuzhikun/Project/PopTest/population/bed/LRS15/Sample_SV_overlap_category_stats.xls > /home/wuzhikun/Project/PopTest/log/categoryTag2.log 2>&1[0m
+[33mJob counts:
+	count	jobs
+	1	overlapSummary
+	1[0m
+[33mpython /home/wuzhikun/github/PGC/src/pgc/OverlapSVTypeLength.py  --bed /home/wuzhikun/Project/PopTest/population/bed/LRS15/Sample_DEL_overlap_filt.bed,/home/wuzhikun/Project/PopTest/population/bed/LRS15/Sample_INV_overlap_filt.bed,/home/wuzhikun/Project/PopTest/population/bed/LRS15/Sample_INS_overlap_filt.bed --out /home/wuzhikun/Project/PopTest/population/bed/LRS15/SV_overlap_filt_chr_length_summary.xls > /home/wuzhikun/Project/PopTest/log/CellOverlapSum.log 2>&1[0m
+[33mpython /home/wuzhikun/github/PGC/src/pgc/OverlapSVSummary.py --file /home/wuzhikun/Project/PopTest/population/bed/LRS15/Sample_DEL_overlap_filt.bed,/home/wuzhikun/Project/PopTest/population/bed/LRS15/Sample_INS_overlap_filt.bed,/home/wuzhikun/Project/PopTest/population/bed/LRS15/Sample_INV_overlap_filt.bed,/home/wuzhikun/Project/PopTest/population/bed/gnomAD/Sample_DEL_overlap_filt.bed,/home/wuzhikun/Project/PopTest/population/bed/gnomAD/Sample_INS_overlap_filt.bed,/home/wuzhikun/Project/PopTest/population/bed/gnomAD/Sample_INV_overlap_filt.bed,/home/wuzhikun/Project/PopTest/population/bed/gnomAD/Sample_DUP_overlap_filt.bed,/home/wuzhikun/Project/PopTest/population/bed/DGV/Sample_DEL_overlap_filt.bed,/home/wuzhikun/Project/PopTest/population/bed/DGV/Sample_INS_overlap_filt.bed,/home/wuzhikun/Project/PopTest/population/bed/DGV/Sample_INV_overlap_filt.bed,/home/wuzhikun/Project/PopTest/population/bed/DGV/Sample_DUP_overlap_filt.bed,/home/wuzhikun/Project/PopTest/population/bed/WGS911/Sample_DEL_overlap_filt.bed,/home/wuzhikun/Project/PopTest/population/bed/WGS911/Sample_INS_overlap_filt.bed,/home/wuzhikun/Project/PopTest/population/bed/WGS911/Sample_INV_overlap_filt.bed,/home/wuzhikun/Project/PopTest/population/bed/WGS911/Sample_DUP_overlap_filt.bed --out /home/wuzhikun/Project/PopTest/population/bed/All/Sample_overlap_summary.txt > /home/wuzhikun/Project/PopTest/log/overlapSummary.log 2>&1[0m
+[33mcat /home/wuzhikun/Project/PopTest/population/bed/WGS17795/Sample_DEL_overlap_filt.bed /home/wuzhikun/Project/PopTest/population/bed/WGS17795/Sample_INS_overlap_filt.bed /home/wuzhikun/Project/PopTest/population/bed/WGS17795/Sample_INV_overlap_filt.bed /home/wuzhikun/Project/PopTest/population/bed/WGS17795/Sample_DUP_overlap_filt.bed | cut -f 4 | sort | uniq > /home/wuzhikun/Project/PopTest/population/bed/WGS17795/SV_overlap_filt_tags.xls[0m
+[33mcat /home/wuzhikun/Project/PopTest/population/bed/gnomAD/Sample_DEL_overlap_filt.bed /home/wuzhikun/Project/PopTest/population/bed/gnomAD/Sample_INS_overlap_filt.bed /home/wuzhikun/Project/PopTest/population/bed/gnomAD/Sample_INV_overlap_filt.bed /home/wuzhikun/Project/PopTest/population/bed/gnomAD/Sample_DUP_overlap_filt.bed | cut -f 4 | sort | uniq > /home/wuzhikun/Project/PopTest/population/bed/gnomAD/SV_overlap_filt_tags.xls[0m
+[33mcat /home/wuzhikun/Project/PopTest/population/bed/WGS911/Sample_DEL_overlap_filt.bed /home/wuzhikun/Project/PopTest/population/bed/WGS911/Sample_INS_overlap_filt.bed /home/wuzhikun/Project/PopTest/population/bed/WGS911/Sample_INV_overlap_filt.bed /home/wuzhikun/Project/PopTest/population/bed/WGS911/Sample_DUP_overlap_filt.bed | cut -f 4 | sort | uniq > /home/wuzhikun/Project/PopTest/population/bed/WGS911/SV_overlap_filt_tags.xls[0m
+[33mcat /home/wuzhikun/Project/PopTest/population/bed/DGV/Sample_DEL_overlap_filt.bed /home/wuzhikun/Project/PopTest/population/bed/DGV/Sample_INS_overlap_filt.bed /home/wuzhikun/Project/PopTest/population/bed/DGV/Sample_INV_overlap_filt.bed /home/wuzhikun/Project/PopTest/population/bed/DGV/Sample_DUP_overlap_filt.bed | cut -f 4 | sort | uniq > /home/wuzhikun/Project/PopTest/population/bed/DGV/SV_overlap_filt_tags.xls[0m
+[Mon Aug 10 12:11:40 2020]
+Finished job 86.
+48 of 92 steps (52%) done
+[33mcat /home/wuzhikun/Project/PopTest/population/bed/database/Sample_DEL_overlap_filt.bed /home/wuzhikun/Project/PopTest/population/bed/database/Sample_INS_overlap_filt.bed /home/wuzhikun/Project/PopTest/population/bed/database/Sample_INV_overlap_filt.bed /home/wuzhikun/Project/PopTest/population/bed/database/Sample_DUP_overlap_filt.bed | cut -f 4 | sort | uniq > /home/wuzhikun/Project/PopTest/population/bed/database/SV_overlap_filt_tags.xls[0m
+[Mon Aug 10 12:11:40 2020]
+Finished job 87.
+49 of 92 steps (53%) done
+[Mon Aug 10 12:11:40 2020]
+Finished job 88.
+50 of 92 steps (54%) done
+[Mon Aug 10 12:11:40 2020]
+Finished job 30.
+51 of 92 steps (55%) done
+[Mon Aug 10 12:11:40 2020]
+Finished job 85.
+52 of 92 steps (57%) done
+
+[Mon Aug 10 12:11:40 2020]
+rule WGS911CatPlot:
+    input: /home/wuzhikun/Project/PopTest/population/bed/WGS911/Sample_SV_overlap_category_stats.xls
+    output: /home/wuzhikun/Project/PopTest/population/bed/WGS911/Sample_SV_overlap_category_stats.pdf
+    log: /home/wuzhikun/Project/PopTest/log/WGS911CatPlot.log
+    jobid: 69
+
+[Mon Aug 10 12:11:40 2020]
+rule gnomADCatPlot:
+    input: /home/wuzhikun/Project/PopTest/population/bed/gnomAD/Sample_SV_overlap_category_stats.xls
+    output: /home/wuzhikun/Project/PopTest/population/bed/gnomAD/Sample_SV_overlap_category_stats.pdf
+    log: /home/wuzhikun/Project/PopTest/log/gnomADCatPlot.log
+    jobid: 67
+
+[Mon Aug 10 12:11:40 2020]
+rule DGVCatPlot:
+    input: /home/wuzhikun/Project/PopTest/population/bed/DGV/Sample_SV_overlap_category_stats.xls
+    output: /home/wuzhikun/Project/PopTest/population/bed/DGV/Sample_SV_overlap_category_stats.pdf
+    log: /home/wuzhikun/Project/PopTest/log/DGVCatPlot.log
+    jobid: 68
+
+[Mon Aug 10 12:11:40 2020]
+Finished job 14.
+53 of 92 steps (58%) done
+
+[Mon Aug 10 12:11:41 2020]
+rule WGS17795OverlapSumPlot:
+    input: /home/wuzhikun/Project/PopTest/population/bed/WGS17795/Sample_overlap_filt_chr_length_summary.xls
+    output: /home/wuzhikun/Project/PopTest/population/bed/WGS17795/Sample_common_overlap_SV_number.pdf, /home/wuzhikun/Project/PopTest/population/bed/WGS17795/Sample_common_overlap_SV_length.pdf
+    log: /home/wuzhikun/Project/PopTest/log/WGS17795OverlapSumPlot.log
+    jobid: 31
+
+[Mon Aug 10 12:11:41 2020]
+rule AllCatPlot:
+    input: /home/wuzhikun/Project/PopTest/population/bed/database/Sample_SV_overlap_category_stats.xls
+    output: /home/wuzhikun/Project/PopTest/population/bed/database/Sample_SV_overlap_category_stats.pdf
+    log: /home/wuzhikun/Project/PopTest/log/AllCatPlot.log
+    jobid: 64
+
+[Mon Aug 10 12:11:41 2020]
+rule gnomADOverlapSumPlot:
+    input: /home/wuzhikun/Project/PopTest/population/bed/gnomAD/Sample_overlap_filt_chr_length_summary.xls
+    output: /home/wuzhikun/Project/PopTest/population/bed/gnomAD/Sample_common_overlap_SV_number.pdf, /home/wuzhikun/Project/PopTest/population/bed/gnomAD/Sample_common_overlap_SV_length.pdf
+    log: /home/wuzhikun/Project/PopTest/log/gnomADOverlapSumPlot.log
+    jobid: 15
+
+[Mon Aug 10 12:11:41 2020]
+Finished job 40.
+54 of 92 steps (59%) done
+[Mon Aug 10 12:11:41 2020]
+Finished job 20.
+55 of 92 steps (60%) done
+[33mJob counts:
+	count	jobs
+	1	lofCDS
+	1[0m
+
+[Mon Aug 10 12:11:41 2020]
+rule DGVOverlapSumPlot:
+    input: /home/wuzhikun/Project/PopTest/population/bed/DGV/Sample_overlap_filt_chr_length_summary.xls
+    output: /home/wuzhikun/Project/PopTest/population/bed/DGV/Sample_common_overlap_SV_number.pdf, /home/wuzhikun/Project/PopTest/population/bed/DGV/Sample_common_overlap_SV_length.pdf
+    log: /home/wuzhikun/Project/PopTest/log/DGVOverlapSumPlot.log
+    jobid: 21
+
+[33mgrep CDS /home/wuzhikun/Project/PopTest/population/Annotation/Sample_common_SV_genepred_overlap_promoter_all_lof.bed > /home/wuzhikun/Project/PopTest/population/Annotation/Sample_common_SV_genepred_overlap_promoter_all_lof_CDS.bed[0m
+[Mon Aug 10 12:11:41 2020]
+rule WGS911OverlapSumPlot:
+    input: /home/wuzhikun/Project/PopTest/population/bed/WGS911/Sample_overlap_filt_chr_length_summary.xls
+    output: /home/wuzhikun/Project/PopTest/population/bed/WGS911/Sample_common_overlap_SV_number.pdf, /home/wuzhikun/Project/PopTest/population/bed/WGS911/Sample_common_overlap_SV_length.pdf
+    log: /home/wuzhikun/Project/PopTest/log/WGS911OverlapSumPlot.log
+    jobid: 41
+
+[Mon Aug 10 12:11:41 2020]
+Finished job 47.
+56 of 92 steps (61%) done
+
+[Mon Aug 10 12:11:41 2020]
+rule overlapSummaryPlot:
+    input: /home/wuzhikun/Project/PopTest/population/bed/All/Sample_overlap_summary.txt
+    output: /home/wuzhikun/Project/PopTest/population/bed/All/Sample_overlap_summary.pdf
+    log: /home/wuzhikun/Project/PopTest/log/overlapSummary.log
+    jobid: 48
+
+[Mon Aug 10 12:11:41 2020]
+Finished job 53.
+57 of 92 steps (62%) done
+
+[Mon Aug 10 12:11:41 2020]
+rule dataFreq:
+    input: /home/wuzhikun/Project/PopTest/population/bed/database/SV_overlap_filt_tags.xls, /home/wuzhikun/Project/PopTest/population/genotype/Sample_SV_genotype_frequency.txt
+    output: /home/wuzhikun/Project/PopTest/population/bed/database/SV_overlap_filt_tag_freq.xls, /home/wuzhikun/Project/PopTest/population/bed/novel/SV_overlap_filt_tag_freq.xls, /home/wuzhikun/Project/PopTest/population/bed/novel/SV_overlap_filt_tags.xls
+    jobid: 54
+
+[Mon Aug 10 12:11:42 2020]
+Finished job 76.
+58 of 92 steps (63%) done
+
+[Mon Aug 10 12:11:42 2020]
+rule OverlapCDS:
+    input: /home/wuzhikun/Project/PopTest/population/bed/WGS911/Sample_DEL_overlap_filt.bed, /home/wuzhikun/Project/PopTest/population/Annotation/Sample_common_SV_genepred_overlap_promoter_all_lof_CDS.bed
+    output: /home/wuzhikun/Project/PopTest/population/Annotation/Sample_common_SV_genepred_overlap_promoter_all_lof_CDS_tag_DEL_temp.txt, /home/wuzhikun/Project/PopTest/population/bed/WGS911/Sample_DEL_overlap_filt_cds.bed
+    jobid: 42
+    wildcards: SVtype=DEL
+
+[Mon Aug 10 12:11:42 2020]
+rule OverlapCDS:
+    input: /home/wuzhikun/Project/PopTest/population/bed/WGS911/Sample_INV_overlap_filt.bed, /home/wuzhikun/Project/PopTest/population/Annotation/Sample_common_SV_genepred_overlap_promoter_all_lof_CDS.bed
+    output: /home/wuzhikun/Project/PopTest/population/Annotation/Sample_common_SV_genepred_overlap_promoter_all_lof_CDS_tag_INV_temp.txt, /home/wuzhikun/Project/PopTest/population/bed/WGS911/Sample_INV_overlap_filt_cds.bed
+    jobid: 44
+    wildcards: SVtype=INV
+
+[Mon Aug 10 12:11:42 2020]
+rule OverlapCDS:
+    input: /home/wuzhikun/Project/PopTest/population/bed/WGS911/Sample_DUP_overlap_filt.bed, /home/wuzhikun/Project/PopTest/population/Annotation/Sample_common_SV_genepred_overlap_promoter_all_lof_CDS.bed
+    output: /home/wuzhikun/Project/PopTest/population/Annotation/Sample_common_SV_genepred_overlap_promoter_all_lof_CDS_tag_DUP_temp.txt, /home/wuzhikun/Project/PopTest/population/bed/WGS911/Sample_DUP_overlap_filt_cds.bed
+    jobid: 45
+    wildcards: SVtype=DUP
+
+[Mon Aug 10 12:11:42 2020]
+rule OverlapCDS:
+    input: /home/wuzhikun/Project/PopTest/population/bed/WGS911/Sample_INS_overlap_filt.bed, /home/wuzhikun/Project/PopTest/population/Annotation/Sample_common_SV_genepred_overlap_promoter_all_lof_CDS.bed
+    output: /home/wuzhikun/Project/PopTest/population/Annotation/Sample_common_SV_genepred_overlap_promoter_all_lof_CDS_tag_INS_temp.txt, /home/wuzhikun/Project/PopTest/population/bed/WGS911/Sample_INS_overlap_filt_cds.bed
+    jobid: 43
+    wildcards: SVtype=INS
+
+[33mcat /home/wuzhikun/Project/PopTest/population/bed/LRS15/Sample_DEL_overlap_filt.bed /home/wuzhikun/Project/PopTest/population/bed/LRS15/Sample_INV_overlap_filt.bed /home/wuzhikun/Project/PopTest/population/bed/LRS15/Sample_INS_overlap_filt.bed | cut -f 4 | sort | uniq > /home/wuzhikun/Project/PopTest/population/bed/LRS15/SV_overlap_filt_tags.xls[0m
+[Mon Aug 10 12:11:48 2020]
+Finished job 65.
+59 of 92 steps (64%) done
+
+[Mon Aug 10 12:11:48 2020]
+rule CatStatsPlot:
+    input: /home/wuzhikun/Project/PopTest/population/bed/LRS15/Sample_SV_overlap_category_stats.xls
+    output: /home/wuzhikun/Project/PopTest/population/bed/LRS15/Sample_SV_overlap_category_stats.pdf
+    log: /home/wuzhikun/Project/PopTest/log/CatStatsPlot.log
+    jobid: 66
+
+[Mon Aug 10 12:11:49 2020]
+Finished job 4.
+60 of 92 steps (65%) done
+
+[Mon Aug 10 12:11:49 2020]
+rule CellOverlapSumPlot:
+    input: /home/wuzhikun/Project/PopTest/population/bed/LRS15/SV_overlap_filt_chr_length_summary.xls
+    output: /home/wuzhikun/Project/PopTest/population/bed/LRS15/Sample_common_SV_number.pdf, /home/wuzhikun/Project/PopTest/population/bed/LRS15/Sample_common_SV_length.pdf
+    log: /home/wuzhikun/Project/PopTest/log/CellOverlapSumPlot.log
+    jobid: 5
+
+[Mon Aug 10 12:11:49 2020]
+rule overlapFreq:
+    input: /home/wuzhikun/Project/PopTest/population/bed/LRS15/SV_overlap_filt_tags.xls, /home/wuzhikun/Project/PopTest/population/bed/gnomAD/SV_overlap_filt_tags.xls, /home/wuzhikun/Project/PopTest/population/bed/DGV/SV_overlap_filt_tags.xls, /home/wuzhikun/Project/PopTest/population/bed/WGS911/SV_overlap_filt_tags.xls, /home/wuzhikun/Project/PopTest/population/genotype/Sample_SV_genotype_frequency.txt
+    output: /home/wuzhikun/Project/PopTest/population/bed/LRS15/SV_overlap_filt_tag_freq.xls, /home/wuzhikun/Project/PopTest/population/bed/gnomAD/SV_overlap_filt_tag_freq.xls, /home/wuzhikun/Project/PopTest/population/bed/DGV/SV_overlap_filt_tag_freq.xls, /home/wuzhikun/Project/PopTest/population/bed/WGS911/SV_overlap_filt_tag_freq.xls
+    jobid: 49
+
+[Mon Aug 10 12:11:50 2020]
+rule multipleTags:
+    input: /home/wuzhikun/Project/PopTest/population/bed/LRS15/SV_overlap_filt_tags.xls, /home/wuzhikun/Project/PopTest/population/bed/gnomAD/SV_overlap_filt_tags.xls, /home/wuzhikun/Project/PopTest/population/bed/DGV/SV_overlap_filt_tags.xls, /home/wuzhikun/Project/PopTest/population/bed/WGS911/SV_overlap_filt_tags.xls
+    output: /home/wuzhikun/Project/PopTest/population/bed/SV_overlap_filt_tags_overlap.xls, /home/wuzhikun/Project/PopTest/population/bed/SV_overlap_filt_tags_overlap-1.xls
+    log: /home/wuzhikun/Project/PopTest/log/multipleTags.log
+    jobid: 46
+
+[33mJob counts:
+	count	jobs
+	1	WGS911CatPlot
+	1[0m
+[33mJob counts:
+	count	jobs
+	1	gnomADCatPlot
+	1[0m
+[33mRscript /home/wuzhikun/github/PGC/script/OverlapCategory.R --input /home/wuzhikun/Project/PopTest/population/bed/WGS911/Sample_SV_overlap_category_stats.xls --pdf /home/wuzhikun/Project/PopTest/population/bed/WGS911/Sample_SV_overlap_category_stats.pdf --width 5 --height 4 > /home/wuzhikun/Project/PopTest/log/WGS911CatPlot.log 2>&1[0m
+[33mRscript /home/wuzhikun/github/PGC/script/OverlapCategory.R --input /home/wuzhikun/Project/PopTest/population/bed/gnomAD/Sample_SV_overlap_category_stats.xls --pdf /home/wuzhikun/Project/PopTest/population/bed/gnomAD/Sample_SV_overlap_category_stats.pdf --width 5 --height 4 > /home/wuzhikun/Project/PopTest/log/gnomADCatPlot.log 2>&1[0m
+[33mJob counts:
+	count	jobs
+	1	DGVCatPlot
+	1[0m
+[33mJob counts:
+	count	jobs
+	1	WGS17795OverlapSumPlot
+	1[0m
+[33mRscript /home/wuzhikun/github/PGC/script/OverlapCategory.R --input /home/wuzhikun/Project/PopTest/population/bed/DGV/Sample_SV_overlap_category_stats.xls --pdf /home/wuzhikun/Project/PopTest/population/bed/DGV/Sample_SV_overlap_category_stats.pdf --width 5 --height 4 > /home/wuzhikun/Project/PopTest/log/DGVCatPlot.log 2>&1[0m
+[33mJob counts:
+	count	jobs
+	1	AllCatPlot
+	1[0m
+[33mRscript /home/wuzhikun/github/PGC/script/OverlapSVLenChrBar.R --input /home/wuzhikun/Project/PopTest/population/bed/WGS17795/Sample_overlap_filt_chr_length_summary.xls --pdf1 /home/wuzhikun/Project/PopTest/population/bed/WGS17795/Sample_common_overlap_SV_number.pdf --pdf2 /home/wuzhikun/Project/PopTest/population/bed/WGS17795/Sample_common_overlap_SV_length.pdf --width 6 --height 4 > /home/wuzhikun/Project/PopTest/log/WGS17795OverlapSumPlot.log 2>&1[0m
+[33mRscript /home/wuzhikun/github/PGC/script/OverlapCategory.R --input /home/wuzhikun/Project/PopTest/population/bed/database/Sample_SV_overlap_category_stats.xls --pdf /home/wuzhikun/Project/PopTest/population/bed/database/Sample_SV_overlap_category_stats.pdf --width 5 --height 4 > /home/wuzhikun/Project/PopTest/log/AllCatPlot.log 2>&1[0m
+[33mJob counts:
+	count	jobs
+	1	WGS911OverlapSumPlot
+	1[0m
+[33mJob counts:
+	count	jobs
+	1	gnomADOverlapSumPlot
+	1[0m
+[33mJob counts:
+	count	jobs
+	1	DGVOverlapSumPlot
+	1[0m
+[33mRscript /home/wuzhikun/github/PGC/script/OverlapSVLenChrBar.R --input /home/wuzhikun/Project/PopTest/population/bed/WGS911/Sample_overlap_filt_chr_length_summary.xls --pdf1 /home/wuzhikun/Project/PopTest/population/bed/WGS911/Sample_common_overlap_SV_number.pdf --pdf2 /home/wuzhikun/Project/PopTest/population/bed/WGS911/Sample_common_overlap_SV_length.pdf --width 6 --height 4 > /home/wuzhikun/Project/PopTest/log/WGS911OverlapSumPlot.log 2>&1[0m
+[33mJob counts:
+	count	jobs
+	1	overlapSummaryPlot
+	1[0m
+[33mRscript /home/wuzhikun/github/PGC/script/OverlapSVLenChrBar.R --input /home/wuzhikun/Project/PopTest/population/bed/gnomAD/Sample_overlap_filt_chr_length_summary.xls --pdf1 /home/wuzhikun/Project/PopTest/population/bed/gnomAD/Sample_common_overlap_SV_number.pdf --pdf2 /home/wuzhikun/Project/PopTest/population/bed/gnomAD/Sample_common_overlap_SV_length.pdf --width 6 --height 4 > /home/wuzhikun/Project/PopTest/log/gnomADOverlapSumPlot.log 2>&1[0m
+[33mRscript /home/wuzhikun/github/PGC/script/OverlapSVLenChrBar.R --input /home/wuzhikun/Project/PopTest/population/bed/DGV/Sample_overlap_filt_chr_length_summary.xls --pdf1 /home/wuzhikun/Project/PopTest/population/bed/DGV/Sample_common_overlap_SV_number.pdf --pdf2 /home/wuzhikun/Project/PopTest/population/bed/DGV/Sample_common_overlap_SV_length.pdf --width 6 --height 4 > /home/wuzhikun/Project/PopTest/log/DGVOverlapSumPlot.log 2>&1[0m
+[33mRscript /home/wuzhikun/github/PGC/script/OverlapSummary.R --input /home/wuzhikun/Project/PopTest/population/bed/All/Sample_overlap_summary.txt --pdf /home/wuzhikun/Project/PopTest/population/bed/All/Sample_overlap_summary.pdf --width 5 --height 4 > /home/wuzhikun/Project/PopTest/log/overlapSummary.log 2>&1[0m
+[33mJob counts:
+	count	jobs
+	1	dataFreq
+	1[0m
+[33mJob counts:
+	count	jobs
+	1	OverlapCDS
+	1[0m
+[33mJob counts:
+	count	jobs
+	1	OverlapCDS
+	1[0m
+[33mJob counts:
+	count	jobs
+	1	OverlapCDS
+	1[0m
+[33mcut -f 4 /home/wuzhikun/Project/PopTest/population/Annotation/Sample_common_SV_genepred_overlap_promoter_all_lof_CDS.bed | sort | uniq > /home/wuzhikun/Project/PopTest/population/Annotation/Sample_common_SV_genepred_overlap_promoter_all_lof_CDS_tag_DUP_temp.txt[0m
+[33mcut -f 4 /home/wuzhikun/Project/PopTest/population/Annotation/Sample_common_SV_genepred_overlap_promoter_all_lof_CDS.bed | sort | uniq > /home/wuzhikun/Project/PopTest/population/Annotation/Sample_common_SV_genepred_overlap_promoter_all_lof_CDS_tag_INV_temp.txt[0m
+[33mcut -f 4 /home/wuzhikun/Project/PopTest/population/Annotation/Sample_common_SV_genepred_overlap_promoter_all_lof_CDS.bed | sort | uniq > /home/wuzhikun/Project/PopTest/population/Annotation/Sample_common_SV_genepred_overlap_promoter_all_lof_CDS_tag_DEL_temp.txt[0m
+[33mJob counts:
+	count	jobs
+	1	OverlapCDS
+	1[0m
+[33mcut -f 4 /home/wuzhikun/Project/PopTest/population/Annotation/Sample_common_SV_genepred_overlap_promoter_all_lof_CDS.bed | sort | uniq > /home/wuzhikun/Project/PopTest/population/Annotation/Sample_common_SV_genepred_overlap_promoter_all_lof_CDS_tag_INS_temp.txt[0m
+[33mJob counts:
+	count	jobs
+	1	CatStatsPlot
+	1[0m
+[33mRscript /home/wuzhikun/github/PGC/script/OverlapCategory.R --input /home/wuzhikun/Project/PopTest/population/bed/LRS15/Sample_SV_overlap_category_stats.xls --pdf /home/wuzhikun/Project/PopTest/population/bed/LRS15/Sample_SV_overlap_category_stats.pdf --width 5 --height 4 > /home/wuzhikun/Project/PopTest/log/CatStatsPlot.log 2>&1[0m
+[33mJob counts:
+	count	jobs
+	1	overlapFreq
+	1[0m
+[33mJob counts:
+	count	jobs
+	1	CellOverlapSumPlot
+	1[0m
+[Mon Aug 10 12:12:06 2020]
+Finished job 45.
+61 of 92 steps (66%) done
+[33mRscript /home/wuzhikun/github/PGC/script/OverlapSVLenChrBar.R --input /home/wuzhikun/Project/PopTest/population/bed/LRS15/SV_overlap_filt_chr_length_summary.xls --pdf1 /home/wuzhikun/Project/PopTest/population/bed/LRS15/Sample_common_SV_number.pdf --pdf2 /home/wuzhikun/Project/PopTest/population/bed/LRS15/Sample_common_SV_length.pdf --width 6 --height 4 > /home/wuzhikun/Project/PopTest/log/CellOverlapSumPlot.log 2>&1[0m
+[33mJob counts:
+	count	jobs
+	1	multipleTags
+	1[0m
+[33mpython /home/wuzhikun/github/PGC/src/pgc/multipleOverlap.py --files /home/wuzhikun/Project/PopTest/population/bed/LRS15/SV_overlap_filt_tags.xls,/home/wuzhikun/Project/PopTest/population/bed/gnomAD/SV_overlap_filt_tags.xls,/home/wuzhikun/Project/PopTest/population/bed/DGV/SV_overlap_filt_tags.xls,/home/wuzhikun/Project/PopTest/population/bed/WGS911/SV_overlap_filt_tags.xls --out /home/wuzhikun/Project/PopTest/population/bed/SV_overlap_filt_tags_overlap.xls > /home/wuzhikun/Project/PopTest/log/multipleTags.log 2>&1[0m
+[Mon Aug 10 12:12:07 2020]
+Finished job 42.
+62 of 92 steps (67%) done
+[Mon Aug 10 12:12:07 2020]
+Finished job 44.
+63 of 92 steps (68%) done
+[Mon Aug 10 12:12:07 2020]
+Finished job 43.
+64 of 92 steps (70%) done
+[Mon Aug 10 12:12:07 2020]
+Finished job 83.
+65 of 92 steps (71%) done
+
+[Mon Aug 10 12:12:07 2020]
+rule SampleTypePlot:
+    input: /home/wuzhikun/Project/PopTest/population/Category/Sample_SV_types.xls
+    output: /home/wuzhikun/Project/PopTest/population/Category/Sample_SV_types_hist.pdf, /home/wuzhikun/Project/PopTest/population/Category/Sample_SV_types_box.pdf
+    log: /home/wuzhikun/Project/PopTest/log/SummaryPlot.log
+    jobid: 61
+
+[Mon Aug 10 12:12:07 2020]
+rule SampleFreqPlot:
+    input: /home/wuzhikun/Project/PopTest/population/Category/Sample_SV_poly.xls
+    output: /home/wuzhikun/Project/PopTest/population/Category/Sample_SV_poly_hist.pdf, /home/wuzhikun/Project/PopTest/population/Category/Sample_SV_poly_box.pdf
+    log: /home/wuzhikun/Project/PopTest/log/SampleFreqPlot.log
+    jobid: 60
+
+[Mon Aug 10 12:12:07 2020]
+rule typeFreqPlot:
+    input: /home/wuzhikun/Project/PopTest/population/Category/Sample_type_freq.xls
+    output: /home/wuzhikun/Project/PopTest/population/Category/Sample_type_freq.pdf, /home/wuzhikun/Project/PopTest/population/Category/Sample_type_freq_percentage.pdf
+    log: /home/wuzhikun/Project/PopTest/log/typeFreqPlot.log
+    jobid: 59
+
+[33mJob counts:
+	count	jobs
+	1	SampleFreqPlot
+	1[0m
+[33mJob counts:
+	count	jobs
+	1	SampleTypePlot
+	1[0m
+[33mJob counts:
+	count	jobs
+	1	typeFreqPlot
+	1[0m
+[Mon Aug 10 12:12:20 2020]
+Finished job 69.
+66 of 92 steps (72%) done
+[Mon Aug 10 12:12:20 2020]
+Finished job 66.
+67 of 92 steps (73%) done
+[Mon Aug 10 12:12:20 2020]
+Finished job 64.
+68 of 92 steps (74%) done
+[Mon Aug 10 12:12:20 2020]
+Finished job 48.
+69 of 92 steps (75%) done
+[Mon Aug 10 12:12:20 2020]
+Finished job 67.
+70 of 92 steps (76%) done
+[Mon Aug 10 12:12:20 2020]
+Finished job 68.
+71 of 92 steps (77%) done
+[Mon Aug 10 12:12:20 2020]
+Finished job 41.
+72 of 92 steps (78%) done
+[Mon Aug 10 12:12:20 2020]
+Finished job 5.
+73 of 92 steps (79%) done
+[Mon Aug 10 12:12:20 2020]
+Finished job 15.
+74 of 92 steps (80%) done
+[Mon Aug 10 12:12:20 2020]
+Finished job 31.
+75 of 92 steps (82%) done
+[Mon Aug 10 12:12:20 2020]
+Finished job 21.
+76 of 92 steps (83%) done
+source activate Rmeta && Rscript /home/wuzhikun/github/PGC/script/SVFreqClass.R --input /home/wuzhikun/Project/PopTest/population/Category/Sample_type_freq.xls --pdf /home/wuzhikun/Project/PopTest/population/Category/Sample_type_freq.pdf --height 4 --width 5 --pdf2  /home/wuzhikun/Project/PopTest/population/Category/Sample_type_freq_percentage.pdf >  /home/wuzhikun/Project/PopTest/log/typeFreqPlot.log 2>&1
+[Mon Aug 10 12:13:27 2020]
+Finished job 59.
+77 of 92 steps (84%) done
+source activate Rmeta && Rscript /home/wuzhikun/github/PGC/script/SVTypeBarMultiple.R --input /home/wuzhikun/Project/PopTest/population/Category/Sample_SV_types.xls --hist /home/wuzhikun/Project/PopTest/population/Category/Sample_SV_types_hist.pdf --box /home/wuzhikun/Project/PopTest/population/Category/Sample_SV_types_box.pdf --width 8 --height 4 > /home/wuzhikun/Project/PopTest/log/SummaryPlot.log 2>&1
+[Mon Aug 10 12:13:27 2020]
+Finished job 61.
+78 of 92 steps (85%) done
+source activate Rmeta && Rscript /home/wuzhikun/github/PGC/script/SVFreqBarMultiple.R --input /home/wuzhikun/Project/PopTest/population/Category/Sample_SV_poly.xls --hist /home/wuzhikun/Project/PopTest/population/Category/Sample_SV_poly_hist.pdf --box /home/wuzhikun/Project/PopTest/population/Category/Sample_SV_poly_box.pdf --width 20 --height 4 > /home/wuzhikun/Project/PopTest/log/SampleFreqPlot.log 2>&1
+[Mon Aug 10 12:13:28 2020]
+Finished job 60.
+79 of 92 steps (86%) done
+[33mcat /home/wuzhikun/Project/PopTest/population/bed/LRS15/SV_overlap_filt_tags.xls /home/wuzhikun/Project/PopTest/population/bed/gnomAD/SV_overlap_filt_tags.xls /home/wuzhikun/Project/PopTest/population/bed/DGV/SV_overlap_filt_tags.xls /home/wuzhikun/Project/PopTest/population/bed/WGS911/SV_overlap_filt_tags.xls | sort | uniq > /home/wuzhikun/Project/PopTest/population/bed/SV_overlap_filt_tags_overlap-1.xls[0m
+[Mon Aug 10 12:13:52 2020]
+Finished job 46.
+80 of 92 steps (87%) done
+
+[Mon Aug 10 12:13:52 2020]
+rule SVtypeKnown:
+    input: /home/wuzhikun/Project/PopTest/population/bed/SV_overlap_filt_tags_overlap-1.xls, /home/wuzhikun/Project/PopTest/population/Merge/Sample_common_SV_Tag.xls
+    output: /home/wuzhikun/Project/PopTest/population/Merge/Sample_common_SV_Tag_name.xls, /home/wuzhikun/Project/PopTest/population/bed/novel/SV_overlap_filt_tags_overlap_novel.xls, /home/wuzhikun/Project/PopTest/population/bed/novel/SV_type_known_and_novwl_stats.txt
+    jobid: 57
+
+[Mon Aug 10 12:13:52 2020]
+rule knownAndNovelTags:
+    input: /home/wuzhikun/Project/PopTest/population/bed/SV_overlap_filt_tags_overlap.xls, /home/wuzhikun/Project/PopTest/population/Category/Sample_SV_category_tag.xls
+    output: /home/wuzhikun/Project/PopTest/population/Category/Kown_and_novel_tags_stats.txt, /home/wuzhikun/Project/PopTest/population/Category/Novel_SV_category_tag.xls
+    log: /home/wuzhikun/Project/PopTest/log/knownAndNovelTags.log
+    jobid: 62
+
+[33mJob counts:
+	count	jobs
+	1	knownAndNovelTags
+	1[0m
+[33mpython /home/wuzhikun/github/PGC/src/pgc/CatNovelStats.py --category /home/wuzhikun/Project/PopTest/population/Category/Sample_SV_category_tag.xls --overlap /home/wuzhikun/Project/PopTest/population/bed/SV_overlap_filt_tags_overlap.xls --stats /home/wuzhikun/Project/PopTest/population/Category/Kown_and_novel_tags_stats.txt --novel /home/wuzhikun/Project/PopTest/population/Category/Novel_SV_category_tag.xls > /home/wuzhikun/Project/PopTest/log/knownAndNovelTags.log 2>&1[0m
+[33mJob counts:
+	count	jobs
+	1	SVtypeKnown
+	1[0m
+[33msed '1d' /home/wuzhikun/Project/PopTest/population/Merge/Sample_common_SV_Tag.xls | cut -f 1 > /home/wuzhikun/Project/PopTest/population/Merge/Sample_common_SV_Tag_name.xls[0m
+[Mon Aug 10 12:13:55 2020]
+Finished job 62.
+81 of 92 steps (88%) done
+
+[Mon Aug 10 12:13:55 2020]
+rule knownAndNovelTagsPlot:
+    input: /home/wuzhikun/Project/PopTest/population/Category/Kown_and_novel_tags_stats.txt
+    output: /home/wuzhikun/Project/PopTest/population/Category/Kown_and_novel_tags_stats.pdf
+    log: /home/wuzhikun/Project/PopTest/log/knownAndNovelTagsPlot.log
+    jobid: 63
+
+[33mJob counts:
+	count	jobs
+	1	knownAndNovelTagsPlot
+	1[0m
+[33mRscript /home/wuzhikun/github/PGC/script/KnownNovelStack.R --input /home/wuzhikun/Project/PopTest/population/Category/Kown_and_novel_tags_stats.txt --pdf /home/wuzhikun/Project/PopTest/population/Category/Kown_and_novel_tags_stats.pdf --width 5 --height 4 > /home/wuzhikun/Project/PopTest/log/knownAndNovelTagsPlot.log 2>&1[0m
+[33mcat /home/wuzhikun/Project/PopTest/population/Merge/Sample_common_SV_Tag_name.xls /home/wuzhikun/Project/PopTest/population/bed/SV_overlap_filt_tags_overlap-1.xls | sort | uniq -c | sort -k 1nr | sed 's/^      //g' | grep '^1' | cut -f 2 -d ' ' > /home/wuzhikun/Project/PopTest/population/bed/novel/SV_overlap_filt_tags_overlap_novel.xls[0m
+[Mon Aug 10 12:14:01 2020]
+Finished job 57.
+82 of 92 steps (89%) done
+
+[Mon Aug 10 12:14:01 2020]
+rule SVtypeKnownPlot:
+    input: /home/wuzhikun/Project/PopTest/population/bed/novel/SV_type_known_and_novwl_stats.txt
+    output: /home/wuzhikun/Project/PopTest/population/bed/novel/SV_type_known_and_novwl_stats.pdf
+    log: /home/wuzhikun/Project/PopTest/log/SVtypeKnownPlot.log
+    jobid: 58
+
+[Mon Aug 10 12:14:01 2020]
+Finished job 63.
+83 of 92 steps (90%) done
+[33mJob counts:
+	count	jobs
+	1	SVtypeKnownPlot
+	1[0m
+[33mRscript /home/wuzhikun/github/PGC/script/KnownNovelStack.R --input /home/wuzhikun/Project/PopTest/population/bed/novel/SV_type_known_and_novwl_stats.txt --pdf /home/wuzhikun/Project/PopTest/population/bed/novel/SV_type_known_and_novwl_stats.pdf --width 4 --height 4 > /home/wuzhikun/Project/PopTest/log/SVtypeKnownPlot.log 2>&1[0m
+[Mon Aug 10 12:14:07 2020]
+Finished job 58.
+84 of 92 steps (91%) done
+[33mcut -f 1 /home/wuzhikun/Project/PopTest/population/bed/novel/SV_overlap_filt_tag_freq.xls > /home/wuzhikun/Project/PopTest/population/bed/novel/SV_overlap_filt_tags.xls[0m
+[Mon Aug 10 12:15:49 2020]
+Finished job 54.
+85 of 92 steps (92%) done
+
+[Mon Aug 10 12:15:49 2020]
+rule dataFreqStat:
+    input: /home/wuzhikun/Project/PopTest/population/bed/database/SV_overlap_filt_tag_freq.xls, /home/wuzhikun/Project/PopTest/population/bed/novel/SV_overlap_filt_tag_freq.xls
+    output: /home/wuzhikun/Project/PopTest/population/bed/database/SV_overlap_filt_tag_freq_stat.xls, /home/wuzhikun/Project/PopTest/population/bed/novel/SV_overlap_filt_tag_freq_stat.xls
+    log: /home/wuzhikun/Project/PopTest/log/dataFreqStat.log
+    jobid: 55
+
+[33mJob counts:
+	count	jobs
+	1	dataFreqStat
+	1[0m
+[33mpython /home/wuzhikun/github/PGC/src/pgc/TypeAlleleFrequency.py --input /home/wuzhikun/Project/PopTest/population/bed/database/SV_overlap_filt_tag_freq.xls --out /home/wuzhikun/Project/PopTest/population/bed/database/SV_overlap_filt_tag_freq_stat.xls > /home/wuzhikun/Project/PopTest/log/dataFreqStat.log 2>&1[0m
+[33mpython /home/wuzhikun/github/PGC/src/pgc/TypeAlleleFrequency.py --input /home/wuzhikun/Project/PopTest/population/bed/novel/SV_overlap_filt_tag_freq.xls --out /home/wuzhikun/Project/PopTest/population/bed/novel/SV_overlap_filt_tag_freq_stat.xls >> /home/wuzhikun/Project/PopTest/log/dataFreqStat.log 2>&1[0m
+[Mon Aug 10 12:15:55 2020]
+Finished job 55.
+86 of 92 steps (93%) done
+
+[Mon Aug 10 12:15:55 2020]
+rule NovelFrequencyPlot:
+    input: /home/wuzhikun/Project/PopTest/population/bed/database/SV_overlap_filt_tag_freq_stat.xls, /home/wuzhikun/Project/PopTest/population/bed/novel/SV_overlap_filt_tag_freq_stat.xls
+    output: /home/wuzhikun/Project/PopTest/population/bed/database/SV_overlap_filt_tag_freq_stat.pdf, /home/wuzhikun/Project/PopTest/population/bed/novel/SV_overlap_filt_tag_freq_stat.pdf
+    log: /home/wuzhikun/Project/PopTest/log/NovelFrequencyPlot.log
+    jobid: 56
+
+[33mJob counts:
+	count	jobs
+	1	NovelFrequencyPlot
+	1[0m
+[33mRscript /home/wuzhikun/github/PGC/script/TypeFreqBarSingle-1.R --input /home/wuzhikun/Project/PopTest/population/bed/database/SV_overlap_filt_tag_freq_stat.xls --pdf /home/wuzhikun/Project/PopTest/population/bed/database/SV_overlap_filt_tag_freq_stat.pdf --width 6 --height 4 > /home/wuzhikun/Project/PopTest/log/NovelFrequencyPlot.log 2>&1[0m
+[33mRscript /home/wuzhikun/github/PGC/script/TypeFreqBarSingle-1.R --input /home/wuzhikun/Project/PopTest/population/bed/novel/SV_overlap_filt_tag_freq_stat.xls --pdf /home/wuzhikun/Project/PopTest/population/bed/novel/SV_overlap_filt_tag_freq_stat.pdf --width 6 --height 4 >> /home/wuzhikun/Project/PopTest/log/NovelFrequencyPlot.log 2>&1[0m
+[Mon Aug 10 12:16:04 2020]
+Finished job 56.
+87 of 92 steps (95%) done
+[Mon Aug 10 12:16:19 2020]
+Finished job 49.
+88 of 92 steps (96%) done
+
+[Mon Aug 10 12:16:19 2020]
+rule FreqStat:
+    input: /home/wuzhikun/Project/PopTest/population/bed/LRS15/SV_overlap_filt_tag_freq.xls, /home/wuzhikun/Project/PopTest/population/bed/gnomAD/SV_overlap_filt_tag_freq.xls, /home/wuzhikun/Project/PopTest/population/bed/DGV/SV_overlap_filt_tag_freq.xls, /home/wuzhikun/Project/PopTest/population/bed/WGS911/SV_overlap_filt_tag_freq.xls
+    output: /home/wuzhikun/Project/PopTest/population/bed/LRS15/SV_overlap_filt_tag_freq_stat.xls, /home/wuzhikun/Project/PopTest/population/bed/gnomAD/SV_overlap_filt_tag_freq_stat.xls, /home/wuzhikun/Project/PopTest/population/bed/DGV/SV_overlap_filt_tag_freq_stat.xls, /home/wuzhikun/Project/PopTest/population/bed/WGS911/SV_overlap_filt_tag_freq_stat.xls
+    log: /home/wuzhikun/Project/PopTest/log/FreqStat.log
+    jobid: 50
+
+[33mJob counts:
+	count	jobs
+	1	FreqStat
+	1[0m
+[33mpython /home/wuzhikun/github/PGC/src/pgc/TypeAlleleFrequency.py --input /home/wuzhikun/Project/PopTest/population/bed/LRS15/SV_overlap_filt_tag_freq.xls --out /home/wuzhikun/Project/PopTest/population/bed/LRS15/SV_overlap_filt_tag_freq_stat.xls > /home/wuzhikun/Project/PopTest/log/FreqStat.log 2>&1[0m
+[33mpython /home/wuzhikun/github/PGC/src/pgc/TypeAlleleFrequency.py --input /home/wuzhikun/Project/PopTest/population/bed/gnomAD/SV_overlap_filt_tag_freq.xls --out /home/wuzhikun/Project/PopTest/population/bed/gnomAD/SV_overlap_filt_tag_freq_stat.xls >> /home/wuzhikun/Project/PopTest/log/FreqStat.log 2>&1[0m
+[33mpython /home/wuzhikun/github/PGC/src/pgc/TypeAlleleFrequency.py --input /home/wuzhikun/Project/PopTest/population/bed/DGV/SV_overlap_filt_tag_freq.xls --out /home/wuzhikun/Project/PopTest/population/bed/DGV/SV_overlap_filt_tag_freq_stat.xls >> /home/wuzhikun/Project/PopTest/log/FreqStat.log 2>&1[0m
+[33mpython /home/wuzhikun/github/PGC/src/pgc/TypeAlleleFrequency.py --input /home/wuzhikun/Project/PopTest/population/bed/WGS911/SV_overlap_filt_tag_freq.xls --out /home/wuzhikun/Project/PopTest/population/bed/WGS911/SV_overlap_filt_tag_freq_stat.xls >> /home/wuzhikun/Project/PopTest/log/FreqStat.log 2>&1[0m
+[Mon Aug 10 12:16:24 2020]
+Finished job 50.
+89 of 92 steps (97%) done
+
+[Mon Aug 10 12:16:24 2020]
+rule FreqSummary:
+    input: /home/wuzhikun/Project/PopTest/population/bed/LRS15/SV_overlap_filt_tag_freq_stat.xls, /home/wuzhikun/Project/PopTest/population/bed/gnomAD/SV_overlap_filt_tag_freq_stat.xls, /home/wuzhikun/Project/PopTest/population/bed/DGV/SV_overlap_filt_tag_freq_stat.xls, /home/wuzhikun/Project/PopTest/population/bed/WGS911/SV_overlap_filt_tag_freq_stat.xls
+    output: /home/wuzhikun/Project/PopTest/population/bed/SV_overlap_filt_tag_freq_stat_summary.xls
+    jobid: 51
+
+[33mJob counts:
+	count	jobs
+	1	FreqSummary
+	1[0m
+[[4195 5257   21]
+ [2142 2415   15]
+ [1549 1732    7]
+ [2256 2621   13]
+ [1782 2118    8]
+ [1612 1924    6]
+ [1594 2037   10]
+ [1336 2233    2]
+ [ 458  563    2]
+ [ 235  312    6]
+ [ 150  183    2]
+ [  78   81    3]
+ [   3    0    2]]
+[[6759  836 4222   24]
+ [1645  162 1645    3]
+ [ 813   50  873    2]
+ [ 987   40 1104    2]
+ [ 726   12  803    2]
+ [ 689    4  610    0]
+ [ 685    3  511    1]
+ [ 567    4  356    0]
+ [ 192    0   84    0]
+ [  96    0   72    1]
+ [  69    0   37    1]
+ [  37    0   11    1]
+ [   1    0    0    1]]
+[[12628  1098   139   114]
+ [ 3639   231    48    41]
+ [ 1923    90    18    22]
+ [ 2530    94    47    19]
+ [ 1877    44    42    11]
+ [ 1674    23    48    11]
+ [ 1638    19    70    13]
+ [ 1385    18   159     4]
+ [  474     6    46     2]
+ [  253     2    14     5]
+ [  161     0     8     3]
+ [   81     0     7     3]
+ [    3     0     0     2]]
+[[5778  325 1652   78]
+ [2121   84 1213   28]
+ [1120   26  879   12]
+ [1456   19 1191   14]
+ [1107    8  894    4]
+ [1012    3  755    5]
+ [1065    3  786    3]
+ [ 953    3  791    0]
+ [ 306    0  193    0]
+ [ 162    0  127    1]
+ [ 109    0   85    2]
+ [  62    0   40    0]
+ [   3    0    0    0]]
+[Mon Aug 10 12:16:26 2020]
+Finished job 51.
+90 of 92 steps (98%) done
+
+[Mon Aug 10 12:16:26 2020]
+rule FreqSummaryPlot:
+    input: /home/wuzhikun/Project/PopTest/population/bed/SV_overlap_filt_tag_freq_stat_summary.xls
+    output: /home/wuzhikun/Project/PopTest/population/bed/SV_overlap_filt_tag_freq_stat_summary.pdf
+    log: /home/wuzhikun/Project/PopTest/log/FreqSummaryPlot.log
+    jobid: 52
+
+[33mJob counts:
+	count	jobs
+	1	FreqSummaryPlot
+	1[0m
+[33mRscript /home/wuzhikun/github/PGC/script/TypeFreqBarSingle.R --input /home/wuzhikun/Project/PopTest/population/bed/SV_overlap_filt_tag_freq_stat_summary.xls --pdf /home/wuzhikun/Project/PopTest/population/bed/SV_overlap_filt_tag_freq_stat_summary.pdf --width 6 --height 4 > /home/wuzhikun/Project/PopTest/log/FreqSummaryPlot.log 2>&1[0m
+[Mon Aug 10 12:16:32 2020]
+Finished job 52.
+91 of 92 steps (99%) done
+
+[Mon Aug 10 12:16:32 2020]
+localrule all:
+    input: /home/wuzhikun/Project/PopTest/population/bed/LRS15/Sample_DEL_overlap_filt.bed, /home/wuzhikun/Project/PopTest/population/bed/LRS15/SV_overlap_filt_chr_length_summary.xls, /home/wuzhikun/Project/PopTest/population/bed/LRS15/Sample_common_SV_number.pdf, /home/wuzhikun/Project/PopTest/population/bed/gnomAD/Sample_DEL_overlap.bed, /home/wuzhikun/Project/PopTest/population/bed/gnomAD/Sample_INS_overlap.bed, /home/wuzhikun/Project/PopTest/population/bed/gnomAD/Sample_INV_overlap.bed, /home/wuzhikun/Project/PopTest/population/bed/gnomAD/Sample_DUP_overlap.bed, /home/wuzhikun/Project/PopTest/population/bed/gnomAD/Sample_DEL_overlap_filt.bed, /home/wuzhikun/Project/PopTest/population/bed/gnomAD/Sample_INS_overlap_filt.bed, /home/wuzhikun/Project/PopTest/population/bed/gnomAD/Sample_INV_overlap_filt.bed, /home/wuzhikun/Project/PopTest/population/bed/gnomAD/Sample_DUP_overlap_filt.bed, /home/wuzhikun/Project/PopTest/population/bed/gnomAD/Sample_overlap_filt_chr_length_summary.xls, /home/wuzhikun/Project/PopTest/population/bed/gnomAD/Sample_common_overlap_SV_number.pdf, /home/wuzhikun/Project/PopTest/population/bed/DGV/Sample_DEL_overlap.bed, /home/wuzhikun/Project/PopTest/population/bed/DGV/Sample_INS_overlap.bed, /home/wuzhikun/Project/PopTest/population/bed/DGV/Sample_INV_overlap.bed, /home/wuzhikun/Project/PopTest/population/bed/DGV/Sample_DUP_overlap.bed, /home/wuzhikun/Project/PopTest/population/bed/DGV/Sample_overlap_filt_chr_length_summary.xls, /home/wuzhikun/Project/PopTest/population/bed/DGV/Sample_common_overlap_SV_length.pdf, /home/wuzhikun/Project/PopTest/population/bed/WGS17795/Sample_DEL_overlap.bed, /home/wuzhikun/Project/PopTest/population/bed/WGS17795/Sample_INS_overlap.bed, /home/wuzhikun/Project/PopTest/population/bed/WGS17795/Sample_INV_overlap.bed, /home/wuzhikun/Project/PopTest/population/bed/WGS17795/Sample_DUP_overlap.bed, /home/wuzhikun/Project/PopTest/population/bed/WGS17795/Sample_DEL_overlap_filt.bed, /home/wuzhikun/Project/PopTest/population/bed/WGS17795/Sample_INS_overlap_filt.bed, /home/wuzhikun/Project/PopTest/population/bed/WGS17795/Sample_INV_overlap_filt.bed, /home/wuzhikun/Project/PopTest/population/bed/WGS17795/Sample_DUP_overlap_filt.bed, /home/wuzhikun/Project/PopTest/population/bed/WGS17795/SV_overlap_filt_tags.xls, /home/wuzhikun/Project/PopTest/population/bed/WGS17795/Sample_common_overlap_SV_number.pdf, /home/wuzhikun/Project/PopTest/population/bed/WGS911/Sample_DEL_overlap.bed, /home/wuzhikun/Project/PopTest/population/bed/WGS911/Sample_INS_overlap.bed, /home/wuzhikun/Project/PopTest/population/bed/WGS911/Sample_INV_overlap.bed, /home/wuzhikun/Project/PopTest/population/bed/WGS911/Sample_DUP_overlap.bed, /home/wuzhikun/Project/PopTest/population/bed/WGS911/Sample_DEL_overlap_filt.bed, /home/wuzhikun/Project/PopTest/population/bed/WGS911/Sample_INS_overlap_filt.bed, /home/wuzhikun/Project/PopTest/population/bed/WGS911/Sample_INV_overlap_filt.bed, /home/wuzhikun/Project/PopTest/population/bed/WGS911/Sample_DUP_overlap_filt.bed, /home/wuzhikun/Project/PopTest/population/bed/WGS911/Sample_overlap_filt_chr_length_summary.xls, /home/wuzhikun/Project/PopTest/population/bed/WGS911/Sample_common_overlap_SV_number.pdf, /home/wuzhikun/Project/PopTest/population/bed/WGS911/Sample_DEL_overlap_filt_cds.bed, /home/wuzhikun/Project/PopTest/population/bed/WGS911/Sample_INS_overlap_filt_cds.bed, /home/wuzhikun/Project/PopTest/population/bed/WGS911/Sample_INV_overlap_filt_cds.bed, /home/wuzhikun/Project/PopTest/population/bed/WGS911/Sample_DUP_overlap_filt_cds.bed, /home/wuzhikun/Project/PopTest/population/bed/SV_overlap_filt_tags_overlap.xls, /home/wuzhikun/Project/PopTest/population/bed/All/Sample_overlap_summary.txt, /home/wuzhikun/Project/PopTest/population/bed/All/Sample_overlap_summary.pdf, /home/wuzhikun/Project/PopTest/population/bed/LRS15/SV_overlap_filt_tag_freq.xls, /home/wuzhikun/Project/PopTest/population/bed/LRS15/SV_overlap_filt_tag_freq_stat.xls, /home/wuzhikun/Project/PopTest/population/bed/SV_overlap_filt_tag_freq_stat_summary.xls, /home/wuzhikun/Project/PopTest/population/bed/SV_overlap_filt_tag_freq_stat_summary.pdf, /home/wuzhikun/Project/PopTest/population/bed/database/SV_overlap_filt_tags.xls, /home/wuzhikun/Project/PopTest/population/bed/database/SV_overlap_filt_tag_freq.xls, /home/wuzhikun/Project/PopTest/population/bed/database/SV_overlap_filt_tag_freq_stat.xls, /home/wuzhikun/Project/PopTest/population/bed/database/SV_overlap_filt_tag_freq_stat.pdf, /home/wuzhikun/Project/PopTest/population/bed/novel/SV_type_known_and_novwl_stats.txt, /home/wuzhikun/Project/PopTest/population/bed/novel/SV_type_known_and_novwl_stats.pdf, /home/wuzhikun/Project/PopTest/population/Category/Sample_type_freq_percentage.pdf, /home/wuzhikun/Project/PopTest/population/Category/Sample_SV_poly_hist.pdf, /home/wuzhikun/Project/PopTest/population/Category/Sample_SV_types_hist.pdf, /home/wuzhikun/Project/PopTest/population/Category/Kown_and_novel_tags_stats.txt, /home/wuzhikun/Project/PopTest/population/Category/Kown_and_novel_tags_stats.pdf, /home/wuzhikun/Project/PopTest/population/bed/database/Sample_SV_overlap_category_stats.pdf, /home/wuzhikun/Project/PopTest/population/bed/LRS15/Sample_SV_overlap_category_stats.xls, /home/wuzhikun/Project/PopTest/population/bed/LRS15/Sample_SV_overlap_category_stats.pdf, /home/wuzhikun/Project/PopTest/population/bed/gnomAD/Sample_SV_overlap_category_stats.pdf, /home/wuzhikun/Project/PopTest/population/bed/DGV/Sample_SV_overlap_category_stats.pdf, /home/wuzhikun/Project/PopTest/population/bed/WGS911/Sample_SV_overlap_category_stats.pdf
+    jobid: 1
+
+[Mon Aug 10 12:16:32 2020]
+Finished job 1.
+92 of 92 steps (100%) done
+Complete log: /home/wuzhikun/Project/PopTest/population/.snakemake/log/2020-08-10T120948.320232.snakemake.log
