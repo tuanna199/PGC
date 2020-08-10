@@ -1,0 +1,5 @@
+Sample	Sex	Age	Province	Region
+CN247	Female	54	Guangdong	South
+CN248	Female	53	Guangdong	South
+CN249	Male	56	Guangdong	South
+CN250	Male	56	Guangdong	South

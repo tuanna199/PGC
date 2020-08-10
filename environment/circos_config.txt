@@ -1,0 +1,508 @@
+show_links      = yes
+show_highlights = yes
+show_text       = yes
+show_heatmaps   = yes
+show_scatter    = yes
+show_histogram  = yes
+
+
+
+
+karyotype  = /home/wuzhikun/anaconda3/envs/circos/data/karyotype/karyotype.human.hg38.txt
+
+chromosomes_units = 1000000
+chromosomes_display_default = no
+# chromosomes       = hs1;hs2;hs3;hs4;hs5;hs6;hs7;hs8;hs9;hs10;hs11;hs12;hs13;hs14;hs15;hs16;hs17;hs18;hs19;hs20;hs21;hs22;hsX;hsY
+chromosomes       = hs1;hs2;hs3;hs4;hs5;hs6;hs7;hs8;hs9;hs10;hs11;hs12;hs13;hs14;hs15;hs16;hs17;hs18;hs19;hs20;hs21;hs22;hsX
+
+
+
+
+
+<<include /home/wuzhikun/anaconda3/envs/circos/etc/colors_fonts_patterns.conf>>
+
+
+
+<image>
+
+### general
+dir = /home/wuzhikun/Project/Population/ 
+#dir = conf(configdir)
+file = circos.png
+png = yes
+svg = yes
+
+# radius of inscribed circle in image
+radius         = 1500p
+
+# by default angle=0 is at 3 o'clock position
+angle_offset      = -90
+
+#angle_orientation = counterclockwise
+
+auto_alpha_colors = yes
+auto_alpha_steps  = 5
+
+### background
+background = white
+
+</image>
+
+
+
+
+
+<ideogram>
+
+<spacing>
+default = 0.005r
+</spacing>
+
+### ideogram.position
+radius           = 0.90r
+thickness        = 80p
+fill             = no
+fill_color       = black
+stroke_thickness = 1
+stroke_color     = black
+
+
+### ideogram.label
+show_label       = yes
+label_font       = default
+label_radius     = dims(ideogram,radius) + 0.075r
+label_with_tag   = yes
+label_size       = 50  #36
+label_parallel   = yes
+label_case       = upper #lower
+label_format     = eval(sprintf(var(label))) # eval(sprintf("chr%s",var(label)))
+
+
+### bands
+show_bands            = yes
+fill_bands            = yes
+band_stroke_thickness = 2
+band_stroke_color     = white
+band_transparency     = 2
+
+</ideogram>
+
+
+
+
+
+### <<include config/ticks.conf>>
+
+show_ticks          = yes
+show_tick_labels    = yes
+
+<ticks>
+
+radius           = dims(ideogram,radius_outer)
+orientation      = out
+label_multiplier = 1e-6
+color            = black
+size             = 15p
+thickness        = 3p
+label_offset     = 5p
+
+<tick>
+spacing        = 20u
+show_label     = yes
+label_size     = 28p
+label_offset   = 10p
+format         = %d
+color          = grey60
+</tick>
+
+#<tick>
+#spacing        = 5u
+#color          = grey
+#size           = 10p
+#</tick>
+
+</ticks>
+
+
+
+<plots>
+
+type = line
+thickness = 2
+
+
+<plot>
+type = heatmap
+file = /home/wuzhikun/Project/Population/preStudies/repeat_count_TEs.hash.bed
+#file = /home/wuzhikun/Project/Population/preStudies/repeat_density_TEs.hash.bed
+
+
+r1      = 0.93r
+r0      = 0.89r
+
+color            = ylorrd-9-seq #ylgnbu-9-seq
+pattern          = hline,vline
+color_mapping    = 0 #default
+min              = 200
+max              = 1500
+stroke_thickness = 1
+
+
+</plot>
+
+
+<plot>
+type = heatmap
+file = /home/wuzhikun/database/Annovar/hg38/hg38_ensGene_dechr_gene_density_circos.txt
+
+r1 = 0.98r
+r0 = 0.94r
+
+color            = ylgnbu-9-seq #spectral-11-div  #ylgnbu-9-seq-rev,ylorrd-9-seq
+pattern          = hline,vline
+color_mapping    = 0 #default
+min              = 1
+max              = 40
+stroke_thickness = 1
+
+
+</plot>
+
+
+
+
+<plot>
+
+max_gap = 1u
+file    = /home/wuzhikun/Project/Population/population/Stats/Sample_DEL_circos.xls
+color   = green
+min     = 0
+max     = 100
+r0      = 0.73r
+r1      = 0.87r
+stroke_type = outline
+thickness   = 4
+extend_bin  = no
+
+
+# fill_color = vdgrey_a3
+
+# <backgrounds>
+# <background>
+# color     = vvlgreen
+# y0        = 0.006
+# </background>
+# <background>
+# color     = vvlred
+# y1        = 0.002
+# </background>
+# </backgrounds>
+
+#<axes>
+#<axis>
+#color     = lgrey_a2
+#thickness = 0.5
+#spacing   = 0.05r
+#</axis>
+#</axes>
+
+# <rules>
+
+# <rule>
+# condition    = var(value) > 0.006
+# color        = dgreen
+# fill_color   = dgreen_a1
+# </rule>
+
+# <rule>
+# condition    = var(value) < 0.002
+# color        = dred
+# fill_color   = dred_a1
+# </rule>
+
+# </rules>
+
+</plot>
+
+
+<plot>
+
+max_gap = 1u
+file    = /home/wuzhikun/Project/Population/population/Stats/Sample_INS_circos.xls
+color   = blue
+min     = 0
+max     = 100
+r0      = 0.58r
+r1      = 0.72r
+stroke_type = outline
+thickness   = 4
+extend_bin  = no
+
+
+#<axes>
+#<axis>
+#color     = lgrey_a2
+#thickness = 0.5
+#spacing   = 0.05r
+#</axis>
+#</axes>
+
+</plot>
+
+
+
+
+# <plot>
+
+# max_gap = 1u
+# file    = /home/wuzhikun/Project/Population/population/Stats/Sample_INV_circos.xls
+# color   = yellow
+# min     = 0
+# max     = 3
+# r0      = 0.51r
+# r1      = 0.66r
+
+# <axes>
+# <axis>
+# color     = lgrey_a2
+# thickness = 0.5
+# spacing   = 0.05r
+# </axis>
+# </axes>
+
+# </plot>
+
+# <plot>
+
+# max_gap = 1u
+# file    = /home/wuzhikun/Project/Population/population/Stats/Sample_DUP_circos.xls
+# color   = black
+# min     = 0
+# max     = 3
+# r0      = 0.35r
+# r1      = 0.50r
+
+# <axes>
+# <axis>
+# color     = lgrey_a2
+# thickness = 0.5
+# spacing   = 0.05r
+# </axis>
+# </axes>
+
+# </plot>
+
+
+
+
+#<plots>
+
+
+ #color  = spectral-9-div
+ #color_alt = black,spectral-8-div,grey
+
+# stroke_thickness = 1
+# stroke_color     = black
+# min              = 0
+# max              = 3
+
+
+#<plot>
+#type    = heatmap
+#file             = /home/wuzhikun/database/genome/GRCh38/tandem_repeats/repeat_stats.xls
+
+#r1      = 0.95r
+#r0      = 0.87r
+
+#color            = ylorrd-9-seq-rev,ylgnbu-9-seq
+#pattern          = hline,vline
+#color_mapping    = 0  # default
+#min              = 0
+#max              = 3
+#stroke_thickness = 0
+#</plot>
+
+
+# <plot>
+# type    = heatmap
+# file             = /home/wuzhikun/Project/NanoTrio/circos_test/INS.xls
+
+# r1      = 0.85r
+# r0      = 0.75r
+
+# color            = ylorrd-9-seq-rev,ylgnbu-9-seq
+# pattern          = hline,vline
+# color_mapping    = 0  # default
+# min              = 1
+# max              = 20
+# stroke_thickness = 0
+# </plot>
+
+
+#</plots>
+
+
+
+
+
+
+# tall histogram immediately inside the ideogram circle
+# background* parameters define a colored backdrop for this histogram
+# axes* define y-axes
+
+<plot>
+
+type      = histogram
+file      = /home/wuzhikun/Project/Population/population/Stats/Sample_DUP_circos.xls
+
+r0      = 0.43r
+r1      = 0.57r
+max       = 8
+min       = 0
+
+stroke_type = outline
+thickness   = 4
+color       = vdyellow #orange
+extend_bin  = no
+
+# <backgrounds>
+# <background>
+# color = vvlgrey
+# </background>
+# </backgrounds>
+
+# <axes>
+# <axis>
+# spacing   = 0.1r
+# color     = lgrey
+# thickness = 0.5
+# </axis>
+# </axes>
+
+# <rules>
+# <rule>
+# use       = no
+# condition = var(value) < 0
+# show      = no
+# </rule>
+
+# <rule>
+# #condition  = var(value) < 0
+# condition  = 1
+# #fill_color = lred
+# fill_color = eval(sprintf("spectral-9-div-%d",remap_int(var(value),-1,1,1,9)))
+# </rule>
+# </rules>
+
+</plot>
+
+
+
+
+<plot>
+
+type      = histogram
+file      = /home/wuzhikun/Project/Population/population/Stats/Sample_INV_circos.xls
+
+min     = 0
+max     = 5
+r0      = 0.28r
+r1      = 0.42r
+
+stroke_type = outline
+thickness   = 4
+color       = orange  #vdyellow
+extend_bin  = no
+</plot>
+
+
+</plots>
+
+
+
+
+
+#<links>
+
+
+
+#<link>
+
+#file    = /home/wuzhikun/Project/Population/population/Stats/Sample_merge_tra_circos.xls
+
+#z      = 0
+#radius = 0.345r
+#crest  = 0.5
+#color  = red
+#bezier_radius        = 0r
+#bezier_radius_purity = 0.5
+#thickness  = 1.5
+
+
+# <rules>
+
+# #<rule>
+# ## multiple conditions are combined with AND
+# ## i.e. all conditions must be satisfied
+# #condition  = var(interchr)
+# #condition  = within(hs2,40Mb,80Mb)
+# #z          = 60
+# #color      = red
+# #thickness  = 5
+# #</rule>
+
+# <rule>
+# # multiple conditions are combined with AND
+# # i.e. all conditions must be satisfied
+# condition  = var(interchr)
+# z          = 60
+# color      = red
+# thickness  = 3
+# </rule>
+
+# <rule>
+# # multiple conditions are combined with AND
+# # i.e. all conditions must be satisfied
+# condition  = var(intrachr)
+# z          = 60
+# color      = green
+# thickness  = 3
+# </rule>
+
+
+# <rule>
+# condition  = max(var(size1),var(size2)) > 40kb
+# z          = 50
+# color      = green
+# thickness  = 5
+# </rule>
+
+# <rule>
+# condition  = max(var(size1),var(size2)) > 10kb
+# z          = 45
+# color      = dgrey
+# thickness  = 4
+# </rule>
+
+# <rule>
+# condition  = max(var(size1),var(size2)) > 5kb
+# z          = 40
+# color      = grey
+# thickness  = 3
+# </rule>
+
+# <rule>
+# condition  = max(var(size1),var(size2)) > 1000
+# z          = 35
+# color      = lgrey
+# thickness  = 2
+# </rule>
+
+# </rules>
+
+#</link>
+
+#</links>
+
+<<include /home/wuzhikun/anaconda3/envs/circos/etc/housekeeping.conf>>
+data_out_of_range* = trim
