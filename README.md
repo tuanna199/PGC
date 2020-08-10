@@ -199,6 +199,7 @@ The rule file is based on the function module:
 * databaseFormat.rule.py: Change format of compared datasets
 * BaseFunction.rule.py: Base function of python
 * PopQuality.rule.py: Quality control for nanopore reads
+* NanoCallSV.rule.py: Call SVs based on BAM file using multiple tools
 * PopMultipleSV.rule.py: SV calling from multiple callers for each sample
 * PopSVFilt.rule.py: High-confidence SVs after three filtering steps
 * PopFrequency.rule.py: Allele frequency analysis for non-redundant SVs of the population
