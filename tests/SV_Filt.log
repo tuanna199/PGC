@@ -1,0 +1,520 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 10
+Rules claiming more threads will be scaled down.
+Job counts:
+	count	jobs
+	3	DepthBed
+	3	FiltCentro
+	3	FiltLength
+	1	MergeSVALL
+	3	MultipleFilt2
+	1	MultipleSummary
+	1	ReadStatsSummary
+	3	SVFiltStats
+	3	SVLengthSample
+	1	SVLengthSum
+	1	SummaryPlot
+	1	all
+	3	dpethOverlap
+	3	excludeDepth
+	1	filtStep
+	31
+
+[Fri Aug  7 14:54:53 2020]
+rule MultipleFilt2:
+    input: /home/wuzhikun/Project/PopTest/SVCall/Final/CN003_common_original.vcf
+    output: /home/wuzhikun/Project/PopTest/SVCall/Final/CN003_common_original_read3.vcf
+    log: /home/wuzhikun/Project/PopTest/log/CN003.MultipleFilt2.log
+    jobid: 3
+    wildcards: sample=CN003
+    threads: 2
+
+[Fri Aug  7 14:54:53 2020]
+rule MultipleFilt2:
+    input: /home/wuzhikun/Project/PopTest/SVCall/Final/CN001_common_original.vcf
+    output: /home/wuzhikun/Project/PopTest/SVCall/Final/CN001_common_original_read3.vcf
+    log: /home/wuzhikun/Project/PopTest/log/CN001.MultipleFilt2.log
+    jobid: 1
+    wildcards: sample=CN001
+    threads: 2
+
+[Fri Aug  7 14:54:53 2020]
+rule MultipleFilt2:
+    input: /home/wuzhikun/Project/PopTest/SVCall/Final/CN002_common_original.vcf
+    output: /home/wuzhikun/Project/PopTest/SVCall/Final/CN002_common_original_read3.vcf
+    log: /home/wuzhikun/Project/PopTest/log/CN002.MultipleFilt2.log
+    jobid: 2
+    wildcards: sample=CN002
+    threads: 2
+
+[33mJob counts:
+	count	jobs
+	1	MultipleFilt2
+	1[0m
+[33mJob counts:
+	count	jobs
+	1	MultipleFilt2
+	1[0m
+[33mJob counts:
+	count	jobs
+	1	MultipleFilt2
+	1[0m
+[Fri Aug  7 14:55:00 2020]
+Finished job 3.
+1 of 31 steps (3%) done
+[Fri Aug  7 14:55:00 2020]
+Finished job 2.
+2 of 31 steps (6%) done
+
+[Fri Aug  7 14:55:00 2020]
+rule FiltLength:
+    input: /home/wuzhikun/Project/PopTest/SVCall/Final/CN002_common_original_read3.vcf
+    output: /home/wuzhikun/Project/PopTest/SVCall/FinalFilt/CN002_filt_length.vcf, /home/wuzhikun/Project/PopTest/SVCall/FiltStats/CN002_length_length_stat.xls, /home/wuzhikun/Project/PopTest/SVCall/FiltStats/CN002_length_number_stat.xls
+    log: /home/wuzhikun/Project/PopTest/log/FiltLength_CN002.log
+    jobid: 5
+    wildcards: sample=CN002
+    threads: 2
+
+[Fri Aug  7 14:55:00 2020]
+rule FiltLength:
+    input: /home/wuzhikun/Project/PopTest/SVCall/Final/CN003_common_original_read3.vcf
+    output: /home/wuzhikun/Project/PopTest/SVCall/FinalFilt/CN003_filt_length.vcf, /home/wuzhikun/Project/PopTest/SVCall/FiltStats/CN003_length_length_stat.xls, /home/wuzhikun/Project/PopTest/SVCall/FiltStats/CN003_length_number_stat.xls
+    log: /home/wuzhikun/Project/PopTest/log/FiltLength_CN003.log
+    jobid: 6
+    wildcards: sample=CN003
+    threads: 2
+
+[33mJob counts:
+	count	jobs
+	1	FiltLength
+	1[0m
+[33mJob counts:
+	count	jobs
+	1	FiltLength
+	1[0m
+[Fri Aug  7 14:55:04 2020]
+Finished job 1.
+3 of 31 steps (10%) done
+
+[Fri Aug  7 14:55:04 2020]
+rule FiltLength:
+    input: /home/wuzhikun/Project/PopTest/SVCall/Final/CN001_common_original_read3.vcf
+    output: /home/wuzhikun/Project/PopTest/SVCall/FinalFilt/CN001_filt_length.vcf, /home/wuzhikun/Project/PopTest/SVCall/FiltStats/CN001_length_length_stat.xls, /home/wuzhikun/Project/PopTest/SVCall/FiltStats/CN001_length_number_stat.xls
+    log: /home/wuzhikun/Project/PopTest/log/FiltLength_CN001.log
+    jobid: 4
+    wildcards: sample=CN001
+    threads: 2
+
+[33mJob counts:
+	count	jobs
+	1	FiltLength
+	1[0m
+[Fri Aug  7 14:55:11 2020]
+Finished job 5.
+4 of 31 steps (13%) done
+[Fri Aug  7 14:55:13 2020]
+Finished job 6.
+5 of 31 steps (16%) done
+
+[Fri Aug  7 14:55:13 2020]
+rule FiltCentro:
+    input: /home/wuzhikun/Project/PopTest/SVCall/FinalFilt/CN002_filt_length.vcf
+    output: /home/wuzhikun/Project/PopTest/SVCall/FinalFilt/CN002_filt_centromere-0.vcf
+    log: /home/wuzhikun/Project/PopTest/log/FiltCentro_CN002.log
+    jobid: 29
+    wildcards: sample=CN002
+    threads: 2
+
+[Fri Aug  7 14:55:13 2020]
+rule FiltCentro:
+    input: /home/wuzhikun/Project/PopTest/SVCall/FinalFilt/CN003_filt_length.vcf
+    output: /home/wuzhikun/Project/PopTest/SVCall/FinalFilt/CN003_filt_centromere-0.vcf
+    log: /home/wuzhikun/Project/PopTest/log/FiltCentro_CN003.log
+    jobid: 30
+    wildcards: sample=CN003
+    threads: 2
+
+[33mJob counts:
+	count	jobs
+	1	FiltCentro
+	1[0m
+[33mJob counts:
+	count	jobs
+	1	FiltCentro
+	1[0m
+[Fri Aug  7 14:55:22 2020]
+Finished job 4.
+6 of 31 steps (19%) done
+[Fri Aug  7 14:55:23 2020]
+Finished job 29.
+7 of 31 steps (23%) done
+[Fri Aug  7 14:55:23 2020]
+Finished job 30.
+8 of 31 steps (26%) done
+
+[Fri Aug  7 14:55:23 2020]
+rule FiltCentro:
+    input: /home/wuzhikun/Project/PopTest/SVCall/FinalFilt/CN001_filt_length.vcf
+    output: /home/wuzhikun/Project/PopTest/SVCall/FinalFilt/CN001_filt_centromere-0.vcf
+    log: /home/wuzhikun/Project/PopTest/log/FiltCentro_CN001.log
+    jobid: 28
+    wildcards: sample=CN001
+    threads: 2
+
+[Fri Aug  7 14:55:23 2020]
+rule DepthBed:
+    input: /home/wuzhikun/Project/PopTest/SVCall/FinalFilt/CN002_filt_centromere-0.vcf
+    output: /home/wuzhikun/Project/PopTest/SVCall/Final/bed/CN002_SV.bed
+    log: /home/wuzhikun/Project/PopTest/log/CN002_SVBed.log
+    jobid: 8
+    wildcards: sample=CN002
+    threads: 2
+
+
+[Fri Aug  7 14:55:23 2020]
+rule DepthBed:
+    input: /home/wuzhikun/Project/PopTest/SVCall/FinalFilt/CN003_filt_centromere-0.vcf
+    output: /home/wuzhikun/Project/PopTest/SVCall/Final/bed/CN003_SV.bed
+    log: /home/wuzhikun/Project/PopTest/log/CN003_SVBed.log
+    jobid: 9
+    wildcards: sample=CN003
+    threads: 2
+
+[33mJob counts:
+	count	jobs
+	1	DepthBed
+	1[0m
+[33mJob counts:
+	count	jobs
+	1	FiltCentro
+	1[0m
+[33mJob counts:
+	count	jobs
+	1	DepthBed
+	1[0m
+[Fri Aug  7 14:55:29 2020]
+Finished job 9.
+9 of 31 steps (29%) done
+
+[Fri Aug  7 14:55:29 2020]
+rule dpethOverlap:
+    input: /home/wuzhikun/Project/PopTest/SVCall/Final/bed/CN003_SV.bed, /home/wuzhikun/Project/PopTest/mapping/minimap2/bed/CN003.regions.bed.gz
+    output: /home/wuzhikun/Project/PopTest/mapping/minimap2/bed/CN003.regions.bed, /home/wuzhikun/Project/PopTest/mapping/minimap2/bed/CN003.regions_gap.bed, /home/wuzhikun/Project/PopTest/mapping/minimap2/bed/CN003_SV_overlap.bed
+    log: /home/wuzhikun/Project/PopTest/log/CN003_dpethOverlap.log
+    jobid: 12
+    wildcards: sample=CN003
+    threads: 2
+
+[Fri Aug  7 14:55:29 2020]
+Finished job 8.
+10 of 31 steps (32%) done
+
+[Fri Aug  7 14:55:29 2020]
+rule dpethOverlap:
+    input: /home/wuzhikun/Project/PopTest/SVCall/Final/bed/CN002_SV.bed, /home/wuzhikun/Project/PopTest/mapping/minimap2/bed/CN002.regions.bed.gz
+    output: /home/wuzhikun/Project/PopTest/mapping/minimap2/bed/CN002.regions.bed, /home/wuzhikun/Project/PopTest/mapping/minimap2/bed/CN002.regions_gap.bed, /home/wuzhikun/Project/PopTest/mapping/minimap2/bed/CN002_SV_overlap.bed
+    log: /home/wuzhikun/Project/PopTest/log/CN002_dpethOverlap.log
+    jobid: 11
+    wildcards: sample=CN002
+    threads: 2
+
+[Fri Aug  7 14:55:30 2020]
+Finished job 28.
+11 of 31 steps (35%) done
+
+[Fri Aug  7 14:55:30 2020]
+rule DepthBed:
+    input: /home/wuzhikun/Project/PopTest/SVCall/FinalFilt/CN001_filt_centromere-0.vcf
+    output: /home/wuzhikun/Project/PopTest/SVCall/Final/bed/CN001_SV.bed
+    log: /home/wuzhikun/Project/PopTest/log/CN001_SVBed.log
+    jobid: 7
+    wildcards: sample=CN001
+    threads: 2
+
+[33mJob counts:
+	count	jobs
+	1	dpethOverlap
+	1[0m
+[33mJob counts:
+	count	jobs
+	1	dpethOverlap
+	1[0m
+[33mJob counts:
+	count	jobs
+	1	DepthBed
+	1[0m
+awk '{if ($4>500){print $0}}' /home/wuzhikun/Project/PopTest/mapping/minimap2/bed/CN003.regions.bed > /home/wuzhikun/Project/PopTest/mapping/minimap2/bed/CN003.regions_gap.bed
+awk '{if ($4>500){print $0}}' /home/wuzhikun/Project/PopTest/mapping/minimap2/bed/CN002.regions.bed > /home/wuzhikun/Project/PopTest/mapping/minimap2/bed/CN002.regions_gap.bed
+[Fri Aug  7 14:55:35 2020]
+Finished job 12.
+12 of 31 steps (39%) done
+[Fri Aug  7 14:55:35 2020]
+Finished job 11.
+13 of 31 steps (42%) done
+
+[Fri Aug  7 14:55:35 2020]
+rule excludeDepth:
+    input: /home/wuzhikun/Project/PopTest/SVCall/FinalFilt/CN002_filt_centromere-0.vcf, /home/wuzhikun/Project/PopTest/mapping/minimap2/bed/CN002_SV_overlap.bed
+    output: /home/wuzhikun/Project/PopTest/SVCall/FinalFilt/CN002_filt_centromere.vcf
+    log: /home/wuzhikun/Project/PopTest/log/CN002_excludeDepth.log
+    jobid: 14
+    wildcards: sample=CN002
+    threads: 2
+
+[Fri Aug  7 14:55:35 2020]
+rule excludeDepth:
+    input: /home/wuzhikun/Project/PopTest/SVCall/FinalFilt/CN003_filt_centromere-0.vcf, /home/wuzhikun/Project/PopTest/mapping/minimap2/bed/CN003_SV_overlap.bed
+    output: /home/wuzhikun/Project/PopTest/SVCall/FinalFilt/CN003_filt_centromere.vcf
+    log: /home/wuzhikun/Project/PopTest/log/CN003_excludeDepth.log
+    jobid: 15
+    wildcards: sample=CN003
+    threads: 2
+
+[Fri Aug  7 14:55:35 2020]
+Finished job 7.
+14 of 31 steps (45%) done
+
+[Fri Aug  7 14:55:35 2020]
+rule dpethOverlap:
+    input: /home/wuzhikun/Project/PopTest/SVCall/Final/bed/CN001_SV.bed, /home/wuzhikun/Project/PopTest/mapping/minimap2/bed/CN001.regions.bed.gz
+    output: /home/wuzhikun/Project/PopTest/mapping/minimap2/bed/CN001.regions.bed, /home/wuzhikun/Project/PopTest/mapping/minimap2/bed/CN001.regions_gap.bed, /home/wuzhikun/Project/PopTest/mapping/minimap2/bed/CN001_SV_overlap.bed
+    log: /home/wuzhikun/Project/PopTest/log/CN001_dpethOverlap.log
+    jobid: 10
+    wildcards: sample=CN001
+    threads: 2
+
+[33mJob counts:
+	count	jobs
+	1	excludeDepth
+	1[0m
+[33mJob counts:
+	count	jobs
+	1	excludeDepth
+	1[0m
+[33mJob counts:
+	count	jobs
+	1	dpethOverlap
+	1[0m
+awk '{if ($4>500){print $0}}' /home/wuzhikun/Project/PopTest/mapping/minimap2/bed/CN001.regions.bed > /home/wuzhikun/Project/PopTest/mapping/minimap2/bed/CN001.regions_gap.bed
+[Fri Aug  7 14:55:40 2020]
+Finished job 10.
+15 of 31 steps (48%) done
+
+[Fri Aug  7 14:55:40 2020]
+rule excludeDepth:
+    input: /home/wuzhikun/Project/PopTest/SVCall/FinalFilt/CN001_filt_centromere-0.vcf, /home/wuzhikun/Project/PopTest/mapping/minimap2/bed/CN001_SV_overlap.bed
+    output: /home/wuzhikun/Project/PopTest/SVCall/FinalFilt/CN001_filt_centromere.vcf
+    log: /home/wuzhikun/Project/PopTest/log/CN001_excludeDepth.log
+    jobid: 13
+    wildcards: sample=CN001
+    threads: 2
+
+[Fri Aug  7 14:55:40 2020]
+Finished job 14.
+16 of 31 steps (52%) done
+[Fri Aug  7 14:55:40 2020]
+Finished job 15.
+17 of 31 steps (55%) done
+
+[Fri Aug  7 14:55:40 2020]
+rule SVLengthSample:
+    input: /home/wuzhikun/Project/PopTest/SVCall/FinalFilt/CN002_filt_centromere.vcf
+    output: /home/wuzhikun/Project/PopTest/SVCall/FiltStats/CN002_SV_chr_length.xls
+    log: /home/wuzhikun/Project/PopTest/log/SVLength_CN002.log
+    jobid: 17
+    wildcards: sample=CN002
+
+[Fri Aug  7 14:55:40 2020]
+rule SVFiltStats:
+    input: /home/wuzhikun/Project/PopTest/SVCall/FinalFilt/CN002_filt_centromere.vcf
+    output: /home/wuzhikun/Project/PopTest/SVCall/FiltStats/CN002_summary.xls, /home/wuzhikun/Project/PopTest/SVCall/FiltStats/CN002_record.xls, /home/wuzhikun/Project/PopTest/SVCall/FiltStats/CN002_position.xls, /home/wuzhikun/Project/PopTest/SVCall/FiltStats/CN002_tra.xls
+    log: /home/wuzhikun/Project/PopTest/log/SVFiltStats_CN002.log
+    jobid: 20
+    wildcards: sample=CN002
+    threads: 2
+
+
+[Fri Aug  7 14:55:40 2020]
+rule SVLengthSample:
+    input: /home/wuzhikun/Project/PopTest/SVCall/FinalFilt/CN003_filt_centromere.vcf
+    output: /home/wuzhikun/Project/PopTest/SVCall/FiltStats/CN003_SV_chr_length.xls
+    log: /home/wuzhikun/Project/PopTest/log/SVLength_CN003.log
+    jobid: 18
+    wildcards: sample=CN003
+
+[Fri Aug  7 14:55:40 2020]
+rule SVFiltStats:
+    input: /home/wuzhikun/Project/PopTest/SVCall/FinalFilt/CN003_filt_centromere.vcf
+    output: /home/wuzhikun/Project/PopTest/SVCall/FiltStats/CN003_summary.xls, /home/wuzhikun/Project/PopTest/SVCall/FiltStats/CN003_record.xls, /home/wuzhikun/Project/PopTest/SVCall/FiltStats/CN003_position.xls, /home/wuzhikun/Project/PopTest/SVCall/FiltStats/CN003_tra.xls
+    log: /home/wuzhikun/Project/PopTest/log/SVFiltStats_CN003.log
+    jobid: 21
+    wildcards: sample=CN003
+    threads: 2
+
+[33mJob counts:
+	count	jobs
+	1	SVLengthSample
+	1[0m
+[33mJob counts:
+	count	jobs
+	1	SVFiltStats
+	1[0m
+[33mJob counts:
+	count	jobs
+	1	SVLengthSample
+	1[0m
+[33mJob counts:
+	count	jobs
+	1	excludeDepth
+	1[0m
+[33mJob counts:
+	count	jobs
+	1	SVFiltStats
+	1[0m
+[Fri Aug  7 14:55:51 2020]
+Finished job 13.
+18 of 31 steps (58%) done
+
+[Fri Aug  7 14:55:51 2020]
+rule MultipleSummary:
+    input: /home/wuzhikun/Project/PopTest/SVCall/Final/CN001_common_original.vcf, /home/wuzhikun/Project/PopTest/SVCall/Final/CN002_common_original.vcf, /home/wuzhikun/Project/PopTest/SVCall/Final/CN003_common_original.vcf, /home/wuzhikun/Project/PopTest/SVCall/Final/CN001_common_original_read3.vcf, /home/wuzhikun/Project/PopTest/SVCall/Final/CN002_common_original_read3.vcf, /home/wuzhikun/Project/PopTest/SVCall/Final/CN003_common_original_read3.vcf, /home/wuzhikun/Project/PopTest/SVCall/FinalFilt/CN001_filt_length.vcf, /home/wuzhikun/Project/PopTest/SVCall/FinalFilt/CN002_filt_length.vcf, /home/wuzhikun/Project/PopTest/SVCall/FinalFilt/CN003_filt_length.vcf, /home/wuzhikun/Project/PopTest/SVCall/FinalFilt/CN001_filt_centromere.vcf, /home/wuzhikun/Project/PopTest/SVCall/FinalFilt/CN002_filt_centromere.vcf, /home/wuzhikun/Project/PopTest/SVCall/FinalFilt/CN003_filt_centromere.vcf
+    output: /home/wuzhikun/Project/PopTest/SVCall/FiltStats/Samples_types_summary.xls
+    log: /home/wuzhikun/Project/PopTest/log/MultipleSummary.log
+    jobid: 25
+
+[Fri Aug  7 14:55:51 2020]
+rule SVLengthSample:
+    input: /home/wuzhikun/Project/PopTest/SVCall/FinalFilt/CN001_filt_centromere.vcf
+    output: /home/wuzhikun/Project/PopTest/SVCall/FiltStats/CN001_SV_chr_length.xls
+    log: /home/wuzhikun/Project/PopTest/log/SVLength_CN001.log
+    jobid: 16
+    wildcards: sample=CN001
+
+[Fri Aug  7 14:55:51 2020]
+rule MergeSVALL:
+    input: /home/wuzhikun/Project/PopTest/SVCall/FinalFilt/CN001_filt_centromere.vcf, /home/wuzhikun/Project/PopTest/SVCall/FinalFilt/CN002_filt_centromere.vcf, /home/wuzhikun/Project/PopTest/SVCall/FinalFilt/CN003_filt_centromere.vcf
+    output: /home/wuzhikun/Project/PopTest/population/Merge/Sample_SV_common.vcf
+    log: /home/wuzhikun/Project/PopTest/log/MergeSV.log
+    jobid: 27
+    threads: 2
+
+[Fri Aug  7 14:55:51 2020]
+Finished job 21.
+19 of 31 steps (61%) done
+[Fri Aug  7 14:55:51 2020]
+Finished job 20.
+20 of 31 steps (65%) done
+[Fri Aug  7 14:55:51 2020]
+Finished job 17.
+21 of 31 steps (68%) done
+[Fri Aug  7 14:55:51 2020]
+Finished job 18.
+22 of 31 steps (71%) done
+
+[Fri Aug  7 14:55:51 2020]
+rule SVFiltStats:
+    input: /home/wuzhikun/Project/PopTest/SVCall/FinalFilt/CN001_filt_centromere.vcf
+    output: /home/wuzhikun/Project/PopTest/SVCall/FiltStats/CN001_summary.xls, /home/wuzhikun/Project/PopTest/SVCall/FiltStats/CN001_record.xls, /home/wuzhikun/Project/PopTest/SVCall/FiltStats/CN001_position.xls, /home/wuzhikun/Project/PopTest/SVCall/FiltStats/CN001_tra.xls
+    log: /home/wuzhikun/Project/PopTest/log/SVFiltStats_CN001.log
+    jobid: 19
+    wildcards: sample=CN001
+    threads: 2
+
+[33mJob counts:
+	count	jobs
+	1	MergeSVALL
+	1[0m
+[33mJob counts:
+	count	jobs
+	1	SVLengthSample
+	1[0m
+[33mJob counts:
+	count	jobs
+	1	MultipleSummary
+	1[0m
+[33mJob counts:
+	count	jobs
+	1	SVFiltStats
+	1[0m
+[Fri Aug  7 14:55:59 2020]
+Finished job 16.
+23 of 31 steps (74%) done
+
+[Fri Aug  7 14:55:59 2020]
+rule SVLengthSum:
+    input: /home/wuzhikun/Project/PopTest/SVCall/FiltStats/CN001_SV_chr_length.xls, /home/wuzhikun/Project/PopTest/SVCall/FiltStats/CN002_SV_chr_length.xls, /home/wuzhikun/Project/PopTest/SVCall/FiltStats/CN003_SV_chr_length.xls
+    output: /home/wuzhikun/Project/PopTest/SVCall/FiltStats/Samples_SV_length_summary.xls
+    log: /home/wuzhikun/Project/PopTest/log/SVLengthSum.log
+    jobid: 24
+
+[Fri Aug  7 14:56:00 2020]
+Finished job 19.
+24 of 31 steps (77%) done
+
+[Fri Aug  7 14:56:00 2020]
+rule ReadStatsSummary:
+    input: /home/wuzhikun/Project/PopTest/SVCall/FiltStats/CN001_summary.xls, /home/wuzhikun/Project/PopTest/SVCall/FiltStats/CN002_summary.xls, /home/wuzhikun/Project/PopTest/SVCall/FiltStats/CN003_summary.xls
+    output: /home/wuzhikun/Project/PopTest/SVCall/FiltStats/Samples_SV_type_number.xls
+    jobid: 22
+    threads: 2
+
+[Fri Aug  7 14:56:01 2020]
+Finished job 25.
+25 of 31 steps (81%) done
+
+[Fri Aug  7 14:56:01 2020]
+rule filtStep:
+    input: /home/wuzhikun/Project/PopTest/SVCall/FiltStats/Samples_types_summary.xls
+    output: /home/wuzhikun/Project/PopTest/SVCall/FiltStats/Samples_types_filt_steps.pdf
+    log: /home/wuzhikun/Project/PopTest/log/filtStep.log
+    jobid: 26
+
+[Fri Aug  7 14:56:01 2020]
+rule SummaryPlot:
+    input: /home/wuzhikun/Project/PopTest/SVCall/FiltStats/Samples_types_summary.xls
+    output: /home/wuzhikun/Project/PopTest/SVCall/FiltStats/Samples_SV_number_hist.pdf
+    log: /home/wuzhikun/Project/PopTest/log/SummaryPlot.log
+    jobid: 23
+
+[33mJob counts:
+	count	jobs
+	1	ReadStatsSummary
+	1[0m
+[33mJob counts:
+	count	jobs
+	1	SVLengthSum
+	1[0m
+[Fri Aug  7 14:56:07 2020]
+Finished job 22.
+26 of 31 steps (84%) done
+[33mJob counts:
+	count	jobs
+	1	filtStep
+	1[0m
+[33mJob counts:
+	count	jobs
+	1	SummaryPlot
+	1[0m
+[Fri Aug  7 14:56:07 2020]
+Finished job 24.
+27 of 31 steps (87%) done
+[Fri Aug  7 14:56:12 2020]
+Finished job 23.
+28 of 31 steps (90%) done
+[Fri Aug  7 14:56:12 2020]
+Finished job 26.
+29 of 31 steps (94%) done
+[Fri Aug  7 14:56:41 2020]
+Finished job 27.
+30 of 31 steps (97%) done
+
+[Fri Aug  7 14:56:41 2020]
+localrule all:
+    input: /home/wuzhikun/Project/PopTest/SVCall/Final/CN001_common_original.vcf, /home/wuzhikun/Project/PopTest/SVCall/Final/CN002_common_original.vcf, /home/wuzhikun/Project/PopTest/SVCall/Final/CN003_common_original.vcf, /home/wuzhikun/Project/PopTest/SVCall/Final/CN001_common_original_read3.vcf, /home/wuzhikun/Project/PopTest/SVCall/Final/CN002_common_original_read3.vcf, /home/wuzhikun/Project/PopTest/SVCall/Final/CN003_common_original_read3.vcf, /home/wuzhikun/Project/PopTest/SVCall/FinalFilt/CN001_filt_length.vcf, /home/wuzhikun/Project/PopTest/SVCall/FinalFilt/CN002_filt_length.vcf, /home/wuzhikun/Project/PopTest/SVCall/FinalFilt/CN003_filt_length.vcf, /home/wuzhikun/Project/PopTest/SVCall/Final/bed/CN001_SV.bed, /home/wuzhikun/Project/PopTest/SVCall/Final/bed/CN002_SV.bed, /home/wuzhikun/Project/PopTest/SVCall/Final/bed/CN003_SV.bed, /home/wuzhikun/Project/PopTest/mapping/minimap2/bed/CN001_SV_overlap.bed, /home/wuzhikun/Project/PopTest/mapping/minimap2/bed/CN002_SV_overlap.bed, /home/wuzhikun/Project/PopTest/mapping/minimap2/bed/CN003_SV_overlap.bed, /home/wuzhikun/Project/PopTest/SVCall/FinalFilt/CN001_filt_centromere.vcf, /home/wuzhikun/Project/PopTest/SVCall/FinalFilt/CN002_filt_centromere.vcf, /home/wuzhikun/Project/PopTest/SVCall/FinalFilt/CN003_filt_centromere.vcf, /home/wuzhikun/Project/PopTest/SVCall/FiltStats/CN001_SV_chr_length.xls, /home/wuzhikun/Project/PopTest/SVCall/FiltStats/CN002_SV_chr_length.xls, /home/wuzhikun/Project/PopTest/SVCall/FiltStats/CN003_SV_chr_length.xls, /home/wuzhikun/Project/PopTest/SVCall/FiltStats/CN001_summary.xls, /home/wuzhikun/Project/PopTest/SVCall/FiltStats/CN002_summary.xls, /home/wuzhikun/Project/PopTest/SVCall/FiltStats/CN003_summary.xls, /home/wuzhikun/Project/PopTest/SVCall/FiltStats/Samples_SV_type_number.xls, /home/wuzhikun/Project/PopTest/SVCall/FiltStats/Samples_SV_number_hist.pdf, /home/wuzhikun/Project/PopTest/SVCall/FiltStats/Samples_SV_length_summary.xls, /home/wuzhikun/Project/PopTest/SVCall/FiltStats/Samples_types_summary.xls, /home/wuzhikun/Project/PopTest/SVCall/FiltStats/Samples_types_filt_steps.pdf, /home/wuzhikun/Project/PopTest/population/Merge/Sample_SV_common.vcf
+    jobid: 0
+
+[Fri Aug  7 14:56:41 2020]
+Finished job 0.
+31 of 31 steps (100%) done
+Complete log: /home/wuzhikun/Project/PopTest/.snakemake/log/2020-08-07T145452.391248.snakemake.log

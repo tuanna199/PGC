@@ -1,0 +1,311 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 20
+Rules claiming more threads will be scaled down.
+Job counts:
+	count	jobs
+	1	AlleleFrequencyPlot
+	1	AlleleFrequencyStat
+	1	CatHeterHomoRatio
+	1	CatHeterHomoRatioSum
+	1	CatHeterHomoRatioSumPlot
+	1	Meta2PED
+	1	SubFrequencyFilt
+	1	SubMeta2PED
+	1	Subped2bed
+	1	TerminalDistancePlotAll
+	4	TerminalDistancePlotType
+	4	TerminalDistanceType
+	1	all
+	1	ped2bed
+	20
+
+[Fri Aug  7 15:52:13 2020]
+rule TerminalDistanceType:
+    input: /home/wuzhikun/Project/PopTest/population/SVDensity/Sample_common_SV_INV.vcf
+    output: /home/wuzhikun/Project/PopTest/population/SVDensity/Sample_INV_to_terminal_distance.xls
+    log: /home/wuzhikun/Project/PopTest/log/CentroDistance_INV.log
+    jobid: 10
+    wildcards: SVtype=INV
+
+[Fri Aug  7 15:52:13 2020]
+rule SubFrequencyFilt:
+    input: /home/wuzhikun/Project/PopTest/population/subgroup/Sample_SV_genotype.txt
+    output: /home/wuzhikun/Project/PopTest/population/subgroup/Sample_SV_genotype_filt.txt, /home/wuzhikun/Project/PopTest/population/subgroup/Sample_SV_genotype_frequency.txt
+    log: /home/wuzhikun/Project/PopTest/log/SubFrequencyFilt.log
+    jobid: 31
+
+[Fri Aug  7 15:52:13 2020]
+rule Meta2PED:
+    input: /home/wuzhikun/Project/PopTest/population/genotype/Sample_SV_genotype_filt.txt
+    output: /home/wuzhikun/Project/PopTest/population/plink/Sample_SV_geno.ped, /home/wuzhikun/Project/PopTest/population/plink/Sample_SV_geno.map
+    log: /home/wuzhikun/Project/PopTest/log/Meta2PED.log
+    jobid: 23
+
+[Fri Aug  7 15:52:13 2020]
+rule CatHeterHomoRatio:
+    input: /home/wuzhikun/Project/PopTest/population/genotype/Category/Sample_SV_genotype_Singleton.txt, /home/wuzhikun/Project/PopTest/population/genotype/Category/Sample_SV_genotype_Rare.txt, /home/wuzhikun/Project/PopTest/population/genotype/Category/Sample_SV_genotype_Low.txt, /home/wuzhikun/Project/PopTest/population/genotype/Category/Sample_SV_genotype_Common.txt
+    output: /home/wuzhikun/Project/PopTest/population/genotype/Category/Sample_SV_heter2homo_Singleton.txt, /home/wuzhikun/Project/PopTest/population/genotype/Category/Sample_SV_heter2homo_Rare.txt, /home/wuzhikun/Project/PopTest/population/genotype/Category/Sample_SV_heter2homo_Low.txt, /home/wuzhikun/Project/PopTest/population/genotype/Category/Sample_SV_heter2homo_Common.txt
+    log: /home/wuzhikun/Project/PopTest/log/CatHeterHomoRatio.log
+    jobid: 18
+
+[Fri Aug  7 15:52:13 2020]
+rule TerminalDistanceType:
+    input: /home/wuzhikun/Project/PopTest/population/SVDensity/Sample_common_SV_INS.vcf
+    output: /home/wuzhikun/Project/PopTest/population/SVDensity/Sample_INS_to_terminal_distance.xls
+    log: /home/wuzhikun/Project/PopTest/log/CentroDistance_INS.log
+    jobid: 9
+    wildcards: SVtype=INS
+
+[Fri Aug  7 15:52:13 2020]
+rule TerminalDistanceType:
+    input: /home/wuzhikun/Project/PopTest/population/SVDensity/Sample_common_SV_DUP.vcf
+    output: /home/wuzhikun/Project/PopTest/population/SVDensity/Sample_DUP_to_terminal_distance.xls
+    log: /home/wuzhikun/Project/PopTest/log/CentroDistance_DUP.log
+    jobid: 11
+    wildcards: SVtype=DUP
+
+[Fri Aug  7 15:52:13 2020]
+rule TerminalDistanceType:
+    input: /home/wuzhikun/Project/PopTest/population/SVDensity/Sample_common_SV_DEL.vcf
+    output: /home/wuzhikun/Project/PopTest/population/SVDensity/Sample_DEL_to_terminal_distance.xls
+    log: /home/wuzhikun/Project/PopTest/log/CentroDistance_DEL.log
+    jobid: 8
+    wildcards: SVtype=DEL
+
+[Fri Aug  7 15:52:13 2020]
+rule TerminalDistancePlotAll:
+    input: /home/wuzhikun/Project/PopTest/population/SVDensity/Sample_common_to_terminal_distance.xls
+    output: /home/wuzhikun/Project/PopTest/population/SVDensity/Sample_common_to_terminal_distance.pdf
+    log: /home/wuzhikun/Project/PopTest/log/TerminalDistancePlotAll.log
+    jobid: 3
+
+[Fri Aug  7 15:52:13 2020]
+rule AlleleFrequencyStat:
+    input: /home/wuzhikun/Project/PopTest/population/genotype/Sample_SV_genotype_frequency.txt
+    output: /home/wuzhikun/Project/PopTest/population/genotype/Sample_SV_genotype_frequency_stat.xls
+    log: /home/wuzhikun/Project/PopTest/log/AlleleFrequencyStat.log
+    jobid: 1
+
+[33mJob counts:
+	count	jobs
+	1	TerminalDistanceType
+	1[0m
+[33mJob counts:
+	count	jobs
+	1	CatHeterHomoRatio
+	1[0m
+[33mJob counts:
+	count	jobs
+	1	TerminalDistanceType
+	1[0m
+[33mJob counts:
+	count	jobs
+	1	SubFrequencyFilt
+	1[0m
+[33mJob counts:
+	count	jobs
+	1	TerminalDistanceType
+	1[0m
+[33mJob counts:
+	count	jobs
+	1	Meta2PED
+	1[0m
+[33mJob counts:
+	count	jobs
+	1	AlleleFrequencyStat
+	1[0m
+[33mJob counts:
+	count	jobs
+	1	TerminalDistanceType
+	1[0m
+[33mJob counts:
+	count	jobs
+	1	TerminalDistancePlotAll
+	1[0m
+[Fri Aug  7 15:52:31 2020]
+Finished job 10.
+1 of 20 steps (5%) done
+[Fri Aug  7 15:52:31 2020]
+Finished job 11.
+2 of 20 steps (10%) done
+
+[Fri Aug  7 15:52:31 2020]
+rule TerminalDistancePlotType:
+    input: /home/wuzhikun/Project/PopTest/population/SVDensity/Sample_INV_to_terminal_distance.xls
+    output: /home/wuzhikun/Project/PopTest/population/SVDensity/Sample_INV_to_terminal_distance.pdf
+    log: /home/wuzhikun/Project/PopTest/log/TerminalDistancePlot_INV.log
+    jobid: 14
+    wildcards: SVtype=INV
+
+[Fri Aug  7 15:52:31 2020]
+rule TerminalDistancePlotType:
+    input: /home/wuzhikun/Project/PopTest/population/SVDensity/Sample_DUP_to_terminal_distance.xls
+    output: /home/wuzhikun/Project/PopTest/population/SVDensity/Sample_DUP_to_terminal_distance.pdf
+    log: /home/wuzhikun/Project/PopTest/log/TerminalDistancePlot_DUP.log
+    jobid: 15
+    wildcards: SVtype=DUP
+
+[Fri Aug  7 15:52:32 2020]
+Finished job 1.
+3 of 20 steps (15%) done
+
+[Fri Aug  7 15:52:32 2020]
+rule AlleleFrequencyPlot:
+    input: /home/wuzhikun/Project/PopTest/population/genotype/Sample_SV_genotype_frequency_stat.xls
+    output: /home/wuzhikun/Project/PopTest/population/genotype/Sample_SV_genotype_frequency_stat.pdf
+    log: /home/wuzhikun/Project/PopTest/log/AlleleFrequencyPlot.log
+    jobid: 22
+
+[33mJob counts:
+	count	jobs
+	1	TerminalDistancePlotType
+	1[0m
+[33mJob counts:
+	count	jobs
+	1	TerminalDistancePlotType
+	1[0m
+[33mJob counts:
+	count	jobs
+	1	AlleleFrequencyPlot
+	1[0m
+[Fri Aug  7 15:52:38 2020]
+Finished job 23.
+4 of 20 steps (20%) done
+[Fri Aug  7 15:52:39 2020]
+Finished job 31.
+5 of 20 steps (25%) done
+[Fri Aug  7 15:52:39 2020]
+Finished job 8.
+6 of 20 steps (30%) done
+[Fri Aug  7 15:52:39 2020]
+Finished job 9.
+7 of 20 steps (35%) done
+
+[Fri Aug  7 15:52:39 2020]
+rule SubMeta2PED:
+    input: /home/wuzhikun/Project/PopTest/population/subgroup/Sample_SV_genotype_filt.txt
+    output: /home/wuzhikun/Project/PopTest/population/subgroup/Sample_SV_geno.ped, /home/wuzhikun/Project/PopTest/population/subgroup/Sample_SV_geno.map
+    log: /home/wuzhikun/Project/PopTest/log/SubMeta2PED.log
+    jobid: 26
+
+[Fri Aug  7 15:52:39 2020]
+rule ped2bed:
+    input: /home/wuzhikun/Project/PopTest/population/plink/Sample_SV_geno.ped, /home/wuzhikun/Project/PopTest/population/plink/Sample_SV_geno.map
+    output: /home/wuzhikun/Project/PopTest/population/plink/Sample_SV_geno.bed, /home/wuzhikun/Project/PopTest/population/plink/Sample_SV_geno.bim, /home/wuzhikun/Project/PopTest/population/plink/Sample_SV_geno.fam
+    log: /home/wuzhikun/Project/PopTest/log/ped2bed.log
+    jobid: 24
+
+[Fri Aug  7 15:52:39 2020]
+rule TerminalDistancePlotType:
+    input: /home/wuzhikun/Project/PopTest/population/SVDensity/Sample_INS_to_terminal_distance.xls
+    output: /home/wuzhikun/Project/PopTest/population/SVDensity/Sample_INS_to_terminal_distance.pdf
+    log: /home/wuzhikun/Project/PopTest/log/TerminalDistancePlot_INS.log
+    jobid: 13
+    wildcards: SVtype=INS
+
+[Fri Aug  7 15:52:39 2020]
+rule TerminalDistancePlotType:
+    input: /home/wuzhikun/Project/PopTest/population/SVDensity/Sample_DEL_to_terminal_distance.xls
+    output: /home/wuzhikun/Project/PopTest/population/SVDensity/Sample_DEL_to_terminal_distance.pdf
+    log: /home/wuzhikun/Project/PopTest/log/TerminalDistancePlot_DEL.log
+    jobid: 12
+    wildcards: SVtype=DEL
+
+[33mJob counts:
+	count	jobs
+	1	TerminalDistancePlotType
+	1[0m
+[33mJob counts:
+	count	jobs
+	1	ped2bed
+	1[0m
+[33mJob counts:
+	count	jobs
+	1	TerminalDistancePlotType
+	1[0m
+[33mJob counts:
+	count	jobs
+	1	SubMeta2PED
+	1[0m
+[Fri Aug  7 15:52:50 2020]
+Finished job 22.
+8 of 20 steps (40%) done
+[Fri Aug  7 15:52:53 2020]
+Finished job 24.
+9 of 20 steps (45%) done
+[Fri Aug  7 15:53:02 2020]
+Finished job 18.
+10 of 20 steps (50%) done
+
+[Fri Aug  7 15:53:02 2020]
+rule CatHeterHomoRatioSum:
+    input: /home/wuzhikun/Project/PopTest/population/genotype/Category/Sample_SV_heter2homo_Singleton.txt, /home/wuzhikun/Project/PopTest/population/genotype/Category/Sample_SV_heter2homo_Rare.txt, /home/wuzhikun/Project/PopTest/population/genotype/Category/Sample_SV_heter2homo_Low.txt, /home/wuzhikun/Project/PopTest/population/genotype/Category/Sample_SV_heter2homo_Common.txt
+    output: /home/wuzhikun/Project/PopTest/population/genotype/Category/Sample_SV_heter2homo_category_summary.txt
+    jobid: 19
+
+[33mJob counts:
+	count	jobs
+	1	CatHeterHomoRatioSum
+	1[0m
+[Fri Aug  7 15:53:10 2020]
+Finished job 26.
+11 of 20 steps (55%) done
+
+[Fri Aug  7 15:53:10 2020]
+rule Subped2bed:
+    input: /home/wuzhikun/Project/PopTest/population/subgroup/Sample_SV_geno.ped, /home/wuzhikun/Project/PopTest/population/subgroup/Sample_SV_geno.map
+    output: /home/wuzhikun/Project/PopTest/population/subgroup/Sample_SV_geno.bed, /home/wuzhikun/Project/PopTest/population/subgroup/Sample_SV_geno.bim, /home/wuzhikun/Project/PopTest/population/subgroup/Sample_SV_geno.fam
+    log: /home/wuzhikun/Project/PopTest/log/Subped2bed.log
+    jobid: 27
+
+[Fri Aug  7 15:53:10 2020]
+Finished job 19.
+12 of 20 steps (60%) done
+
+[Fri Aug  7 15:53:10 2020]
+rule CatHeterHomoRatioSumPlot:
+    input: /home/wuzhikun/Project/PopTest/population/genotype/Category/Sample_SV_heter2homo_category_summary.txt
+    output: /home/wuzhikun/Project/PopTest/population/genotype/Category/Sample_SV_heter2homo_category_summary.pdf
+    log: /home/wuzhikun/Project/PopTest/log/CatHeterHomoRatioSumPlot.log
+    jobid: 20
+
+[Fri Aug  7 15:53:14 2020]
+Finished job 3.
+13 of 20 steps (65%) done
+[33mJob counts:
+	count	jobs
+	1	Subped2bed
+	1[0m
+[33mJob counts:
+	count	jobs
+	1	CatHeterHomoRatioSumPlot
+	1[0m
+[Fri Aug  7 15:53:19 2020]
+Finished job 15.
+14 of 20 steps (70%) done
+[Fri Aug  7 15:53:20 2020]
+Finished job 27.
+15 of 20 steps (75%) done
+[Fri Aug  7 15:53:20 2020]
+Finished job 14.
+16 of 20 steps (80%) done
+[Fri Aug  7 15:53:23 2020]
+Finished job 20.
+17 of 20 steps (85%) done
+[Fri Aug  7 15:53:25 2020]
+Finished job 13.
+18 of 20 steps (90%) done
+[Fri Aug  7 15:53:25 2020]
+Finished job 12.
+19 of 20 steps (95%) done
+
+[Fri Aug  7 15:53:25 2020]
+localrule all:
+    input: /home/wuzhikun/Project/PopTest/population/SVDensity/Sample_common_to_terminal_distance.xls, /home/wuzhikun/Project/PopTest/population/SVDensity/Sample_common_to_terminal_distance.pdf, /home/wuzhikun/Project/PopTest/population/SVDensity/Sample_common_SV_DEL.vcf, /home/wuzhikun/Project/PopTest/population/SVDensity/Sample_common_SV_INS.vcf, /home/wuzhikun/Project/PopTest/population/SVDensity/Sample_common_SV_INV.vcf, /home/wuzhikun/Project/PopTest/population/SVDensity/Sample_common_SV_DUP.vcf, /home/wuzhikun/Project/PopTest/population/SVDensity/Sample_DEL_to_terminal_distance.xls, /home/wuzhikun/Project/PopTest/population/SVDensity/Sample_INS_to_terminal_distance.xls, /home/wuzhikun/Project/PopTest/population/SVDensity/Sample_INV_to_terminal_distance.xls, /home/wuzhikun/Project/PopTest/population/SVDensity/Sample_DUP_to_terminal_distance.xls, /home/wuzhikun/Project/PopTest/population/SVDensity/Sample_DEL_to_terminal_distance.pdf, /home/wuzhikun/Project/PopTest/population/SVDensity/Sample_INS_to_terminal_distance.pdf, /home/wuzhikun/Project/PopTest/population/SVDensity/Sample_INV_to_terminal_distance.pdf, /home/wuzhikun/Project/PopTest/population/SVDensity/Sample_DUP_to_terminal_distance.pdf, /home/wuzhikun/Project/PopTest/population/genotype/Sample_SV_genotype.txt, /home/wuzhikun/Project/PopTest/population/genotype/Category/Sample_SV_genotype_Singleton.txt, /home/wuzhikun/Project/PopTest/population/genotype/Category/Sample_SV_heter2homo_Singleton.txt, /home/wuzhikun/Project/PopTest/population/genotype/Category/Sample_SV_heter2homo_category_summary.txt, /home/wuzhikun/Project/PopTest/population/genotype/Category/Sample_SV_heter2homo_category_summary.pdf, /home/wuzhikun/Project/PopTest/population/genotype/Sample_SV_genotype_frequency.txt, /home/wuzhikun/Project/PopTest/population/genotype/Sample_SV_genotype_frequency_stat.xls, /home/wuzhikun/Project/PopTest/population/genotype/Sample_SV_genotype_frequency_stat.pdf, /home/wuzhikun/Project/PopTest/population/plink/Sample_SV_geno.ped, /home/wuzhikun/Project/PopTest/population/plink/Sample_SV_geno.bed, /home/wuzhikun/Project/PopTest/population/subgroup/Sample_SV_genotype.txt, /home/wuzhikun/Project/PopTest/population/subgroup/Sample_SV_geno.ped, /home/wuzhikun/Project/PopTest/population/subgroup/Sample_SV_geno.bed
+    jobid: 0
+
+[Fri Aug  7 15:53:25 2020]
+Finished job 0.
+20 of 20 steps (100%) done
+Complete log: /home/wuzhikun/Project/PopTest/.snakemake/log/2020-08-07T155211.834754.snakemake.log
