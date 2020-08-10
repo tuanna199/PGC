@@ -1,0 +1,238 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 24
+Rules claiming more threads will be scaled down.
+Job counts:
+	count	jobs
+	1	AllCDSEnrich
+	1	AllCDSEnrichPlot
+	1	CategoryLength
+	1	CategoryLengthPlot
+	1	FreqOverlap
+	1	GeneDisease
+	1	all
+	1	cosmicGeno
+	1	cosmicOverlap
+	1	diseaseCategoory
+	1	diseaseCategooryPlot
+	1	enrichGeneGeno
+	1	lofSVDist
+	1	nocatalogGene
+	14
+
+[Sat Aug  8 10:04:55 2020]
+rule AllCDSEnrich:
+    input: /home/wuzhikun/Project/PopTest/population/Annotation/Sample_common_SV_genepred_overlap_promoter_all_lof_CDS.bed
+    output: /home/wuzhikun/Project/PopTest/population/Annotation/Sample_common_SV_genepred_overlap_gene.txt, /home/wuzhikun/Project/PopTest/population/Annotation/Enrichment/All/KEGG_2019_Human..enrichr.reports.txt, /home/wuzhikun/Project/PopTest/population/Annotation/Enrichment/All/OMIM_Disease..enrichr.reports.txt, /home/wuzhikun/Project/PopTest/population/Annotation/Enrichment/All/OMIM_Expanded..enrichr.reports.txt, /home/wuzhikun/Project/PopTest/population/Annotation/Enrichment/All/GWAS_Catalog_2019..enrichr.reports.txt, /home/wuzhikun/Project/PopTest/population/Annotation/Enrichment/All/ClinVar_2019..enrichr.reports.txt, /home/wuzhikun/Project/PopTest/population/Annotation/Enrichment/All/UK_Biobank_GWAS_v1..enrichr.reports.txt
+    log: /home/wuzhikun/Project/PopTest/log/DELEnrich.log
+    jobid: 0
+
+[Sat Aug  8 10:04:55 2020]
+rule lofSVDist:
+    input: /home/wuzhikun/Project/PopTest/population/Annotation/Sample_common_SV_genepred_overlap_promoter_all_lof_CDS.bed, /home/wuzhikun/Project/PopTest/population/genotype/Sample_SV_genotype_frequency.txt
+    output: /home/wuzhikun/Project/PopTest/population/Annotation/Sample_common_SV_genepred_overlap_promoter_all_lof_SV_dist.txt
+    jobid: 17
+
+[Sat Aug  8 10:04:55 2020]
+rule cosmicOverlap:
+    input: /home/wuzhikun/database/COSMIC/cancer_gene_census.gene, /home/wuzhikun/Project/PopTest/population/Annotation/Sample_common_SV_genepred_overlap_promoter_all_lof_CDS.bed
+    output: /home/wuzhikun/Project/PopTest/population/Annotation/Sample_common_SV_genepred_overlap_promoter_all_lof_CDS_gene.txt, /home/wuzhikun/Project/PopTest/population/Annotation/Enrichment/All/COSMIC_gene_overlap_report.txt
+    jobid: 16
+
+[Sat Aug  8 10:04:55 2020]
+rule FreqOverlap:
+    input: /home/wuzhikun/Project/PopTest/population/bed/frequency/Sample_common_SV_Singleton.bed, /home/wuzhikun/Project/PopTest/population/bed/frequency/Sample_common_SV_Rare.bed, /home/wuzhikun/Project/PopTest/population/bed/frequency/Sample_common_SV_Low.bed, /home/wuzhikun/Project/PopTest/population/bed/frequency/Sample_common_SV_Common.bed
+    output: /home/wuzhikun/Project/PopTest/population/bed/frequency/Sample_common_SV_singleton_genepred_overlap.bed, /home/wuzhikun/Project/PopTest/population/bed/frequency/Sample_common_SV_rare_genepred_overlap.bed, /home/wuzhikun/Project/PopTest/population/bed/frequency/Sample_common_SV_low_genepred_overlap.bed, /home/wuzhikun/Project/PopTest/population/bed/frequency/Sample_common_SV_common_genepred_overlap.bed
+    log: /home/wuzhikun/Project/PopTest/log/FreqOverlap.log
+    jobid: 13
+
+[33mJob counts:
+	count	jobs
+	1	FreqOverlap
+	1[0m
+[33mJob counts:
+	count	jobs
+	1	lofSVDist
+	1[0m
+[33mJob counts:
+	count	jobs
+	1	cosmicOverlap
+	1[0m
+[33mJob counts:
+	count	jobs
+	1	AllCDSEnrich
+	1[0m
+[Sat Aug  8 10:05:06 2020]
+Finished job 16.
+1 of 14 steps (7%) done
+[Sat Aug  8 10:05:06 2020]
+Finished job 17.
+2 of 14 steps (14%) done
+
+[Sat Aug  8 10:05:06 2020]
+rule cosmicGeno:
+    input: /home/wuzhikun/Project/PopTest/population/Annotation/Sample_common_SV_genepred_overlap_promoter_all_lof_CDS.bed, /home/wuzhikun/Project/PopTest/population/genotype/Sample_SV_genotype.txt, /home/wuzhikun/Project/PopTest/population/Annotation/Enrichment/All/COSMIC_gene_overlap_report.txt
+    output: /home/wuzhikun/Project/PopTest/population/Annotation/Enrichment/All/COSMIC_Disease_gene_tag_genotypes.txt
+    log: /home/wuzhikun/Project/PopTest/log/cosmicGeno.log
+    jobid: 5
+
+[Sat Aug  8 10:05:06 2020]
+rule CategoryLength:
+    input: /home/wuzhikun/Project/PopTest/population/Annotation/Sample_common_SV_genepred_overlap_promoter_all_lof_SV_dist.txt, /home/wuzhikun/Project/PopTest/population/Category/Sample_SV_category_tag.xls
+    output: /home/wuzhikun/Project/PopTest/population/Annotation/Sample_common_SV_genepred_overlap_promoter_all_lof_SV_dist_category.txt
+    jobid: 10
+
+[Sat Aug  8 10:05:10 2020]
+Finished job 13.
+3 of 14 steps (21%) done
+[33mJob counts:
+	count	jobs
+	1	CategoryLength
+	1[0m
+[33mJob counts:
+	count	jobs
+	1	cosmicGeno
+	1[0m
+[Sat Aug  8 10:05:15 2020]
+Finished job 10.
+4 of 14 steps (29%) done
+
+[Sat Aug  8 10:05:15 2020]
+rule CategoryLengthPlot:
+    input: /home/wuzhikun/Project/PopTest/population/Annotation/Sample_common_SV_genepred_overlap_promoter_all_lof_SV_dist_category.txt
+    output: /home/wuzhikun/Project/PopTest/population/Annotation/Sample_common_SV_genepred_overlap_promoter_all_lof_SV_dist_category.pdf
+    log: /home/wuzhikun/Project/PopTest/log/CategoryLengthPlot.log
+    jobid: 11
+
+[33mJob counts:
+	count	jobs
+	1	CategoryLengthPlot
+	1[0m
+[Sat Aug  8 10:05:22 2020]
+Finished job 11.
+5 of 14 steps (36%) done
+[Sat Aug  8 10:05:24 2020]
+Finished job 5.
+6 of 14 steps (43%) done
+[Sat Aug  8 10:07:53 2020]
+Finished job 0.
+7 of 14 steps (50%) done
+
+[Sat Aug  8 10:07:53 2020]
+rule AllCDSEnrichPlot:
+    input: /home/wuzhikun/Project/PopTest/population/Annotation/Enrichment/All/KEGG_2019_Human..enrichr.reports.txt
+    output: /home/wuzhikun/Project/PopTest/population/Annotation/Enrichment/All/Plots/KEGG_2019_Human..enrichr.reports.pdf
+    log: /home/wuzhikun/Project/PopTest/log/CommonEnrichPlot.log
+    jobid: 3
+
+[Sat Aug  8 10:07:53 2020]
+rule enrichGeneGeno:
+    input: /home/wuzhikun/Project/PopTest/population/Annotation/Sample_common_SV_genepred_overlap_promoter_all_lof_CDS.bed, /home/wuzhikun/Project/PopTest/population/genotype/Sample_SV_genotype.txt, /home/wuzhikun/Project/PopTest/population/Annotation/Enrichment/All/OMIM_Disease..enrichr.reports.txt, /home/wuzhikun/Project/PopTest/population/Annotation/Enrichment/All/OMIM_Expanded..enrichr.reports.txt, /home/wuzhikun/Project/PopTest/population/Annotation/Enrichment/All/ClinVar_2019..enrichr.reports.txt, /home/wuzhikun/Project/PopTest/population/Annotation/Enrichment/All/GWAS_Catalog_2019..enrichr.reports.txt, /home/wuzhikun/Project/PopTest/population/Annotation/Enrichment/All/UK_Biobank_GWAS_v1..enrichr.reports.txt
+    output: /home/wuzhikun/Project/PopTest/population/Annotation/Enrichment/All/OMIM_Disease_gene_tag_genotypes.txt, /home/wuzhikun/Project/PopTest/population/Annotation/Enrichment/All/OMIM_Expand_gene_tag_genotypes.txt, /home/wuzhikun/Project/PopTest/population/Annotation/Enrichment/All/Clinvar_gene_tag_genotypes.txt, /home/wuzhikun/Project/PopTest/population/Annotation/Enrichment/All/GWAS_gene_tag_genotypes.txt, /home/wuzhikun/Project/PopTest/population/Annotation/Enrichment/All/Biobank_gene_tag_genotypes.txt
+    log: /home/wuzhikun/Project/PopTest/log/enrichGeneGeno.log
+    jobid: 4
+
+[33mJob counts:
+	count	jobs
+	1	enrichGeneGeno
+	1[0m
+[33mJob counts:
+	count	jobs
+	1	AllCDSEnrichPlot
+	1[0m
+Please check whether the gene C11ORF16 is in annotation file /home/wuzhikun/Project/PopTest/population/Annotation/Sample_common_SV_genepred_overlap_promoter_all_lof_CDS.bed.
+Please check whether the gene C11ORF80 is in annotation file /home/wuzhikun/Project/PopTest/population/Annotation/Sample_common_SV_genepred_overlap_promoter_all_lof_CDS.bed.
+Please check whether the gene C14ORF159 is in annotation file /home/wuzhikun/Project/PopTest/population/Annotation/Sample_common_SV_genepred_overlap_promoter_all_lof_CDS.bed.
+Please check whether the gene C16ORF45 is in annotation file /home/wuzhikun/Project/PopTest/population/Annotation/Sample_common_SV_genepred_overlap_promoter_all_lof_CDS.bed.
+Please check whether the gene C16ORF72 is in annotation file /home/wuzhikun/Project/PopTest/population/Annotation/Sample_common_SV_genepred_overlap_promoter_all_lof_CDS.bed.
+Please check whether the gene C16ORF92 is in annotation file /home/wuzhikun/Project/PopTest/population/Annotation/Sample_common_SV_genepred_overlap_promoter_all_lof_CDS.bed.
+Please check whether the gene C1ORF105 is in annotation file /home/wuzhikun/Project/PopTest/population/Annotation/Sample_common_SV_genepred_overlap_promoter_all_lof_CDS.bed.
+Please check whether the gene C1ORF168 is in annotation file /home/wuzhikun/Project/PopTest/population/Annotation/Sample_common_SV_genepred_overlap_promoter_all_lof_CDS.bed.
+Please check whether the gene C1ORF185 is in annotation file /home/wuzhikun/Project/PopTest/population/Annotation/Sample_common_SV_genepred_overlap_promoter_all_lof_CDS.bed.
+Please check whether the gene C20ORF194 is in annotation file /home/wuzhikun/Project/PopTest/population/Annotation/Sample_common_SV_genepred_overlap_promoter_all_lof_CDS.bed.
+Please check whether the gene C20ORF27 is in annotation file /home/wuzhikun/Project/PopTest/population/Annotation/Sample_common_SV_genepred_overlap_promoter_all_lof_CDS.bed.
+Please check whether the gene C21ORF2 is in annotation file /home/wuzhikun/Project/PopTest/population/Annotation/Sample_common_SV_genepred_overlap_promoter_all_lof_CDS.bed.
+Please check whether the gene C2ORF16 is in annotation file /home/wuzhikun/Project/PopTest/population/Annotation/Sample_common_SV_genepred_overlap_promoter_all_lof_CDS.bed.
+Please check whether the gene C2ORF70 is in annotation file /home/wuzhikun/Project/PopTest/population/Annotation/Sample_common_SV_genepred_overlap_promoter_all_lof_CDS.bed.
+Please check whether the gene C2ORF73 is in annotation file /home/wuzhikun/Project/PopTest/population/Annotation/Sample_common_SV_genepred_overlap_promoter_all_lof_CDS.bed.
+Please check whether the gene C3ORF84 is in annotation file /home/wuzhikun/Project/PopTest/population/Annotation/Sample_common_SV_genepred_overlap_promoter_all_lof_CDS.bed.
+Please check whether the gene C4ORF22 is in annotation file /home/wuzhikun/Project/PopTest/population/Annotation/Sample_common_SV_genepred_overlap_promoter_all_lof_CDS.bed.
+Please check whether the gene C5ORF42 is in annotation file /home/wuzhikun/Project/PopTest/population/Annotation/Sample_common_SV_genepred_overlap_promoter_all_lof_CDS.bed.
+Please check whether the gene C5ORF46 is in annotation file /home/wuzhikun/Project/PopTest/population/Annotation/Sample_common_SV_genepred_overlap_promoter_all_lof_CDS.bed.
+Please check whether the gene C6ORF58 is in annotation file /home/wuzhikun/Project/PopTest/population/Annotation/Sample_common_SV_genepred_overlap_promoter_all_lof_CDS.bed.
+Please check whether the gene C7ORF50 is in annotation file /home/wuzhikun/Project/PopTest/population/Annotation/Sample_common_SV_genepred_overlap_promoter_all_lof_CDS.bed.
+Please check whether the gene C8ORF34 is in annotation file /home/wuzhikun/Project/PopTest/population/Annotation/Sample_common_SV_genepred_overlap_promoter_all_lof_CDS.bed.
+Please check whether the gene C9ORF153 is in annotation file /home/wuzhikun/Project/PopTest/population/Annotation/Sample_common_SV_genepred_overlap_promoter_all_lof_CDS.bed.
+[Sat Aug  8 10:08:55 2020]
+Finished job 4.
+8 of 14 steps (57%) done
+
+[Sat Aug  8 10:08:55 2020]
+rule diseaseCategoory:
+    input: /home/wuzhikun/Project/PopTest/population/Annotation/Enrichment/All/OMIM_Expand_gene_tag_genotypes.txt, /home/wuzhikun/Project/PopTest/population/Annotation/Enrichment/All/GWAS_gene_tag_genotypes.txt, /home/wuzhikun/Project/PopTest/population/Annotation/Enrichment/All/COSMIC_Disease_gene_tag_genotypes.txt, /home/wuzhikun/Project/PopTest/population/Category/Sample_SV_category_tag.xls
+    output: /home/wuzhikun/Project/PopTest/population/Annotation/Enrichment/All/Annotation_database_category.txt
+    log: /home/wuzhikun/Project/PopTest/log/diseaseCategoory.log
+    jobid: 6
+
+[Sat Aug  8 10:08:55 2020]
+rule nocatalogGene:
+    input: /home/wuzhikun/Project/PopTest/population/Annotation/Sample_common_SV_genepred_overlap_gene.txt, /home/wuzhikun/Project/PopTest/population/Annotation/Enrichment/All/OMIM_Expand_gene_tag_genotypes.txt, /home/wuzhikun/Project/PopTest/population/Annotation/Enrichment/All/GWAS_gene_tag_genotypes.txt, /home/wuzhikun/Project/PopTest/population/Annotation/Enrichment/All/COSMIC_Disease_gene_tag_genotypes.txt
+    output: /home/wuzhikun/Project/PopTest/population/Annotation/Enrichment/All/disease_combine_gene_temp.txt, /home/wuzhikun/Project/PopTest/population/Annotation/Enrichment/All/disease_no_catalog_gene.txt
+    jobid: 8
+
+[33mJob counts:
+	count	jobs
+	1	nocatalogGene
+	1[0m
+[33mJob counts:
+	count	jobs
+	1	diseaseCategoory
+	1[0m
+Removing temporary output file /home/wuzhikun/Project/PopTest/population/Annotation/Enrichment/All/disease_combine_gene_temp.txt.
+[Sat Aug  8 10:09:01 2020]
+Finished job 8.
+9 of 14 steps (64%) done
+[Sat Aug  8 10:09:01 2020]
+Finished job 6.
+10 of 14 steps (71%) done
+
+[Sat Aug  8 10:09:01 2020]
+rule diseaseCategooryPlot:
+    input: /home/wuzhikun/Project/PopTest/population/Annotation/Enrichment/All/Annotation_database_category.txt
+    output: /home/wuzhikun/Project/PopTest/population/Annotation/Enrichment/All/Annotation_database_category.pdf
+    log: /home/wuzhikun/Project/PopTest/log/diseaseCategooryPlot.log
+    jobid: 7
+
+[Sat Aug  8 10:09:01 2020]
+rule GeneDisease:
+    input: /home/wuzhikun/Project/PopTest/population/Annotation/Enrichment/All/disease_no_catalog_gene.txt
+    output: /home/wuzhikun/Project/PopTest/population/Annotation/Enrichment/All/isease_no_catalog_gene_malacards.txt
+    jobid: 9
+
+[33mJob counts:
+	count	jobs
+	1	GeneDisease
+	1[0m
+[33mJob counts:
+	count	jobs
+	1	diseaseCategooryPlot
+	1[0m
+[Sat Aug  8 10:09:12 2020]
+Finished job 7.
+11 of 14 steps (79%) done
+[Sat Aug  8 10:10:02 2020]
+Finished job 9.
+12 of 14 steps (86%) done
+[Sat Aug  8 10:11:57 2020]
+Finished job 3.
+13 of 14 steps (93%) done
+
+[Sat Aug  8 10:11:57 2020]
+localrule all:
+    input: /home/wuzhikun/Project/PopTest/population/Annotation/Enrichment/All/KEGG_2019_Human..enrichr.reports.txt, /home/wuzhikun/Project/PopTest/population/Annotation/Enrichment/All/Plots/KEGG_2019_Human..enrichr.reports.pdf, /home/wuzhikun/Project/PopTest/population/Annotation/Enrichment/All/OMIM_Disease_gene_tag_genotypes.txt, /home/wuzhikun/Project/PopTest/population/Annotation/Enrichment/All/COSMIC_Disease_gene_tag_genotypes.txt, /home/wuzhikun/Project/PopTest/population/Annotation/Enrichment/All/Annotation_database_category.txt, /home/wuzhikun/Project/PopTest/population/Annotation/Enrichment/All/Annotation_database_category.pdf, /home/wuzhikun/Project/PopTest/population/Annotation/Enrichment/All/disease_no_catalog_gene.txt, /home/wuzhikun/Project/PopTest/population/Annotation/Enrichment/All/isease_no_catalog_gene_malacards.txt, /home/wuzhikun/Project/PopTest/population/Annotation/Sample_common_SV_genepred_overlap_promoter_all_lof_SV_dist_category.txt, /home/wuzhikun/Project/PopTest/population/Annotation/Sample_common_SV_genepred_overlap_promoter_all_lof_SV_dist_category.pdf, /home/wuzhikun/Project/PopTest/population/bed/frequency/Sample_common_SV_Rare.bed, /home/wuzhikun/Project/PopTest/population/bed/frequency/Sample_common_SV_rare_genepred_overlap.bed
+    jobid: 1
+
+[Sat Aug  8 10:11:57 2020]
+Finished job 1.
+14 of 14 steps (100%) done
+Complete log: /home/wuzhikun/Project/PopTest/.snakemake/log/2020-08-08T100453.321571.snakemake.log
