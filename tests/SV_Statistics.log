@@ -1,0 +1,428 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 20
+Rules claiming more threads will be scaled down.
+Job counts:
+	count	jobs
+	1	CategoryLengthAll
+	1	CategoryLengthAllPlot
+	1	MergeSVFilt
+	1	Pop2bed0
+	1	Positions
+	1	SVChrLengthCor
+	1	SVDisPlotAll
+	1	SVDisSummaryAll
+	1	SVFiltStatsAll
+	1	SVFrequencyFilt
+	1	SVGenotype
+	1	SVIndividuals
+	1	SVIndividualsPlot
+	1	SVLength
+	1	SVLengthPlot
+	1	SVSummaryPlotAll
+	1	SVTypeLength
+	1	SVTypeLengthPlot
+	1	SubPopulation
+	1	TRA2circos
+	1	TagCalss
+	1	TypeDensityAllPlot
+	1	TypeStackAll
+	1	all
+	1	commonSVTag
+	1	lofSVDistAll
+	1	positionWindow
+	27
+
+[Fri Aug  7 15:23:22 2020]
+rule MergeSVFilt:
+    input: /home/wuzhikun/Project/PopTest/population/Merge/Sample_SV_common.vcf
+    output: /home/wuzhikun/Project/PopTest/population/Merge/Sample_SV_common_filt.vcf
+    log: /home/wuzhikun/Project/PopTest/log/MergeSVFilt.log
+    jobid: 1
+
+[33mJob counts:
+	count	jobs
+	1	MergeSVFilt
+	1[0m
+[Fri Aug  7 15:26:03 2020]
+Finished job 1.
+1 of 27 steps (4%) done
+
+[Fri Aug  7 15:26:03 2020]
+rule SVLength:
+    input: /home/wuzhikun/Project/PopTest/population/Merge/Sample_SV_common_filt.vcf
+    output: /home/wuzhikun/Project/PopTest/population/Stats/Sample_common_SV_chr_length.xls
+    log: /home/wuzhikun/Project/PopTest/log/SVLength.log
+    jobid: 13
+
+[Fri Aug  7 15:26:03 2020]
+rule commonSVTag:
+    input: /home/wuzhikun/Project/PopTest/population/Merge/Sample_SV_common_filt.vcf
+    output: /home/wuzhikun/Project/PopTest/population/Merge/Sample_common_SV_Tag.xls
+    log: /home/wuzhikun/Project/PopTest/log/SVTag.log
+    jobid: 3
+
+[Fri Aug  7 15:26:04 2020]
+rule Pop2bed0:
+    input: /home/wuzhikun/Project/PopTest/population/Merge/Sample_SV_common_filt.vcf
+    output: /home/wuzhikun/Project/PopTest/population/bed/Sample_common_SV_DEL.bed, /home/wuzhikun/Project/PopTest/population/bed/Sample_common_SV_INS.bed, /home/wuzhikun/Project/PopTest/population/bed/Sample_common_SV_DUP.bed, /home/wuzhikun/Project/PopTest/population/bed/Sample_common_SV_INV.bed, /home/wuzhikun/Project/PopTest/population/bed/Sample_common_SV_OTHER.bed, /home/wuzhikun/Project/PopTest/population/bed/Sample_common_SV_TRA.bed, /home/wuzhikun/Project/PopTest/population/bed/Sample_common_SV_DEL_INS_INV_DUP.bed, /home/wuzhikun/Project/PopTest/population/bed/Sample_common_SV_length.xls
+    log: /home/wuzhikun/Project/PopTest/log/Pop2bed0.log
+    jobid: 24
+
+[Fri Aug  7 15:26:04 2020]
+rule SVFiltStatsAll:
+    input: /home/wuzhikun/Project/PopTest/population/Merge/Sample_SV_common_filt.vcf
+    output: /home/wuzhikun/Project/PopTest/population/Stats/Sample_merge_summary.xls, /home/wuzhikun/Project/PopTest/population/Stats/Sample_merge_record.xls, /home/wuzhikun/Project/PopTest/population/Stats/Sample_merge_position.xls, /home/wuzhikun/Project/PopTest/population/Stats/Sample_merge_tra.xls
+    log: /home/wuzhikun/Project/PopTest/log/SVStatsAll.log
+    jobid: 6
+    threads: 2
+
+[Fri Aug  7 15:26:04 2020]
+rule SubPopulation:
+    input: /home/wuzhikun/Project/PopTest/population/Merge/Sample_SV_common_filt.vcf
+    output: /home/wuzhikun/Project/PopTest/population/Merge/Sample_SV_common_CN329.vcf
+    log: /home/wuzhikun/Project/PopTest/log/SubPopulation.log
+    jobid: 2
+
+[Fri Aug  7 15:26:04 2020]
+rule SVGenotype:
+    input: /home/wuzhikun/Project/PopTest/population/Merge/Sample_SV_common_filt.vcf
+    output: /home/wuzhikun/Project/PopTest/population/genotype/Sample_SV_genotype.txt, /home/wuzhikun/Project/PopTest/population/genotype/Sample_SV_genotype_numeric.txt
+    log: /home/wuzhikun/Project/PopTest/log/SVGenotype.log
+    jobid: 29
+
+[33mJob counts:
+	count	jobs
+	1	commonSVTag
+	1[0m
+[33mJob counts:
+	count	jobs
+	1	SVLength
+	1[0m
+[33mJob counts:
+	count	jobs
+	1	Pop2bed0
+	1[0m
+[33mJob counts:
+	count	jobs
+	1	SubPopulation
+	1[0m
+[33mJob counts:
+	count	jobs
+	1	SVFiltStatsAll
+	1[0m
+[33mJob counts:
+	count	jobs
+	1	SVGenotype
+	1[0m
+[Fri Aug  7 15:26:26 2020]
+Finished job 13.
+2 of 27 steps (7%) done
+
+[Fri Aug  7 15:26:26 2020]
+rule SVLengthPlot:
+    input: /home/wuzhikun/Project/PopTest/population/Stats/Sample_common_SV_chr_length.xls
+    output: /home/wuzhikun/Project/PopTest/population/Stats/Sample_common_SV_chr_length.pdf
+    log: /home/wuzhikun/Project/PopTest/log/SVLengthPlot.log
+    jobid: 14
+
+[Fri Aug  7 15:26:27 2020]
+Finished job 6.
+3 of 27 steps (11%) done
+
+[Fri Aug  7 15:26:27 2020]
+rule TRA2circos:
+    input: /home/wuzhikun/Project/PopTest/population/Stats/Sample_merge_tra.xls
+    output: /home/wuzhikun/Project/PopTest/population/Stats/Sample_merge_tra_circos.xls
+    log: /home/wuzhikun/Project/PopTest/log/TRA2circos.log
+    jobid: 17
+    threads: 2
+
+[Fri Aug  7 15:26:27 2020]
+rule SVDisPlotAll:
+    input: /home/wuzhikun/Project/PopTest/population/Stats/Sample_merge_position.xls
+    output: /home/wuzhikun/Project/PopTest/population/Stats/Sample_merge_position_temp.xls, /home/wuzhikun/Project/PopTest/population/Stats/Sample_merge_distribution.pdf
+    log: /home/wuzhikun/Project/PopTest/log/SVDisPlotAll.log
+    jobid: 11
+    threads: 2
+
+[Fri Aug  7 15:26:27 2020]
+rule TypeStackAll:
+    input: /home/wuzhikun/Project/PopTest/population/Stats/Sample_merge_summary.xls
+    output: /home/wuzhikun/Project/PopTest/population/Stats/Sample_merge_dist_summary.pdf
+    log: /home/wuzhikun/Project/PopTest/log/TypeStackAll.log
+    jobid: 12
+    threads: 2
+
+[Fri Aug  7 15:26:27 2020]
+rule SVDisSummaryAll:
+    input: /home/wuzhikun/Project/PopTest/population/Stats/Sample_merge_position.xls
+    output: /home/wuzhikun/Project/PopTest/population/Stats/Sample_merge_dist_summary.xls
+    log: /home/wuzhikun/Project/PopTest/log/SVDisSummaryAll.log
+    jobid: 8
+    threads: 2
+
+[Fri Aug  7 15:26:27 2020]
+rule positionWindow:
+    input: /home/wuzhikun/Project/PopTest/population/Stats/Sample_merge_position.xls
+    output: /home/wuzhikun/Project/PopTest/population/Stats/Sample_DEL.xls, /home/wuzhikun/Project/PopTest/population/Stats/Sample_INS.xls, /home/wuzhikun/Project/PopTest/population/Stats/Sample_DUP.xls, /home/wuzhikun/Project/PopTest/population/Stats/Sample_INV.xls
+    log: /home/wuzhikun/Project/PopTest/log/positionWindow.log
+    jobid: 15
+
+[Fri Aug  7 15:26:27 2020]
+rule TypeDensityAllPlot:
+    input: /home/wuzhikun/Project/PopTest/population/Stats/Sample_merge_record.xls
+    output: /home/wuzhikun/Project/PopTest/population/Stats/Sample_merge_record_length_density.pdf
+    log: /home/wuzhikun/Project/PopTest/log/TypeDensityAll.log
+    jobid: 7
+    threads: 2
+
+[Fri Aug  7 15:26:30 2020]
+Finished job 24.
+4 of 27 steps (15%) done
+[33mJob counts:
+	count	jobs
+	1	SVLengthPlot
+	1[0m
+[33mJob counts:
+	count	jobs
+	1	TypeDensityAllPlot
+	1[0m
+[33mJob counts:
+	count	jobs
+	1	TypeStackAll
+	1[0m
+[33mJob counts:
+	count	jobs
+	1	SVDisPlotAll
+	1[0m
+[33mJob counts:
+	count	jobs
+	1	TRA2circos
+	1[0m
+[33mJob counts:
+	count	jobs
+	1	SVDisSummaryAll
+	1[0m
+[33mJob counts:
+	count	jobs
+	1	positionWindow
+	1[0m
+[Fri Aug  7 15:26:36 2020]
+Finished job 17.
+5 of 27 steps (19%) done
+[Fri Aug  7 15:26:37 2020]
+Finished job 8.
+6 of 27 steps (22%) done
+[Fri Aug  7 15:26:39 2020]
+Finished job 15.
+7 of 27 steps (26%) done
+
+[Fri Aug  7 15:26:39 2020]
+rule Positions:
+    input: /home/wuzhikun/Project/PopTest/population/Stats/Sample_DEL.xls, /home/wuzhikun/Project/PopTest/population/Stats/Sample_INS.xls, /home/wuzhikun/Project/PopTest/population/Stats/Sample_DUP.xls, /home/wuzhikun/Project/PopTest/population/Stats/Sample_INV.xls
+    output: /home/wuzhikun/Project/PopTest/population/Stats/Sample_DEL_circos.xls, /home/wuzhikun/Project/PopTest/population/Stats/Sample_INS_circos.xls, /home/wuzhikun/Project/PopTest/population/Stats/Sample_DUP_circos.xls, /home/wuzhikun/Project/PopTest/population/Stats/Sample_INV_circos.xls
+    log: /home/wuzhikun/Project/PopTest/log/Positions.log
+    jobid: 16
+    threads: 2
+
+[Fri Aug  7 15:26:39 2020]
+rule SVSummaryPlotAll:
+    input: /home/wuzhikun/Project/PopTest/population/Stats/Sample_merge_dist_summary.xls
+    output: /home/wuzhikun/Project/PopTest/population/Stats/Sample_merge_chroms_distribution.pdf
+    log: /home/wuzhikun/Project/PopTest/log/SVSummaryPlotAll.log
+    jobid: 9
+    threads: 2
+
+[Fri Aug  7 15:26:39 2020]
+rule SVChrLengthCor:
+    input: /home/wuzhikun/Project/PopTest/population/Stats/Sample_merge_dist_summary.xls
+    output: /home/wuzhikun/Project/PopTest/population/Stats/Sample_merge_SV_number_ChrLength_cor.pdf
+    log: /home/wuzhikun/Project/PopTest/log/SVChrLengthCor.log
+    jobid: 10
+
+[Fri Aug  7 15:26:41 2020]
+Finished job 14.
+8 of 27 steps (30%) done
+[33mJob counts:
+	count	jobs
+	1	Positions
+	1[0m
+[33mJob counts:
+	count	jobs
+	1	SVSummaryPlotAll
+	1[0m
+[33mJob counts:
+	count	jobs
+	1	SVChrLengthCor
+	1[0m
+[Fri Aug  7 15:26:54 2020]
+Finished job 16.
+9 of 27 steps (33%) done
+[Fri Aug  7 15:27:02 2020]
+Finished job 2.
+10 of 27 steps (37%) done
+Removing temporary output file /home/wuzhikun/Project/PopTest/population/Stats/Sample_merge_position_temp.xls.
+[Fri Aug  7 15:27:36 2020]
+Finished job 11.
+11 of 27 steps (41%) done
+source activate Rmeta && Rscript /home/wuzhikun/github/PGC/script/SVTypeBar.R --input /home/wuzhikun/Project/PopTest/population/Stats/Sample_merge_summary.xls --pdf /home/wuzhikun/Project/PopTest/population/Stats/Sample_merge_dist_summary.pdf --width 3 --height 4 > /home/wuzhikun/Project/PopTest/log/TypeStackAll.log 2>&1
+[Fri Aug  7 15:28:02 2020]
+Finished job 12.
+12 of 27 steps (44%) done
+[Fri Aug  7 15:28:03 2020]
+Finished job 10.
+13 of 27 steps (48%) done
+source activate Rmeta && Rscript /home/wuzhikun/github/PGC/script/SVDensity.R --input /home/wuzhikun/Project/PopTest/population/Stats/Sample_merge_record.xls --pdf /home/wuzhikun/Project/PopTest/population/Stats/Sample_merge_record_length_density.pdf --width 5 --height 4 > /home/wuzhikun/Project/PopTest/log/TypeDensityAll.log 2>&1
+[Fri Aug  7 15:28:04 2020]
+Finished job 9.
+14 of 27 steps (52%) done
+[Fri Aug  7 15:28:04 2020]
+Finished job 7.
+15 of 27 steps (56%) done
+[Fri Aug  7 15:33:32 2020]
+Finished job 29.
+16 of 27 steps (59%) done
+
+[Fri Aug  7 15:33:32 2020]
+rule SVFrequencyFilt:
+    input: /home/wuzhikun/Project/PopTest/population/genotype/Sample_SV_genotype.txt
+    output: /home/wuzhikun/Project/PopTest/population/genotype/Sample_SV_genotype_filt.txt, /home/wuzhikun/Project/PopTest/population/genotype/Sample_SV_genotype_frequency.txt
+    log: /home/wuzhikun/Project/PopTest/log/SVFrequencyFilt.log
+    jobid: 23
+
+[33mJob counts:
+	count	jobs
+	1	SVFrequencyFilt
+	1[0m
+[Fri Aug  7 15:33:46 2020]
+Finished job 23.
+17 of 27 steps (63%) done
+
+[Fri Aug  7 15:33:46 2020]
+rule lofSVDistAll:
+    input: /home/wuzhikun/Project/PopTest/population/genotype/Sample_SV_genotype_frequency.txt
+    output: /home/wuzhikun/Project/PopTest/population/Stats/Sample_SV_distance_temp1.txt, /home/wuzhikun/Project/PopTest/population/Stats/Sample_SV_distance_temp2.txt, /home/wuzhikun/Project/PopTest/population/Stats/Sample_SV_distance.txt
+    jobid: 30
+
+[Fri Aug  7 15:33:46 2020]
+rule TagCalss:
+    input: /home/wuzhikun/Project/PopTest/population/genotype/Sample_SV_genotype_frequency.txt, /home/wuzhikun/Project/PopTest/population/bed/Sample_common_SV_DEL_INS_INV_DUP.bed
+    output: /home/wuzhikun/Project/PopTest/population/Category/Sample_SV_category_tag.xls, /home/wuzhikun/Project/PopTest/population/bed/frequency/Sample_common_SV_Singleton.bed, /home/wuzhikun/Project/PopTest/population/bed/frequency/Sample_common_SV_Rare.bed, /home/wuzhikun/Project/PopTest/population/bed/frequency/Sample_common_SV_Low.bed, /home/wuzhikun/Project/PopTest/population/bed/frequency/Sample_common_SV_Common.bed
+    log: /home/wuzhikun/Project/PopTest/log/TagCalss.log
+    jobid: 19
+
+[33mJob counts:
+	count	jobs
+	1	TagCalss
+	1[0m
+[33mJob counts:
+	count	jobs
+	1	lofSVDistAll
+	1[0m
+[Fri Aug  7 15:33:50 2020]
+Finished job 30.
+18 of 27 steps (67%) done
+[Fri Aug  7 15:33:50 2020]
+Finished job 19.
+19 of 27 steps (70%) done
+
+[Fri Aug  7 15:33:50 2020]
+rule CategoryLengthAll:
+    input: /home/wuzhikun/Project/PopTest/population/Stats/Sample_SV_distance.txt, /home/wuzhikun/Project/PopTest/population/Category/Sample_SV_category_tag.xls
+    output: /home/wuzhikun/Project/PopTest/population/Stats/Sample_SV_distance_category.txt
+    jobid: 25
+
+[33mJob counts:
+	count	jobs
+	1	CategoryLengthAll
+	1[0m
+[Fri Aug  7 15:33:53 2020]
+Finished job 25.
+20 of 27 steps (74%) done
+
+[Fri Aug  7 15:33:53 2020]
+rule CategoryLengthAllPlot:
+    input: /home/wuzhikun/Project/PopTest/population/Stats/Sample_SV_distance_category.txt
+    output: /home/wuzhikun/Project/PopTest/population/Stats/Sample_SV_distance_category.pdf
+    log: /home/wuzhikun/Project/PopTest/log/CategoryLengthAllPlot.log
+    jobid: 20
+
+[33mJob counts:
+	count	jobs
+	1	CategoryLengthAllPlot
+	1[0m
+[Fri Aug  7 15:34:00 2020]
+Finished job 20.
+21 of 27 steps (78%) done
+[Fri Aug  7 15:34:03 2020]
+Finished job 3.
+22 of 27 steps (81%) done
+
+[Fri Aug  7 15:34:03 2020]
+rule SVTypeLength:
+    input: /home/wuzhikun/Project/PopTest/population/Merge/Sample_common_SV_Tag.xls
+    output: /home/wuzhikun/Project/PopTest/population/Merge/Length/Sample_common_SV_INS_DEL.txt, /home/wuzhikun/Project/PopTest/population/Merge/Length/Sample_common_SV_INV_DUP.txt
+    jobid: 4
+
+[Fri Aug  7 15:34:03 2020]
+rule SVIndividuals:
+    input: /home/wuzhikun/Project/PopTest/population/Merge/Sample_common_SV_Tag.xls
+    output: /home/wuzhikun/Project/PopTest/population/Stats/Sample_SV_type_tag_individulas.xls, /home/wuzhikun/Project/PopTest/population/Stats/Sample_SV_type_tag_indiv_each.xls
+    log: /home/wuzhikun/Project/PopTest/log/SVIndividuals.log
+    jobid: 22
+
+[33mJob counts:
+	count	jobs
+	1	SVIndividuals
+	1[0m
+[33mJob counts:
+	count	jobs
+	1	SVTypeLength
+	1[0m
+[Fri Aug  7 15:34:10 2020]
+Finished job 4.
+23 of 27 steps (85%) done
+
+[Fri Aug  7 15:34:10 2020]
+rule SVTypeLengthPlot:
+    input: /home/wuzhikun/Project/PopTest/population/Merge/Length/Sample_common_SV_INS_DEL.txt, /home/wuzhikun/Project/PopTest/population/Merge/Length/Sample_common_SV_INV_DUP.txt
+    output: /home/wuzhikun/Project/PopTest/population/Merge/Length/Sample_common_SV_INS_DEL_length_1000.pdf, /home/wuzhikun/Project/PopTest/population/Merge/Length/Sample_common_SV_INS_DEL_length_10000.pdf, /home/wuzhikun/Project/PopTest/population/Merge/Length/Sample_common_SV_INV_DUP_length_1000.pdf, /home/wuzhikun/Project/PopTest/population/Merge/Length/Sample_common_SV_INV_DUP_length_10000.pdf
+    log: /home/wuzhikun/Project/PopTest/log/SVTypeLengthPlot.log
+    jobid: 5
+
+[33mJob counts:
+	count	jobs
+	1	SVTypeLengthPlot
+	1[0m
+[Fri Aug  7 15:34:13 2020]
+Finished job 22.
+24 of 27 steps (89%) done
+
+[Fri Aug  7 15:34:13 2020]
+rule SVIndividualsPlot:
+    input: /home/wuzhikun/Project/PopTest/population/Stats/Sample_SV_type_tag_individulas.xls
+    output: /home/wuzhikun/Project/PopTest/population/Stats/Sample_SV_type_tag_individulas.pdf
+    log: /home/wuzhikun/Project/PopTest/log/SVIndividualsPlot.log
+    jobid: 18
+
+[33mJob counts:
+	count	jobs
+	1	SVIndividualsPlot
+	1[0m
+[Fri Aug  7 15:34:19 2020]
+Finished job 18.
+25 of 27 steps (93%) done
+[Fri Aug  7 15:34:23 2020]
+Finished job 5.
+26 of 27 steps (96%) done
+
+[Fri Aug  7 15:34:23 2020]
+localrule all:
+    input: /home/wuzhikun/Project/PopTest/population/Merge/Sample_SV_common_filt.vcf, /home/wuzhikun/Project/PopTest/population/Merge/Sample_SV_common_CN329.vcf, /home/wuzhikun/Project/PopTest/population/Merge/Sample_common_SV_Tag.xls, /home/wuzhikun/Project/PopTest/population/Merge/Length/Sample_common_SV_INS_DEL.txt, /home/wuzhikun/Project/PopTest/population/Merge/Length/Sample_common_SV_INS_DEL_length_1000.pdf, /home/wuzhikun/Project/PopTest/population/Stats/Sample_merge_summary.xls, /home/wuzhikun/Project/PopTest/population/Stats/Sample_merge_record_length_density.pdf, /home/wuzhikun/Project/PopTest/population/Stats/Sample_merge_dist_summary.xls, /home/wuzhikun/Project/PopTest/population/Stats/Sample_merge_chroms_distribution.pdf, /home/wuzhikun/Project/PopTest/population/Stats/Sample_merge_SV_number_ChrLength_cor.pdf, /home/wuzhikun/Project/PopTest/population/Stats/Sample_merge_distribution.pdf, /home/wuzhikun/Project/PopTest/population/Stats/Sample_merge_dist_summary.pdf, /home/wuzhikun/Project/PopTest/population/Stats/Sample_common_SV_chr_length.xls, /home/wuzhikun/Project/PopTest/population/Stats/Sample_common_SV_chr_length.pdf, /home/wuzhikun/Project/PopTest/population/Stats/Sample_DEL.xls, /home/wuzhikun/Project/PopTest/population/Stats/Sample_DEL_circos.xls, /home/wuzhikun/Project/PopTest/population/Stats/Sample_merge_tra_circos.xls, /home/wuzhikun/Project/PopTest/population/Stats/Sample_SV_type_tag_individulas.pdf, /home/wuzhikun/Project/PopTest/population/Category/Sample_SV_category_tag.xls, /home/wuzhikun/Project/PopTest/population/Stats/Sample_SV_distance_category.pdf
+    jobid: 0
+
+[Fri Aug  7 15:34:23 2020]
+Finished job 0.
+27 of 27 steps (100%) done
+Complete log: /home/wuzhikun/Project/PopTest/.snakemake/log/2020-08-07T152321.230042.snakemake.log

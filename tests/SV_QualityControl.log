@@ -1,0 +1,656 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 24
+Rules claiming more threads will be scaled down.
+Job counts:
+	count	jobs
+	2	BAMStats
+	1	BAMStatsMerge
+	2	ChangeFormat
+	2	ErrorRate
+	1	ErrorRatePlot
+	1	ErrorRateSummary
+	2	MergeMultipleSV
+	2	MultipleFilt
+	2	NanoFilt
+	2	NanoPlotClean
+	2	NanoSV
+	2	NanoSVConvert
+	2	OriginalRecord
+	2	QualityStats
+	1	QualityStatsMerge
+	2	SAM2BAM
+	2	Sniffles
+	1	all
+	1	mappingRateStats
+	2	minimap2Align
+	2	nanovar
+	36
+
+[Mon Aug 10 09:46:10 2020]
+rule NanoFilt:
+    input: /home/wuzhikun/Project/PopTest/raw/CN001.fastq.gz
+    output: /home/wuzhikun/Project/PopTest/clean/CN001.fastq.gz
+    log: /home/wuzhikun/Project/PopTest/log/NanoFilt_CN001.log
+    jobid: 1
+    wildcards: sample=CN001
+    threads: 6
+
+[Mon Aug 10 09:46:10 2020]
+rule NanoFilt:
+    input: /home/wuzhikun/Project/PopTest/raw/CN002.fastq.gz
+    output: /home/wuzhikun/Project/PopTest/clean/CN002.fastq.gz
+    log: /home/wuzhikun/Project/PopTest/log/NanoFilt_CN002.log
+    jobid: 2
+    wildcards: sample=CN002
+    threads: 6
+
+[33mJob counts:
+	count	jobs
+	1	NanoFilt
+	1[0m
+[33mJob counts:
+	count	jobs
+	1	NanoFilt
+	1[0m
+source activate nanovar &&  gunzip -c /home/wuzhikun/Project/PopTest/raw/CN002.fastq.gz | NanoFilt --readtype 1D --quality  7 --length 500 --headcrop 35 --tailcrop 20 | gzip > /home/wuzhikun/Project/PopTest/clean/CN002.fastq.gz 2>/home/wuzhikun/Project/PopTest/log/NanoFilt_CN002.log
+[Mon Aug 10 09:51:00 2020]
+Finished job 2.
+1 of 36 steps (3%) done
+
+[Mon Aug 10 09:51:00 2020]
+rule NanoPlotClean:
+    input: /home/wuzhikun/Project/PopTest/clean/CN002.fastq.gz
+    output: /home/wuzhikun/Project/PopTest/QualityControl/clean/NanoPlot/CN002/NanoStats.txt, /home/wuzhikun/Project/PopTest/QualityControl/clean/NanoPlot/CN002/HistogramReadlength.pdf, /home/wuzhikun/Project/PopTest/QualityControl/clean/NanoPlot/CN002/LengthvsQualityScatterPlot_hex.pdf
+    log: /home/wuzhikun/Project/PopTest/log/NanoPlot_clean_CN002.log
+    jobid: 23
+    wildcards: sample=CN002
+    threads: 6
+
+[Mon Aug 10 09:51:00 2020]
+rule minimap2Align:
+    input: /home/wuzhikun/Project/PopTest/clean/CN002.fastq.gz
+    output: /home/wuzhikun/Project/PopTest/mapping/minimap2/CN002.sam
+    log: /home/wuzhikun/Project/PopTest/log/minimap2Align_CN002.log
+    jobid: 35
+    wildcards: sample=CN002
+    threads: 6
+
+source activate nanovar &&  gunzip -c /home/wuzhikun/Project/PopTest/raw/CN001.fastq.gz | NanoFilt --readtype 1D --quality  7 --length 500 --headcrop 35 --tailcrop 20 | gzip > /home/wuzhikun/Project/PopTest/clean/CN001.fastq.gz 2>/home/wuzhikun/Project/PopTest/log/NanoFilt_CN001.log
+[Mon Aug 10 09:51:00 2020]
+Finished job 1.
+2 of 36 steps (6%) done
+
+[Mon Aug 10 09:51:00 2020]
+rule minimap2Align:
+    input: /home/wuzhikun/Project/PopTest/clean/CN001.fastq.gz
+    output: /home/wuzhikun/Project/PopTest/mapping/minimap2/CN001.sam
+    log: /home/wuzhikun/Project/PopTest/log/minimap2Align_CN001.log
+    jobid: 34
+    wildcards: sample=CN001
+    threads: 6
+
+[Mon Aug 10 09:51:00 2020]
+rule NanoPlotClean:
+    input: /home/wuzhikun/Project/PopTest/clean/CN001.fastq.gz
+    output: /home/wuzhikun/Project/PopTest/QualityControl/clean/NanoPlot/CN001/NanoStats.txt, /home/wuzhikun/Project/PopTest/QualityControl/clean/NanoPlot/CN001/HistogramReadlength.pdf, /home/wuzhikun/Project/PopTest/QualityControl/clean/NanoPlot/CN001/LengthvsQualityScatterPlot_hex.pdf
+    log: /home/wuzhikun/Project/PopTest/log/NanoPlot_clean_CN001.log
+    jobid: 21
+    wildcards: sample=CN001
+    threads: 6
+
+[33mJob counts:
+	count	jobs
+	1	minimap2Align
+	1[0m
+[33mJob counts:
+	count	jobs
+	1	NanoPlotClean
+	1[0m
+[33mminimap2 --MD -a -x map-ont -t 6 /home/wuzhikun/database/genome/GRCh38/Homo_sapiens.GRCh38.dna.primary_assembly.fa /home/wuzhikun/Project/PopTest/clean/CN002.fastq.gz > /home/wuzhikun/Project/PopTest/mapping/minimap2/CN002.sam 2>/home/wuzhikun/Project/PopTest/log/minimap2Align_CN002.log[0m
+[33mJob counts:
+	count	jobs
+	1	NanoPlotClean
+	1[0m
+[33mJob counts:
+	count	jobs
+	1	minimap2Align
+	1[0m
+[33mminimap2 --MD -a -x map-ont -t 6 /home/wuzhikun/database/genome/GRCh38/Homo_sapiens.GRCh38.dna.primary_assembly.fa /home/wuzhikun/Project/PopTest/clean/CN001.fastq.gz > /home/wuzhikun/Project/PopTest/mapping/minimap2/CN001.sam 2>/home/wuzhikun/Project/PopTest/log/minimap2Align_CN001.log[0m
+source activate nanovar &&  NanoPlot  --outdir /home/wuzhikun/Project/PopTest/QualityControl/clean/NanoPlot/CN001  --fastq /home/wuzhikun/Project/PopTest/clean/CN001.fastq.gz --loglength --format pdf --plots hex dot > /home/wuzhikun/Project/PopTest/log/NanoPlot_clean_CN001.log 2>&1
+[Mon Aug 10 09:54:47 2020]
+Finished job 21.
+3 of 36 steps (8%) done
+
+[Mon Aug 10 09:54:47 2020]
+rule QualityStats:
+    input: /home/wuzhikun/Project/PopTest/QualityControl/raw/NanoPlot/CN001/NanoStats.txt, /home/wuzhikun/Project/PopTest/QualityControl/clean/NanoPlot/CN001/NanoStats.txt
+    output: /home/wuzhikun/Project/PopTest/QualityControl/CN001_stats.xls
+    log: /home/wuzhikun/Project/PopTest/log/QualityStats_CN001.log
+    jobid: 3
+    wildcards: sample=CN001
+    threads: 6
+
+[33mJob counts:
+	count	jobs
+	1	QualityStats
+	1[0m
+[33mpython /home/wuzhikun/github/PGC/src/pgc/NanoStatSummary.py --stats /home/wuzhikun/Project/PopTest/QualityControl/raw/NanoPlot/CN001/NanoStats.txt --clean /home/wuzhikun/Project/PopTest/QualityControl/clean/NanoPlot/CN001/NanoStats.txt --sample CN001 --out /home/wuzhikun/Project/PopTest/QualityControl/CN001_stats.xls >/home/wuzhikun/Project/PopTest/log/QualityStats_CN001.log 2>&1[0m
+[Mon Aug 10 09:54:49 2020]
+Finished job 3.
+4 of 36 steps (11%) done
+source activate nanovar &&  NanoPlot  --outdir /home/wuzhikun/Project/PopTest/QualityControl/clean/NanoPlot/CN002  --fastq /home/wuzhikun/Project/PopTest/clean/CN002.fastq.gz --loglength --format pdf --plots hex dot > /home/wuzhikun/Project/PopTest/log/NanoPlot_clean_CN002.log 2>&1
+[Mon Aug 10 09:54:56 2020]
+Finished job 23.
+5 of 36 steps (14%) done
+
+[Mon Aug 10 09:54:56 2020]
+rule QualityStats:
+    input: /home/wuzhikun/Project/PopTest/QualityControl/raw/NanoPlot/CN002/NanoStats.txt, /home/wuzhikun/Project/PopTest/QualityControl/clean/NanoPlot/CN002/NanoStats.txt
+    output: /home/wuzhikun/Project/PopTest/QualityControl/CN002_stats.xls
+    log: /home/wuzhikun/Project/PopTest/log/QualityStats_CN002.log
+    jobid: 4
+    wildcards: sample=CN002
+    threads: 6
+
+[33mJob counts:
+	count	jobs
+	1	QualityStats
+	1[0m
+[33mpython /home/wuzhikun/github/PGC/src/pgc/NanoStatSummary.py --stats /home/wuzhikun/Project/PopTest/QualityControl/raw/NanoPlot/CN002/NanoStats.txt --clean /home/wuzhikun/Project/PopTest/QualityControl/clean/NanoPlot/CN002/NanoStats.txt --sample CN002 --out /home/wuzhikun/Project/PopTest/QualityControl/CN002_stats.xls >/home/wuzhikun/Project/PopTest/log/QualityStats_CN002.log 2>&1[0m
+[Mon Aug 10 09:55:06 2020]
+Finished job 4.
+6 of 36 steps (17%) done
+
+[Mon Aug 10 09:55:06 2020]
+rule QualityStatsMerge:
+    input: /home/wuzhikun/Project/PopTest/QualityControl/CN001_stats.xls, /home/wuzhikun/Project/PopTest/QualityControl/CN002_stats.xls
+    output: /home/wuzhikun/Project/PopTest/QualityControl/Samples_quality_summary.xls
+    jobid: 5
+
+[33mJob counts:
+	count	jobs
+	1	QualityStatsMerge
+	1[0m
+[Mon Aug 10 09:55:14 2020]
+Finished job 5.
+7 of 36 steps (19%) done
+[Mon Aug 10 09:57:06 2020]
+Finished job 35.
+8 of 36 steps (22%) done
+
+[Mon Aug 10 09:57:06 2020]
+rule SAM2BAM:
+    input: /home/wuzhikun/Project/PopTest/mapping/minimap2/CN002.sam
+    output: /home/wuzhikun/Project/PopTest/mapping/minimap2/CN002_temp.bam, /home/wuzhikun/Project/PopTest/mapping/minimap2/CN002.bam, /home/wuzhikun/Project/PopTest/mapping/minimap2/CN002.bam.bai
+    log: /home/wuzhikun/Project/PopTest/log/sam2bam_minimap2_CN002.log
+    jobid: 29
+    wildcards: sample=CN002
+    threads: 6
+
+[Mon Aug 10 09:57:08 2020]
+Finished job 34.
+9 of 36 steps (25%) done
+
+[Mon Aug 10 09:57:08 2020]
+rule SAM2BAM:
+    input: /home/wuzhikun/Project/PopTest/mapping/minimap2/CN001.sam
+    output: /home/wuzhikun/Project/PopTest/mapping/minimap2/CN001_temp.bam, /home/wuzhikun/Project/PopTest/mapping/minimap2/CN001.bam, /home/wuzhikun/Project/PopTest/mapping/minimap2/CN001.bam.bai
+    log: /home/wuzhikun/Project/PopTest/log/sam2bam_minimap2_CN001.log
+    jobid: 28
+    wildcards: sample=CN001
+    threads: 6
+
+[33mJob counts:
+	count	jobs
+	1	SAM2BAM
+	1[0m
+[33msamtools view -Sb --threads 6  -o /home/wuzhikun/Project/PopTest/mapping/minimap2/CN002_temp.bam /home/wuzhikun/Project/PopTest/mapping/minimap2/CN002.sam   >/home/wuzhikun/Project/PopTest/log/sam2bam_minimap2_CN002.log 2>&1[0m
+[33mJob counts:
+	count	jobs
+	1	SAM2BAM
+	1[0m
+[33msamtools view -Sb --threads 6  -o /home/wuzhikun/Project/PopTest/mapping/minimap2/CN001_temp.bam /home/wuzhikun/Project/PopTest/mapping/minimap2/CN001.sam   >/home/wuzhikun/Project/PopTest/log/sam2bam_minimap2_CN001.log 2>&1[0m
+[33msamtools sort --threads 6 -o /home/wuzhikun/Project/PopTest/mapping/minimap2/CN002.bam /home/wuzhikun/Project/PopTest/mapping/minimap2/CN002_temp.bam 2>>/home/wuzhikun/Project/PopTest/log/sam2bam_minimap2_CN002.log[0m
+[33msamtools sort --threads 6 -o /home/wuzhikun/Project/PopTest/mapping/minimap2/CN001.bam /home/wuzhikun/Project/PopTest/mapping/minimap2/CN001_temp.bam 2>>/home/wuzhikun/Project/PopTest/log/sam2bam_minimap2_CN001.log[0m
+[33msamtools index -@ 6 /home/wuzhikun/Project/PopTest/mapping/minimap2/CN001.bam 2>>/home/wuzhikun/Project/PopTest/log/sam2bam_minimap2_CN001.log[0m
+[33msamtools index -@ 6 /home/wuzhikun/Project/PopTest/mapping/minimap2/CN002.bam 2>>/home/wuzhikun/Project/PopTest/log/sam2bam_minimap2_CN002.log[0m
+Removing temporary output file /home/wuzhikun/Project/PopTest/mapping/minimap2/CN001.sam.
+Removing temporary output file /home/wuzhikun/Project/PopTest/mapping/minimap2/CN001_temp.bam.
+[Mon Aug 10 09:59:36 2020]
+Finished job 28.
+10 of 36 steps (28%) done
+
+[Mon Aug 10 09:59:36 2020]
+rule NanoSV:
+    input: /home/wuzhikun/Project/PopTest/mapping/minimap2/CN001.bam
+    output: /home/wuzhikun/Project/PopTest/SVCall/NanoSV/minimap2/CN001.vcf
+    log: /home/wuzhikun/Project/PopTest/log/NanoSV_minimap2_CN001.log
+    jobid: 12
+    wildcards: sample=CN001
+    threads: 6
+
+[Mon Aug 10 09:59:36 2020]
+rule ErrorRate:
+    input: /home/wuzhikun/Project/PopTest/mapping/minimap2/CN001.bam
+    output: /home/wuzhikun/Project/PopTest/mapping/minimap2/CN001_error_rate.xls
+    log: /home/wuzhikun/Project/PopTest/log/ErrorRate_CN001.log
+    jobid: 24
+    wildcards: sample=CN001
+    threads: 6
+
+[Mon Aug 10 09:59:36 2020]
+rule BAMStats:
+    input: /home/wuzhikun/Project/PopTest/mapping/minimap2/CN001.bam
+    output: /home/wuzhikun/Project/PopTest/mapping/minimap2/CN001_bam_stats.txt, /home/wuzhikun/Project/PopTest/mapping/minimap2/CN001_bam_summary.xls
+    log: /home/wuzhikun/Project/PopTest/log/BAMStats_CN001.log
+    jobid: 26
+    wildcards: sample=CN001
+    threads: 6
+
+[33mJob counts:
+	count	jobs
+	1	NanoSV
+	1[0m
+[33mNanoSV --threads 6 -c /home/wuzhikun/anaconda3/envs/NanoSV/lib/python3.6/site-packages/nanosv/config.ini -o /home/wuzhikun/Project/PopTest/SVCall/NanoSV/minimap2/CN001.vcf /home/wuzhikun/Project/PopTest/mapping/minimap2/CN001.bam >/home/wuzhikun/Project/PopTest/log/NanoSV_minimap2_CN001.log 2>&1[0m
+[33mJob counts:
+	count	jobs
+	1	ErrorRate
+	1[0m
+[33mJob counts:
+	count	jobs
+	1	BAMStats
+	1[0m
+[33mpython /home/wuzhikun/github/PGC/src/pgc/pysam_qc.py --bam /home/wuzhikun/Project/PopTest/mapping/minimap2/CN001.bam --out /home/wuzhikun/Project/PopTest/mapping/minimap2/CN001_error_rate.xls > /home/wuzhikun/Project/PopTest/log/ErrorRate_CN001.log 2>&1[0m
+[33msamtools stats --threads 6 /home/wuzhikun/Project/PopTest/mapping/minimap2/CN001.bam > /home/wuzhikun/Project/PopTest/mapping/minimap2/CN001_bam_stats.txt 2>/home/wuzhikun/Project/PopTest/log/BAMStats_CN001.log[0m
+Removing temporary output file /home/wuzhikun/Project/PopTest/mapping/minimap2/CN002.sam.
+Removing temporary output file /home/wuzhikun/Project/PopTest/mapping/minimap2/CN002_temp.bam.
+[Mon Aug 10 09:59:41 2020]
+Finished job 29.
+11 of 36 steps (31%) done
+
+[Mon Aug 10 09:59:41 2020]
+rule Sniffles:
+    input: /home/wuzhikun/Project/PopTest/mapping/minimap2/CN002.bam
+    output: /home/wuzhikun/Project/PopTest/SVCall/Sniffles/minimap2/CN002.vcf
+    log: /home/wuzhikun/Project/PopTest/log/SnifflesNano_minimap2_CN002.log
+    jobid: 11
+    wildcards: sample=CN002
+    threads: 6
+
+[33mJob counts:
+	count	jobs
+	1	Sniffles
+	1[0m
+[33msniffles --mapped_reads /home/wuzhikun/Project/PopTest/mapping/minimap2/CN002.bam --vcf /home/wuzhikun/Project/PopTest/SVCall/Sniffles/minimap2/CN002.vcf --threads 6  --min_support 2 --min_length 50 --minmapping_qual 20 --num_reads_report -1 --min_seq_size 500  --genotype --report_BND --report_seq  >/home/wuzhikun/Project/PopTest/log/SnifflesNano_minimap2_CN002.log 2>&1[0m
+[33mpython /home/wuzhikun/github/PGC/src/pgc/NanoBamStat.py --stat /home/wuzhikun/Project/PopTest/mapping/minimap2/CN001_bam_stats.txt --out /home/wuzhikun/Project/PopTest/mapping/minimap2/CN001_bam_summary.xls --sample CN001 2>>/home/wuzhikun/Project/PopTest/log/BAMStats_CN001.log[0m
+[Mon Aug 10 10:00:42 2020]
+Finished job 26.
+12 of 36 steps (33%) done
+
+[Mon Aug 10 10:00:42 2020]
+rule nanovar:
+    input: /home/wuzhikun/Project/PopTest/mapping/minimap2/CN002.bam
+    output: /home/wuzhikun/Project/PopTest/SVCall/nanovar/CN002/CN002.nanovar.total.vcf, /home/wuzhikun/Project/PopTest/SVCall/nanovar/CN002/CN002.nanovar.pass.vcf
+    log: /home/wuzhikun/Project/PopTest/log/nanovar_CN002.log
+    jobid: 17
+    wildcards: sample=CN002
+    threads: 6
+
+[33mJob counts:
+	count	jobs
+	1	nanovar
+	1[0m
+[Mon Aug 10 10:01:03 2020]
+Finished job 11.
+13 of 36 steps (36%) done
+
+[Mon Aug 10 10:01:03 2020]
+rule Sniffles:
+    input: /home/wuzhikun/Project/PopTest/mapping/minimap2/CN001.bam
+    output: /home/wuzhikun/Project/PopTest/SVCall/Sniffles/minimap2/CN001.vcf
+    log: /home/wuzhikun/Project/PopTest/log/SnifflesNano_minimap2_CN001.log
+    jobid: 10
+    wildcards: sample=CN001
+    threads: 6
+
+[33mJob counts:
+	count	jobs
+	1	Sniffles
+	1[0m
+[33msniffles --mapped_reads /home/wuzhikun/Project/PopTest/mapping/minimap2/CN001.bam --vcf /home/wuzhikun/Project/PopTest/SVCall/Sniffles/minimap2/CN001.vcf --threads 6  --min_support 2 --min_length 50 --minmapping_qual 20 --num_reads_report -1 --min_seq_size 500  --genotype --report_BND --report_seq  >/home/wuzhikun/Project/PopTest/log/SnifflesNano_minimap2_CN001.log 2>&1[0m
+[Mon Aug 10 10:01:14 2020]
+Finished job 24.
+14 of 36 steps (39%) done
+
+[Mon Aug 10 10:01:14 2020]
+rule nanovar:
+    input: /home/wuzhikun/Project/PopTest/mapping/minimap2/CN001.bam
+    output: /home/wuzhikun/Project/PopTest/SVCall/nanovar/CN001/CN001.nanovar.total.vcf, /home/wuzhikun/Project/PopTest/SVCall/nanovar/CN001/CN001.nanovar.pass.vcf
+    log: /home/wuzhikun/Project/PopTest/log/nanovar_CN001.log
+    jobid: 16
+    wildcards: sample=CN001
+    threads: 6
+
+[33mJob counts:
+	count	jobs
+	1	nanovar
+	1[0m
+[Mon Aug 10 10:01:31 2020]
+Finished job 12.
+15 of 36 steps (42%) done
+
+[Mon Aug 10 10:01:31 2020]
+rule BAMStats:
+    input: /home/wuzhikun/Project/PopTest/mapping/minimap2/CN002.bam
+    output: /home/wuzhikun/Project/PopTest/mapping/minimap2/CN002_bam_stats.txt, /home/wuzhikun/Project/PopTest/mapping/minimap2/CN002_bam_summary.xls
+    log: /home/wuzhikun/Project/PopTest/log/BAMStats_CN002.log
+    jobid: 27
+    wildcards: sample=CN002
+    threads: 6
+
+[33mJob counts:
+	count	jobs
+	1	BAMStats
+	1[0m
+[33msamtools stats --threads 6 /home/wuzhikun/Project/PopTest/mapping/minimap2/CN002.bam > /home/wuzhikun/Project/PopTest/mapping/minimap2/CN002_bam_stats.txt 2>/home/wuzhikun/Project/PopTest/log/BAMStats_CN002.log[0m
+[Mon Aug 10 10:02:22 2020]
+Finished job 10.
+16 of 36 steps (44%) done
+
+[Mon Aug 10 10:02:22 2020]
+rule ErrorRate:
+    input: /home/wuzhikun/Project/PopTest/mapping/minimap2/CN002.bam
+    output: /home/wuzhikun/Project/PopTest/mapping/minimap2/CN002_error_rate.xls
+    log: /home/wuzhikun/Project/PopTest/log/ErrorRate_CN002.log
+    jobid: 25
+    wildcards: sample=CN002
+    threads: 6
+
+[33mJob counts:
+	count	jobs
+	1	ErrorRate
+	1[0m
+[33mpython /home/wuzhikun/github/PGC/src/pgc/pysam_qc.py --bam /home/wuzhikun/Project/PopTest/mapping/minimap2/CN002.bam --out /home/wuzhikun/Project/PopTest/mapping/minimap2/CN002_error_rate.xls > /home/wuzhikun/Project/PopTest/log/ErrorRate_CN002.log 2>&1[0m
+[33mpython /home/wuzhikun/github/PGC/src/pgc/NanoBamStat.py --stat /home/wuzhikun/Project/PopTest/mapping/minimap2/CN002_bam_stats.txt --out /home/wuzhikun/Project/PopTest/mapping/minimap2/CN002_bam_summary.xls --sample CN002 2>>/home/wuzhikun/Project/PopTest/log/BAMStats_CN002.log[0m
+[Mon Aug 10 10:02:39 2020]
+Finished job 27.
+17 of 36 steps (47%) done
+
+[Mon Aug 10 10:02:39 2020]
+rule NanoSV:
+    input: /home/wuzhikun/Project/PopTest/mapping/minimap2/CN002.bam
+    output: /home/wuzhikun/Project/PopTest/SVCall/NanoSV/minimap2/CN002.vcf
+    log: /home/wuzhikun/Project/PopTest/log/NanoSV_minimap2_CN002.log
+    jobid: 13
+    wildcards: sample=CN002
+    threads: 6
+
+[33mJob counts:
+	count	jobs
+	1	NanoSV
+	1[0m
+[33mNanoSV --threads 6 -c /home/wuzhikun/anaconda3/envs/NanoSV/lib/python3.6/site-packages/nanosv/config.ini -o /home/wuzhikun/Project/PopTest/SVCall/NanoSV/minimap2/CN002.vcf /home/wuzhikun/Project/PopTest/mapping/minimap2/CN002.bam >/home/wuzhikun/Project/PopTest/log/NanoSV_minimap2_CN002.log 2>&1[0m
+[Mon Aug 10 10:03:59 2020]
+Finished job 25.
+18 of 36 steps (50%) done
+
+[Mon Aug 10 10:03:59 2020]
+rule BAMStatsMerge:
+    input: /home/wuzhikun/Project/PopTest/mapping/minimap2/CN001_bam_summary.xls, /home/wuzhikun/Project/PopTest/mapping/minimap2/CN002_bam_summary.xls
+    output: /home/wuzhikun/Project/PopTest/mapping/Samples_mapping_summary.xls
+    jobid: 8
+
+[Mon Aug 10 10:03:59 2020]
+rule ErrorRateSummary:
+    input: /home/wuzhikun/Project/PopTest/mapping/minimap2/CN001_error_rate.xls, /home/wuzhikun/Project/PopTest/mapping/minimap2/CN002_error_rate.xls
+    output: /home/wuzhikun/Project/PopTest/mapping/minimap2/Samples_error_rate_stats.xls
+    jobid: 6
+
+[Mon Aug 10 10:03:59 2020]
+rule NanoSVConvert:
+    input: /home/wuzhikun/Project/PopTest/SVCall/NanoSV/minimap2/CN001.vcf
+    output: /home/wuzhikun/Project/PopTest/SVCall/NanoSV/minimap2/CN001_type.vcf
+    log: /home/wuzhikun/Project/PopTest/log/NanoSVConvert_CN001.log
+    jobid: 14
+    wildcards: sample=CN001
+
+[33mJob counts:
+	count	jobs
+	1	ErrorRateSummary
+	1[0m
+[33mJob counts:
+	count	jobs
+	1	NanoSVConvert
+	1[0m
+[33mJob counts:
+	count	jobs
+	1	BAMStatsMerge
+	1[0m
+[33mpython /home/wuzhikun/github/PGC/src/pgc/NanosvType.py --vcf /home/wuzhikun/Project/PopTest/SVCall/NanoSV/minimap2/CN001.vcf --out /home/wuzhikun/Project/PopTest/SVCall/NanoSV/minimap2/CN001_type.vcf >/home/wuzhikun/Project/PopTest/log/NanoSVConvert_CN001.log 2>&1[0m
+[Mon Aug 10 10:04:04 2020]
+Finished job 8.
+19 of 36 steps (53%) done
+
+[Mon Aug 10 10:04:04 2020]
+rule mappingRateStats:
+    input: /home/wuzhikun/Project/PopTest/mapping/Samples_mapping_summary.xls
+    output: /home/wuzhikun/Project/PopTest/mapping/Samples_mapping_summary.pdf
+    log: /home/wuzhikun/Project/PopTest/log/mappingRateStats.log
+    jobid: 9
+
+[Mon Aug 10 10:04:04 2020]
+Finished job 6.
+20 of 36 steps (56%) done
+
+[Mon Aug 10 10:04:04 2020]
+rule ErrorRatePlot:
+    input: /home/wuzhikun/Project/PopTest/mapping/minimap2/Samples_error_rate_stats.xls
+    output: /home/wuzhikun/Project/PopTest/mapping/minimap2/Samples_error_rate_stats.pdf, /home/wuzhikun/Project/PopTest/mapping/minimap2/Samples_mapping_rate_stats.pdf
+    log: /home/wuzhikun/Project/PopTest/log/ErrorRatePlot.log
+    jobid: 7
+
+[Mon Aug 10 10:04:04 2020]
+Finished job 14.
+21 of 36 steps (58%) done
+[33mJob counts:
+	count	jobs
+	1	mappingRateStats
+	1[0m
+[33mRscript /home/wuzhikun/github/PGC/script/mappingRateHist.R --input /home/wuzhikun/Project/PopTest/mapping/Samples_mapping_summary.xls --pdf /home/wuzhikun/Project/PopTest/mapping/Samples_mapping_summary.pdf --width 4 --height 4 > /home/wuzhikun/Project/PopTest/log/mappingRateStats.log 2>&1[0m
+[33mJob counts:
+	count	jobs
+	1	ErrorRatePlot
+	1[0m
+[33mRscript /home/wuzhikun/github/PGC/script/ErrorRateBar.R --input /home/wuzhikun/Project/PopTest/mapping/minimap2/Samples_error_rate_stats.xls --pdf /home/wuzhikun/Project/PopTest/mapping/minimap2/Samples_error_rate_stats.pdf --pdf2 /home/wuzhikun/Project/PopTest/mapping/minimap2/Samples_mapping_rate_stats.pdf --width 4 --height 4 > /home/wuzhikun/Project/PopTest/log/ErrorRatePlot.log 2>&1[0m
+source activate nanovar && nanovar -t 6 --data_type ont --mincov 2 --minlen 50 /home/wuzhikun/Project/PopTest/mapping/minimap2/CN002.bam /home/wuzhikun/database/genome/GRCh38/Homo_sapiens.GRCh38.dna.primary_assembly.fa /home/wuzhikun/Project/PopTest/SVCall/nanovar/CN002 > /home/wuzhikun/Project/PopTest/log/nanovar_CN002.log 2>&1
+[Mon Aug 10 10:04:11 2020]
+Finished job 17.
+22 of 36 steps (61%) done
+source activate nanovar && nanovar -t 6 --data_type ont --mincov 2 --minlen 50 /home/wuzhikun/Project/PopTest/mapping/minimap2/CN001.bam /home/wuzhikun/database/genome/GRCh38/Homo_sapiens.GRCh38.dna.primary_assembly.fa /home/wuzhikun/Project/PopTest/SVCall/nanovar/CN001 > /home/wuzhikun/Project/PopTest/log/nanovar_CN001.log 2>&1
+[Mon Aug 10 10:04:12 2020]
+Finished job 16.
+23 of 36 steps (64%) done
+
+[Mon Aug 10 10:04:12 2020]
+rule ChangeFormat:
+    input: /home/wuzhikun/Project/PopTest/SVCall/NanoSV/minimap2/CN001.vcf, /home/wuzhikun/Project/PopTest/SVCall/nanovar/CN001/CN001.nanovar.pass.vcf
+    output: /home/wuzhikun/Project/PopTest/SVCall/Format/CN001_nanosv.vcf, /home/wuzhikun/Project/PopTest/SVCall/Format/CN001_nanovar.vcf
+    log: /home/wuzhikun/Project/PopTest/log/CN001.ChangeFormat.log
+    jobid: 36
+    wildcards: sample=CN001
+
+[Mon Aug 10 10:04:13 2020]
+Finished job 9.
+24 of 36 steps (67%) done
+[Mon Aug 10 10:04:13 2020]
+Finished job 7.
+25 of 36 steps (69%) done
+[33mJob counts:
+	count	jobs
+	1	ChangeFormat
+	1[0m
+[33mpython /home/wuzhikun/github/PGC/src/pgc/nanosv_change_format.py --raw_vcf /home/wuzhikun/Project/PopTest/SVCall/NanoSV/minimap2/CN001.vcf  --new_vcf /home/wuzhikun/Project/PopTest/SVCall/Format/CN001_nanosv.vcf --score 20 > /home/wuzhikun/Project/PopTest/log/CN001.ChangeFormat.log 2>&1[0m
+[Mon Aug 10 10:04:15 2020]
+Finished job 13.
+26 of 36 steps (72%) done
+
+[Mon Aug 10 10:04:15 2020]
+rule NanoSVConvert:
+    input: /home/wuzhikun/Project/PopTest/SVCall/NanoSV/minimap2/CN002.vcf
+    output: /home/wuzhikun/Project/PopTest/SVCall/NanoSV/minimap2/CN002_type.vcf
+    log: /home/wuzhikun/Project/PopTest/log/NanoSVConvert_CN002.log
+    jobid: 15
+    wildcards: sample=CN002
+
+[Mon Aug 10 10:04:15 2020]
+rule ChangeFormat:
+    input: /home/wuzhikun/Project/PopTest/SVCall/NanoSV/minimap2/CN002.vcf, /home/wuzhikun/Project/PopTest/SVCall/nanovar/CN002/CN002.nanovar.pass.vcf
+    output: /home/wuzhikun/Project/PopTest/SVCall/Format/CN002_nanosv.vcf, /home/wuzhikun/Project/PopTest/SVCall/Format/CN002_nanovar.vcf
+    log: /home/wuzhikun/Project/PopTest/log/CN002.ChangeFormat.log
+    jobid: 37
+    wildcards: sample=CN002
+
+[33mpython /home/wuzhikun/github/PGC/src/pgc/nanovar_change_format.py --raw_vcf /home/wuzhikun/Project/PopTest/SVCall/nanovar/CN001/CN001.nanovar.pass.vcf --new_vcf /home/wuzhikun/Project/PopTest/SVCall/Format/CN001_nanovar.vcf >> /home/wuzhikun/Project/PopTest/log/CN001.ChangeFormat.log 2>&1[0m
+[33mJob counts:
+	count	jobs
+	1	ChangeFormat
+	1[0m
+[33mpython /home/wuzhikun/github/PGC/src/pgc/nanosv_change_format.py --raw_vcf /home/wuzhikun/Project/PopTest/SVCall/NanoSV/minimap2/CN002.vcf  --new_vcf /home/wuzhikun/Project/PopTest/SVCall/Format/CN002_nanosv.vcf --score 20 > /home/wuzhikun/Project/PopTest/log/CN002.ChangeFormat.log 2>&1[0m
+[33mJob counts:
+	count	jobs
+	1	NanoSVConvert
+	1[0m
+[33mpython /home/wuzhikun/github/PGC/src/pgc/NanosvType.py --vcf /home/wuzhikun/Project/PopTest/SVCall/NanoSV/minimap2/CN002.vcf --out /home/wuzhikun/Project/PopTest/SVCall/NanoSV/minimap2/CN002_type.vcf >/home/wuzhikun/Project/PopTest/log/NanoSVConvert_CN002.log 2>&1[0m
+[Mon Aug 10 10:04:19 2020]
+Finished job 36.
+27 of 36 steps (75%) done
+
+[Mon Aug 10 10:04:19 2020]
+rule MultipleFilt:
+    input: /home/wuzhikun/Project/PopTest/SVCall/Sniffles/minimap2/CN001.vcf, /home/wuzhikun/Project/PopTest/SVCall/Format/CN001_nanosv.vcf, /home/wuzhikun/Project/PopTest/SVCall/Format/CN001_nanovar.vcf
+    output: /home/wuzhikun/Project/PopTest/SVCall/SVFilt/CN001_sniffles.vcf, /home/wuzhikun/Project/PopTest/SVCall/SVFilt/CN001_nanosv.vcf, /home/wuzhikun/Project/PopTest/SVCall/SVFilt/CN001_nanovar.vcf
+    log: /home/wuzhikun/Project/PopTest/log/CN001.MultipleFilt.log
+    jobid: 31
+    wildcards: sample=CN001
+    threads: 6
+
+[33mpython /home/wuzhikun/github/PGC/src/pgc/nanovar_change_format.py --raw_vcf /home/wuzhikun/Project/PopTest/SVCall/nanovar/CN002/CN002.nanovar.pass.vcf --new_vcf /home/wuzhikun/Project/PopTest/SVCall/Format/CN002_nanovar.vcf >> /home/wuzhikun/Project/PopTest/log/CN002.ChangeFormat.log 2>&1[0m
+[Mon Aug 10 10:04:20 2020]
+Finished job 15.
+28 of 36 steps (78%) done
+[Mon Aug 10 10:04:21 2020]
+Finished job 37.
+29 of 36 steps (81%) done
+
+[Mon Aug 10 10:04:21 2020]
+rule MultipleFilt:
+    input: /home/wuzhikun/Project/PopTest/SVCall/Sniffles/minimap2/CN002.vcf, /home/wuzhikun/Project/PopTest/SVCall/Format/CN002_nanosv.vcf, /home/wuzhikun/Project/PopTest/SVCall/Format/CN002_nanovar.vcf
+    output: /home/wuzhikun/Project/PopTest/SVCall/SVFilt/CN002_sniffles.vcf, /home/wuzhikun/Project/PopTest/SVCall/SVFilt/CN002_nanosv.vcf, /home/wuzhikun/Project/PopTest/SVCall/SVFilt/CN002_nanovar.vcf
+    log: /home/wuzhikun/Project/PopTest/log/CN002.MultipleFilt.log
+    jobid: 33
+    wildcards: sample=CN002
+    threads: 6
+
+[33mJob counts:
+	count	jobs
+	1	MultipleFilt
+	1[0m
+[33mpython /home/wuzhikun/github/PGC/src/pgc/SVFiltReadsMultiple.py --support 2 --vcf /home/wuzhikun/Project/PopTest/SVCall/Sniffles/minimap2/CN001.vcf --quality . --ratioThreshold 0.1  --column Clean_total_base --out /home/wuzhikun/Project/PopTest/SVCall/SVFilt/CN001_sniffles.vcf  >/home/wuzhikun/Project/PopTest/log/CN001.MultipleFilt.log 2>&1[0m
+[33mpython /home/wuzhikun/github/PGC/src/pgc/SVFiltReadsMultiple.py --support 2 --vcf /home/wuzhikun/Project/PopTest/SVCall/Format/CN001_nanosv.vcf --quality . --ratioThreshold 0.1  --column Clean_total_base --out /home/wuzhikun/Project/PopTest/SVCall/SVFilt/CN001_nanosv.vcf   >>/home/wuzhikun/Project/PopTest/log/CN001.MultipleFilt.log 2>&1[0m
+[33mJob counts:
+	count	jobs
+	1	MultipleFilt
+	1[0m
+[33mpython /home/wuzhikun/github/PGC/src/pgc/SVFiltReadsMultiple.py --support 2 --vcf /home/wuzhikun/Project/PopTest/SVCall/Sniffles/minimap2/CN002.vcf --quality . --ratioThreshold 0.1  --column Clean_total_base --out /home/wuzhikun/Project/PopTest/SVCall/SVFilt/CN002_sniffles.vcf  >/home/wuzhikun/Project/PopTest/log/CN002.MultipleFilt.log 2>&1[0m
+[33mpython /home/wuzhikun/github/PGC/src/pgc/SVFiltReadsMultiple.py --support 2 --vcf /home/wuzhikun/Project/PopTest/SVCall/Format/CN001_nanovar.vcf --quality . --ratioThreshold 0.1  --column Clean_total_base --out /home/wuzhikun/Project/PopTest/SVCall/SVFilt/CN001_nanovar.vcf  >>/home/wuzhikun/Project/PopTest/log/CN001.MultipleFilt.log 2>&1[0m
+[33mpython /home/wuzhikun/github/PGC/src/pgc/SVFiltReadsMultiple.py --support 2 --vcf /home/wuzhikun/Project/PopTest/SVCall/Format/CN002_nanosv.vcf --quality . --ratioThreshold 0.1  --column Clean_total_base --out /home/wuzhikun/Project/PopTest/SVCall/SVFilt/CN002_nanosv.vcf   >>/home/wuzhikun/Project/PopTest/log/CN002.MultipleFilt.log 2>&1[0m
+[33mpython /home/wuzhikun/github/PGC/src/pgc/SVFiltReadsMultiple.py --support 2 --vcf /home/wuzhikun/Project/PopTest/SVCall/Format/CN002_nanovar.vcf --quality . --ratioThreshold 0.1  --column Clean_total_base --out /home/wuzhikun/Project/PopTest/SVCall/SVFilt/CN002_nanovar.vcf  >>/home/wuzhikun/Project/PopTest/log/CN002.MultipleFilt.log 2>&1[0m
+[Mon Aug 10 10:04:25 2020]
+Finished job 31.
+30 of 36 steps (83%) done
+
+[Mon Aug 10 10:04:25 2020]
+rule MergeMultipleSV:
+    input: /home/wuzhikun/Project/PopTest/SVCall/SVFilt/CN001_sniffles.vcf, /home/wuzhikun/Project/PopTest/SVCall/SVFilt/CN001_nanovar.vcf, /home/wuzhikun/Project/PopTest/SVCall/SVFilt/CN001_nanosv.vcf
+    output: /home/wuzhikun/Project/PopTest/SVCall/Multiple/CN001/CN001_common_SV.vcf
+    log: /home/wuzhikun/Project/PopTest/log/MergeMultipleSV_CN001.log
+    jobid: 30
+    wildcards: sample=CN001
+    threads: 6
+
+[Mon Aug 10 10:04:26 2020]
+Finished job 33.
+31 of 36 steps (86%) done
+
+[Mon Aug 10 10:04:26 2020]
+rule MergeMultipleSV:
+    input: /home/wuzhikun/Project/PopTest/SVCall/SVFilt/CN002_sniffles.vcf, /home/wuzhikun/Project/PopTest/SVCall/SVFilt/CN002_nanovar.vcf, /home/wuzhikun/Project/PopTest/SVCall/SVFilt/CN002_nanosv.vcf
+    output: /home/wuzhikun/Project/PopTest/SVCall/Multiple/CN002/CN002_common_SV.vcf
+    log: /home/wuzhikun/Project/PopTest/log/MergeMultipleSV_CN002.log
+    jobid: 32
+    wildcards: sample=CN002
+    threads: 6
+
+[33mJob counts:
+	count	jobs
+	1	MergeMultipleSV
+	1[0m
+[33mpython /home/wuzhikun/github/PGC/src/pgc/clique_maxflow_SV.py -v /home/wuzhikun/Project/PopTest/SVCall/SVFilt/CN001_sniffles.vcf,/home/wuzhikun/Project/PopTest/SVCall/SVFilt/CN001_nanovar.vcf,/home/wuzhikun/Project/PopTest/SVCall/SVFilt/CN001_nanosv.vcf -o /home/wuzhikun/Project/PopTest/SVCall/Multiple/CN001/CN001_common_SV.vcf --allele_freq 0.2 > /home/wuzhikun/Project/PopTest/log/MergeMultipleSV_CN001.log 2>&1[0m
+[33mJob counts:
+	count	jobs
+	1	MergeMultipleSV
+	1[0m
+[33mpython /home/wuzhikun/github/PGC/src/pgc/clique_maxflow_SV.py -v /home/wuzhikun/Project/PopTest/SVCall/SVFilt/CN002_sniffles.vcf,/home/wuzhikun/Project/PopTest/SVCall/SVFilt/CN002_nanovar.vcf,/home/wuzhikun/Project/PopTest/SVCall/SVFilt/CN002_nanosv.vcf -o /home/wuzhikun/Project/PopTest/SVCall/Multiple/CN002/CN002_common_SV.vcf --allele_freq 0.2 > /home/wuzhikun/Project/PopTest/log/MergeMultipleSV_CN002.log 2>&1[0m
+[Mon Aug 10 10:04:38 2020]
+Finished job 30.
+32 of 36 steps (89%) done
+
+[Mon Aug 10 10:04:38 2020]
+rule OriginalRecord:
+    input: /home/wuzhikun/Project/PopTest/SVCall/Multiple/CN001/CN001_common_SV.vcf, /home/wuzhikun/Project/PopTest/SVCall/SVFilt/CN001_sniffles.vcf, /home/wuzhikun/Project/PopTest/SVCall/SVFilt/CN001_nanovar.vcf
+    output: /home/wuzhikun/Project/PopTest/SVCall/Final/CN001_common_original.vcf
+    log: /home/wuzhikun/Project/PopTest/log/OriginalRecord_CN001.log
+    jobid: 18
+    wildcards: sample=CN001
+    threads: 6
+
+[Mon Aug 10 10:04:38 2020]
+Finished job 32.
+33 of 36 steps (92%) done
+
+[Mon Aug 10 10:04:38 2020]
+rule OriginalRecord:
+    input: /home/wuzhikun/Project/PopTest/SVCall/Multiple/CN002/CN002_common_SV.vcf, /home/wuzhikun/Project/PopTest/SVCall/SVFilt/CN002_sniffles.vcf, /home/wuzhikun/Project/PopTest/SVCall/SVFilt/CN002_nanovar.vcf
+    output: /home/wuzhikun/Project/PopTest/SVCall/Final/CN002_common_original.vcf
+    log: /home/wuzhikun/Project/PopTest/log/OriginalRecord_CN002.log
+    jobid: 19
+    wildcards: sample=CN002
+    threads: 6
+
+[33mJob counts:
+	count	jobs
+	1	OriginalRecord
+	1[0m
+[33mJob counts:
+	count	jobs
+	1	OriginalRecord
+	1[0m
+[33mpython /home/wuzhikun/github/PGC/src/pgc/MergeSVOriginal.py --merge /home/wuzhikun/Project/PopTest/SVCall/Multiple/CN002/CN002_common_SV.vcf --sniffle /home/wuzhikun/Project/PopTest/SVCall/SVFilt/CN002_sniffles.vcf --nanovar /home/wuzhikun/Project/PopTest/SVCall/SVFilt/CN002_nanovar.vcf --out /home/wuzhikun/Project/PopTest/SVCall/Final/CN002_common_original.vcf --method dominant > /home/wuzhikun/Project/PopTest/log/OriginalRecord_CN002.log 2>&1[0m
+[33mpython /home/wuzhikun/github/PGC/src/pgc/MergeSVOriginal.py --merge /home/wuzhikun/Project/PopTest/SVCall/Multiple/CN001/CN001_common_SV.vcf --sniffle /home/wuzhikun/Project/PopTest/SVCall/SVFilt/CN001_sniffles.vcf --nanovar /home/wuzhikun/Project/PopTest/SVCall/SVFilt/CN001_nanovar.vcf --out /home/wuzhikun/Project/PopTest/SVCall/Final/CN001_common_original.vcf --method dominant > /home/wuzhikun/Project/PopTest/log/OriginalRecord_CN001.log 2>&1[0m
+[Mon Aug 10 10:04:42 2020]
+Finished job 18.
+34 of 36 steps (94%) done
+[Mon Aug 10 10:04:42 2020]
+Finished job 19.
+35 of 36 steps (97%) done
+
+[Mon Aug 10 10:04:42 2020]
+localrule all:
+    input: /home/wuzhikun/Project/PopTest/clean/CN001.fastq.gz, /home/wuzhikun/Project/PopTest/clean/CN002.fastq.gz, /home/wuzhikun/Project/PopTest/QualityControl/CN001_stats.xls, /home/wuzhikun/Project/PopTest/QualityControl/CN002_stats.xls, /home/wuzhikun/Project/PopTest/QualityControl/Samples_quality_summary.xls, /home/wuzhikun/Project/PopTest/QualityControl/Samples_quality_summary.xls, /home/wuzhikun/Project/PopTest/QualityControl/Samples_read_length_hist.pdf, /home/wuzhikun/Project/PopTest/mapping/minimap2/Samples_error_rate_stats.xls, /home/wuzhikun/Project/PopTest/mapping/minimap2/Samples_error_rate_stats.pdf, /home/wuzhikun/Project/PopTest/mapping/Samples_mapping_summary.xls, /home/wuzhikun/Project/PopTest/mapping/Samples_mapping_summary.pdf, /home/wuzhikun/Project/PopTest/SVCall/Sniffles/minimap2/CN001.vcf, /home/wuzhikun/Project/PopTest/SVCall/Sniffles/minimap2/CN002.vcf, /home/wuzhikun/Project/PopTest/SVCall/NanoSV/minimap2/CN001.vcf, /home/wuzhikun/Project/PopTest/SVCall/NanoSV/minimap2/CN002.vcf, /home/wuzhikun/Project/PopTest/SVCall/NanoSV/minimap2/CN001_type.vcf, /home/wuzhikun/Project/PopTest/SVCall/NanoSV/minimap2/CN002_type.vcf, /home/wuzhikun/Project/PopTest/SVCall/nanovar/CN001/CN001.nanovar.pass.vcf, /home/wuzhikun/Project/PopTest/SVCall/nanovar/CN002/CN002.nanovar.pass.vcf, /home/wuzhikun/Project/PopTest/SVCall/Final/CN001_common_original.vcf, /home/wuzhikun/Project/PopTest/SVCall/Final/CN002_common_original.vcf
+    jobid: 0
+
+[Mon Aug 10 10:04:42 2020]
+Finished job 0.
+36 of 36 steps (100%) done
+Complete log: /home/wuzhikun/Project/PopTest/.snakemake/log/2020-08-10T094609.024114.snakemake.log
