@@ -33,8 +33,7 @@ TRAITS = config["TRAITS"]
 PHENOS = config["PHENOS"]
 
 ### shuffle list for estimate of Fst  threshold
-# SHUFFLENUM = list(range(1000))
-SHUFFLENUM = list(range(100))
+SHUFFLENUM = list(range(1000))
 
 ### randomly select of sample size, "405" indicates max number of samples.
 NUMBERS = list(range(1, 405))
@@ -46,9 +45,9 @@ NUMBERS = list(range(1, 405))
 include: RULE_DIR + '/databaseFormat.rule.py'
 include: RULE_DIR + '/BaseFunction.rule.py'
 #### Function rule
-# include: RULE_DIR + "/PopQuality.rule.py"
-# include: RULE_DIR + "/NanoMappingStats.rule.py"
-# include: RULE_DIR + '/NanoCallSV.rule.py'
+include: RULE_DIR + "/PopQuality.rule.py"
+include: RULE_DIR + "/NanoMappingStats.rule.py"
+include: RULE_DIR + '/NanoCallSV.rule.py'
 include: RULE_DIR + '/PopMultipleSV.rule.py'
 include: RULE_DIR + "/PopSVFilt.rule.py"
 include: RULE_DIR + "/PopFrequency.rule.py"
