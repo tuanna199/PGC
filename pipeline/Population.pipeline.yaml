@@ -67,7 +67,7 @@ SVType: "DEL,INS,DUP,INV"
 
 ### softwares
 admixture: /home/wuzhikun/software/admixture_linux-1.3.0/admixture
-AnnotSV: /home/wuzhikun/anaconda3/envs/NanoSV/bin/AnnotSV_2.1/bin/AnnotSV
+#AnnotSV: /home/wuzhikun/anaconda3/envs/NanoSV/bin/AnnotSV_2.1/bin/AnnotSV
 bedtools: /home/wuzhikun/anaconda3/envs/NanoSV/bin/bedtools
 smartpca: /home/wuzhikun/software/Eigensoft/EIG-7.2.1/bin/smartpca.perl
 
@@ -169,49 +169,6 @@ AUTOSOMES:
 PHENOS:
   - ALT
   - AST2ALT
-  - AST
-  - GCT
-  - GLU
-  - BUN
-  - CRE
-  - UA
-  - CHO
-  - LDL_C
-  - TG
-  - CEA
-  - AFP
-  - EORatio
-  - HCT
-  - HGB
-  - LYMAbs
-  - LYMRatio
-  - MCH
-  - MCHC
-  - MCV
-  - MORatio
-  - MPV
-  - NEAbs
-  - NERatio
-  - PDW
-  - P_LCR
-  - PLT
-  - RDW_CV
-  - WBC
-  - RBC
-  - RDW_SD
-  - BACT
-  - MUCS
-  - PH
-  - Urine_RBC
-  - XTAL
-  - SRC
-  - Urine_WBC
-  - Height
-  - Weight
-  - SBP
-  - DBP
-  - Pulse
-  - BMI
 
 
 
