@@ -1,0 +1,48 @@
+# path of result
+OUT_PATH: /home/wuzhikun/Project/Population
+
+
+# path of custom script
+SRC_PATH: /home/wuzhikun/github/PGC/src/pgc
+
+
+# threads
+THREADS: 24
+
+
+# parameters
+MINCOV: 0.8
+MINDIV: 0.1
+
+# samples
+SAMPLES:
+  - CN001
+  - CN002
+  - CN003
+  - CN004
+  - CN005
+
+# path of datasets
+DNA_BRNN_MODEL: /home/litong/software/dna-nn/models/attcc-alpha.knm
+KAIJU_NODES: /home/litong/database/kaiju/nodes.dmp
+KAIJU_DATABASE: /home/litong/database/kaiju/nr_euk/kaiju_db_nr_euk.fmi
+BLAST_DB: /home/wuzhikun/database/NCBI/nt2020/nt
+DIAMOND_DB: /home/wuzhikun/database/GeneAnno/NRTaxa.dmnd
+DIAMOND_NODES: /home/wuzhikun/database/taxonomy/taxdump/nodes.dmp
+DIAMOND_MAPS: /home/wuzhikun/database/taxonomy/prot.accession2taxid.gz
+
+
+
+# ref and gff
+QUAST_REF: /home/litong/database/hg38_no_alt/GCA_000001405.15_GRCh38_no_alt_analysis_set.fna
+QUAST_GFF: /home/litong/database/hg38_no_alt/GCA_000001405.15_GRCh38_full_analysis_set.refseq_annotation.gff
+PROTEIN_CODING_GFF: /home/litong/database/hg38_no_alt/GCA_000001405.15_GRCh38_full_analysis_set.refseq_annotation.protein_coding.gff
+MINIMAP2_MMI: /home/litong/database/ref_hg38_patch/GCF_000001405.39_GRCh38.p13_genomic.ebv.decoy.fna.DP.mmi
+CHORDATE_TAXID: /home/litong/database/ncbi/Chordata_taxonomy_result_20200310.txt,
+HX1_REF: /home/litong/database/human_genome_other/hx1f4s4full_3rdfixedv2.fa
+HUPAN: /home/litong/database/pan_genome/hupan/HanChinesePan.fa
+
+
+
+
+
