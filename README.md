@@ -230,6 +230,6 @@ The pipeline was tested based on different rules, and the **log** files were in 
 
 ## Contributions:
 
-* ZhikunWu: wuzhikun86@163.com
-* TongLi: tli.aioniya@gmail.com
-* ZehangJiang: zehang.kong@gmail.com
+* Zhikun Wu: wuzhikun86@163.com
+* Tong Li: tli.aioniya@gmail.com
+* Zehang Jiang: zehang.kong@gmail.com
