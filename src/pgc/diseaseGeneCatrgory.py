@@ -17,6 +17,7 @@ def gene_category(category_file, gene_anno, total_number):
 
     CategoryCount = collections.Counter()
     gene_h = open(gene_anno, "r")
+    Tags = set()
     for line in gene_h:
         lines = line.strip().split("\t")
         gene = lines[0]
@@ -32,8 +33,10 @@ def gene_category(category_file, gene_anno, total_number):
         #     cat = "Low"
         # elif ratio > 0.05:
         #     cat = "Common"
-        cat = TagCategory[tag]
-        CategoryCount[cat] += 1
+        if tag not in Tags:
+            cat = TagCategory[tag]
+            CategoryCount[cat] += 1
+        Tags.add(tag)
     gene_h.close()
 
     return CategoryCount
