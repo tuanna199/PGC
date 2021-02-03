@@ -1,28 +1,27 @@
-## PGC (Pan-genome analysis of Chinese)
+## PGC (Population genetics analysis of SVs in Chinese)
 
 
 
 ### Description
 
-Characterization of structural variants and *de novo* assembly of Chinese population by long-read sequencing.
+Structural variants in Chinese population and their impact on phenotypes, diseases and population adaptation
+
+(Characterization of structural variants of Chinese population by long-read sequencing)
 
 
 In order to make sure the results are reproduceable, the pipeline is performed using framework [**Snakemake**](https://snakemake.readthedocs.io/en/stable/) coupled with the environment conducted by [**Anoconda**](https://www.anaconda.com/). And the pipeline can be used in other population with long-read sequencing.
 
-The pipeline mainly contains two parts:
+The pipeline mainly contains:
 
 * Characterization of structural variants and population genetic analysis
-* *De novo* genome assembly and non-reference sequence analysis
 
 
 
 ### Requirements
 
 ##### Softwares:
-  * assembly-stats=1.0.1
   * bedtools=2.27.1
   * biopython=1.73
-  * blast=2.5.0
   * minimap2=2.15
   * mosdepth=0.2.5
   * nanofilt=2.2.0
@@ -35,10 +34,6 @@ The pipeline mainly contains two parts:
   * snakemake=5.4.2
   * sniffles=1.0.10
   * ucsc-liftover=377
-  * kaiju=1.7.3
-  * wtdbg2=2.4
-  * diamond=0.9.21
-  * augustus=3.3
 
 
 ##### Python packages:
@@ -65,11 +60,6 @@ The pipeline mainly contains two parts:
   * r-venndiagram=1.6.20
 
 ##### Other packages should be manually installed:
-  * [CD-HIT=v4.8.1](http://weizhongli-lab.org/cd-hit/)
-  * [MAKER2=v2.31.1](http://www.yandell-lab.org/software/maker.html)
-  * [RepeatMasker=4.0.9](http://www.repeatmasker.org/)
-  * [dna-brnn=v0.1-r65](https://github.com/lh3/dna-nn)
-  * [InterProScan=v5.40-77.0](https://www.ebi.ac.uk/interpro/)
   * [EIGENSOFT=v7.2.1](https://github.com/DReichLab/EIG)
   * [IGV=v2.8.6](http://software.broadinstitute.org/software/igv/)
 
@@ -209,14 +199,12 @@ The rule file is based on the function module:
 * PopAnnotation.rule.py: Annotation for SVs relative to genomic location
 * PopOverlap.rule.py: Comparison to other published SV dataasets
 * PopMergeSeq.rule.py: Analysis of SVs associated sequences
-* NanoAssembly.rule.py: *De novo* assembly of genome for each individual
 
 
 ## Tests
 
 The pipeline was tested based on different rules, and the **log** files were in **tests** directory of the package.
 
-* Read_Assembly.log
 * SV_Annotation-1.log
 * SV_Annotation-2.log
 * SV_Diversity.log
