@@ -1,4 +1,4 @@
-## PGC (Population genetics analysis of SVs in Chinese)
+## PGC (Population genetic analysis of SVs in Chinese)
 
 
 
