@@ -215,6 +215,17 @@ The pipeline was tested based on different rules, and the **log** files were in 
 * SV_QualityControl.log
 * SV_Statistics.log
 
+## Data
+
+### raw data
+
+[HRA000792](https://ngdc.cncb.ac.cn/gsa-human/browse/HRA000792)
+
+### VCF file
+
+[GVM000132](https://ngdc.cncb.ac.cn/gvm/getProjectDetail?project=GVM000132)
+
+
 
 ## Contributions:
 
