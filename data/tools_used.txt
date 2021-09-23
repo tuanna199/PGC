@@ -1,0 +1,28 @@
+SOFTWARE	REFERENCE	LINK
+Guppy v3.2.8	N/A	https://community.nanoporetech.com/protocols/Guppy-protocol/
+NanoQC v0.8.1	De Coster et al., 2018	https://github.com/wdecoster/nanoQC
+NnaoFilt v2.2.0	De Coster et al., 2018	https://github.com/wdecoster/nanofilt
+NanoPlot v1.20.0	De Coster et al., 2018	https://github.com/wdecoster/NanoPlot
+minimap2 v2.15-r905	Li, 2018	https://github.com/lh3/minimap2
+SAMtools v1.9	Li et al., 2009	https://github.com/samtools/samtools
+SeqKit v0.10.1	Shen et al., 2016	https://github.com/shenwei356/seqkit
+mosdepth v0.2.5	Pedersen and Quinlan, 2018	https://github.com/brentp/mosdepth
+Sniffles v1.0.10	Sedlazeck et al., 2018	https://github.com/fritzsedlazeck/Sniffles
+NanoVar v1.3.6	Tham et al., 2020	https://github.com/benoukraflab/NanoVar
+NanoSV v1.2.4	Cretu Stancu et al., 2017	https://github.com/mroosmalen/nanosv
+BEDTools v2.27.1	Quinlan and Hall, 2010	https://bedtools.readthedocs.io/en/latest/
+LifeOver v377	Kuhn, R.M. et al., 2013	https://genome-store.ucsc.edu/
+EIGENSOFT v7.2.1	Price et al., 2006	https://github.com/DReichLab/EIG
+RepeatMasker v4.0.9	N/A	http://www.repeatmasker.org/
+TRF v4.09	Benson, G. 1999	https://tandem.bu.edu/trf/trf.html
+Dfam v3.0	Hubley et al., 2016	https://dfam.org/home
+RepBase	Bao et al., 2015	https://www.girinst.org/repbase/
+BatchPrimer3 v1.0	You, F.M. et al., 2008	https://wheat.pw.usda.gov/demos/BatchPrimer3/
+GSEApy v0.9.16	Zhuoqing Fang	https://github.com/zqfang/GSEApy
+Enrichr v2016	Kuleshov, M.V. et al.,	https://amp.pharm.mssm.edu/Enrichr
+Integrative Genomics Viewer (IGV) v2.8.6	Robinson et al., 2017	http://software.broadinstitute.org/software/igv/
+PBScan v2020.03.16	Hämälä, T. et al., https://github.com/thamala/PBScan
+PLINK v1.90b4	Purcell, S. et al., 2007	http://zzz.bwh.harvard.edu/plink/
+Haploview v4.2	Barrett, J.C., 2004	https://www.broadinstitute.org/haploview/haploview
+R v3.53	Team, T.R.C. 2020	http://www.R-project.org/
+
