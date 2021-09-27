@@ -1,3 +1,42 @@
+HG002_ONT
+https://ftp-trace.ncbi.nlm.nih.gov/ReferenceSamples/giab/data/AshkenazimTrio/HG002_NA24385_son/UCSC_Ultralong_OxfordNanopore_Promethion/GM24385_1.fastq.gz
+https://ftp-trace.ncbi.nlm.nih.gov/ReferenceSamples/giab/data/AshkenazimTrio/HG002_NA24385_son/UCSC_Ultralong_OxfordNanopore_Promethion/GM24385_2.fastq.gz
+https://ftp-trace.ncbi.nlm.nih.gov/ReferenceSamples/giab/data/AshkenazimTrio/HG002_NA24385_son/UCSC_Ultralong_OxfordNanopore_Promethion/GM24385_3.fastq.gz
+
+HG002_HiFi
+SRR12454519	https://sra-downloadb.be-md.ncbi.nlm.nih.gov/sos3/sra-pub-run-20/SRR12454519/SRR12454519.1
+SRR12454520	https://sra-downloadb.be-md.ncbi.nlm.nih.gov/sos3/sra-pub-run-20/SRR12454520/SRR12454520.1
+
+HG003_HiFi
+SRR14724451	https://sra-downloadb.be-md.ncbi.nlm.nih.gov/sos3/sra-pub-run-25/SRR14724451/SRR14724451.1
+SRR14724452	https://sra-downloadb.be-md.ncbi.nlm.nih.gov/sos3/sra-pub-run-25/SRR14724452/SRR14724452.1
+SRR14724453	https://sra-downloadb.be-md.ncbi.nlm.nih.gov/sos3/sra-pub-run-25/SRR14724453/SRR14724453.1
+
+HG004_HiFi
+SRR14724448	https://sra-downloadb.be-md.ncbi.nlm.nih.gov/sos3/sra-pub-run-25/SRR14724448/SRR14724448.1
+SRR14724449	https://sra-downloadb.be-md.ncbi.nlm.nih.gov/sos3/sra-pub-run-25/SRR14724449/SRR14724449.1
+SRR14724450	https://sra-downloadb.be-md.ncbi.nlm.nih.gov/sos3/sra-pub-run-25/SRR14724450/SRR14724450.1
+
+
+
+Public SV datasets:
+Genome Aggregation Database (gnomAD v2.1):
+https://gnomad.broadinstitute.org/downloads
+
+Human Genome Diversity Project (HGDP):
+ftp://ngs.sanger.ac.uk/scratch/project/team19/HGDP_SV/
+
+LRS study of 15 human genomes (LRS15):
+https://www.ncbi.nlm.nih.gov/dbvar/studies/nstd162/
+
+Icelander:
+https://github.com/DecodeGenetics/LRS_SV_sets
+
+HGSVC:
+https://www.ncbi.nlm.nih.gov/dbvar/studies/nstd152/
+http://ftp.1000genomes.ebi.ac.uk/vol1/ftp/data_collections/HGSVC2/release/v2.0/integrated_callset/
+
+
 African:
 Sample	URL
 HG02572	https://sra-download.ncbi.nlm.nih.gov/traces/sra35/SRR/013363/SRR13684286
