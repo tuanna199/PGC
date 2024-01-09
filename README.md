@@ -228,3 +228,8 @@ The pipeline was tested based on different rules, and the **log** files were in 
 * Zhikun Wu: wuzhikun86@163.com
 * Tong Li: tli.aioniya@gmail.com
 * Zehang Jiang: zehang.kong@gmail.com
+
+## Cite:
+
+Wu, Z., Jiang, Z., Li, T. et al. Structural variants in the Chinese population and their impact on phenotypes, diseases and population adaptation. Nat Commun 12, 6501 (2021). https://doi.org/10.1038/s41467-021-26856-x
+
