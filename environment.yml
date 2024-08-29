@@ -1,0 +1,27 @@
+name: docker_pgc
+channels:
+  - bioconda
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.7
+  - bedtools
+  - biopython
+  - minimap2
+  - mosdepth
+  - nanofilt
+  - nanoplot
+  - nanoqc
+  - nanovar
+  - nanosv
+  - samtools
+  - seqkit
+  - snakemake
+  - sniffles
+  - ucsc-liftover
+  - gseapy
+  - pysam
+  - tinyfasta
+  - networkx
+  - numpy
+  - r-base
